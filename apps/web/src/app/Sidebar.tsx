@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 import clsx from 'clsx';
+import { useMobileDrawer } from './AppShell';
 
 type NavItem = {
   to: string;
@@ -33,8 +34,20 @@ const NAV_ITEMS: readonly NavItem[] = [
 ];
 
 export function Sidebar() {
+  const { open } = useMobileDrawer();
+
   return (
-    <aside className="flex w-60 flex-col bg-brand-ink text-brand-paper">
+    <aside
+      className={clsx(
+        // Mobile: fixed slide-in drawer overlaying content
+        'fixed inset-y-0 left-0 z-40 flex w-60 flex-col bg-brand-ink text-brand-paper',
+        'transition-transform duration-[220ms] ease-out motion-reduce:transition-none',
+        open ? 'translate-x-0' : '-translate-x-full',
+        // Desktop: static, always visible, no transform
+        'md:static md:translate-x-0 md:transition-none',
+      )}
+      aria-hidden={false}
+    >
       <div className="px-5 pt-6 pb-5">
         <div
           className="text-brand-paper"

@@ -1,24 +1,53 @@
-import { Plus, Search, ArrowLeft } from 'lucide-react';
+import { Plus, Search, ArrowLeft, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAddShipments } from '../components/AddShipmentsContext';
+import { useMobileDrawer } from './AppShell';
 
 export function Topbar() {
-  const { open } = useAddShipments();
+  const { open: openAddShipments } = useAddShipments();
+  const { toggle: toggleDrawer, open: drawerOpen } = useMobileDrawer();
+
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between border-b border-brand-rule bg-brand-paper px-6">
-      <div className="flex items-center gap-4">
+    <header className="flex h-14 shrink-0 items-center justify-between gap-2 border-b border-brand-rule bg-brand-paper px-4 sm:gap-3 sm:px-6">
+      <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          onClick={toggleDrawer}
+          aria-label="Open navigation"
+          aria-expanded={drawerOpen}
+          aria-controls="app-sidebar"
+          className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-brand-rule text-brand-navy transition-colors hover:bg-brand-navy/5 md:hidden"
+        >
+          <Menu size={20} />
+        </button>
+
+        {/* Mobile-only brand wordmark */}
+        <span
+          className="ft-eyebrow text-brand-navy sm:hidden"
+          style={{ letterSpacing: '0.16em' }}
+        >
+          FLOWTRACK
+        </span>
+
+        {/* Back-to-marketing link: full label at sm+, icon-only below */}
         <Link
           to="/"
-          className="ft-eyebrow inline-flex items-center gap-1.5 border border-brand-navy px-2.5 py-1.5 text-brand-navy transition-colors hover:bg-brand-navy/5"
+          aria-label="Back to flowtrack.com"
+          className="ft-eyebrow hidden sm:inline-flex items-center gap-1.5 border border-brand-navy px-2.5 py-1.5 text-brand-navy transition-colors hover:bg-brand-navy/5"
         >
           <ArrowLeft size={11} /> flowtrack.com
         </Link>
-        <span className="ft-eyebrow inline-flex items-center gap-2 text-brand-navy">
+
+        {/* Org chip: collapsed to dot below sm */}
+        <span className="ft-eyebrow hidden sm:inline-flex items-center gap-2 text-brand-navy">
           <span aria-hidden className="inline-block h-1.5 w-1.5 bg-brand-red" />
           Innovtex
         </span>
       </div>
-      <div className="flex flex-1 max-w-md items-center gap-2 border border-brand-rule bg-brand-paper px-3 py-1.5 text-[13px] text-brand-navy focus-within:border-brand-red">
+
+      {/* Search: hidden on mobile */}
+      <div className="hidden sm:flex flex-1 max-w-md items-center gap-2 border border-brand-rule bg-brand-paper px-3 py-1.5 text-[13px] text-brand-navy focus-within:border-brand-red">
         <Search size={14} className="text-brand-navy/50" />
         <input
           className="w-full bg-transparent outline-none placeholder:text-brand-navy/35"
@@ -28,15 +57,21 @@ export function Topbar() {
           ⌘K
         </span>
       </div>
-      <div className="flex items-center gap-3">
+
+      <div className="flex items-center gap-2 sm:gap-3">
+        {/* Add shipments: icon-only on mobile, labeled on sm+ */}
         <button
           type="button"
-          onClick={open}
-          className="ft-eyebrow inline-flex items-center gap-1.5 border border-brand-red bg-brand-red px-3 py-1.5 text-brand-paper transition-colors hover:bg-brand-redInk hover:border-brand-redInk"
+          onClick={openAddShipments}
+          aria-label="Add shipments"
+          className="inline-flex h-9 w-9 sm:h-auto sm:w-auto items-center justify-center gap-1.5 border border-brand-red bg-brand-red px-0 sm:px-3 sm:py-1.5 text-brand-paper transition-colors hover:bg-brand-redInk hover:border-brand-redInk"
         >
-          <Plus size={12} /> Add shipments
+          <Plus size={14} className="sm:hidden" />
+          <span className="ft-eyebrow hidden sm:inline-flex items-center gap-1.5">
+            <Plus size={12} /> Add shipments
+          </span>
         </button>
-        <span className="ft-micro inline-flex items-center border border-brand-navy/20 px-2 py-1 text-brand-navy">
+        <span className="ft-micro hidden sm:inline-flex items-center border border-brand-navy/20 px-2 py-1 text-brand-navy">
           AGI
         </span>
       </div>
