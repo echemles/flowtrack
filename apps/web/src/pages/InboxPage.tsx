@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { z } from 'zod';
 import {
   ChevronDown,
@@ -65,11 +66,44 @@ const CHANNEL_DOT: Record<string, string> = {
 
 const ThreadMessagesSchema = z.object({ messages: z.array(InboxMessageSchema) });
 
+const FOLDER_VALUES: Folder[] = ['inbox', 'unread', 'starred', 'agi_escalations', 'archived'];
+const CHANNEL_VALUES: Channel[] = ['all', 'email', 'whatsapp', 'sms', 'voice', 'slack', 'teams'];
+
+function isFolder(v: string | null): v is Folder {
+  return !!v && (FOLDER_VALUES as string[]).includes(v);
+}
+function isChannel(v: string | null): v is Channel {
+  return !!v && (CHANNEL_VALUES as string[]).includes(v);
+}
+
 export function InboxPage() {
-  const [folder, setFolder] = useState<Folder>('inbox');
-  const [channel, setChannel] = useState<Channel>('all');
-  const [activeThreadId, setActiveThreadId] = useState<string | null>(null);
-  const [search, setSearch] = useState('');
+  const [params, setParams] = useSearchParams();
+  const folder: Folder = isFolder(params.get('folder')) ? (params.get('folder') as Folder) : 'inbox';
+  const channel: Channel = isChannel(params.get('channel'))
+    ? (params.get('channel') as Channel)
+    : 'all';
+  const activeThreadId: string | null = params.get('thread');
+  const search = params.get('q') ?? '';
+
+  const updateParam = useCallback(
+    (key: string, value: string | null) => {
+      setParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          if (value === null || value === '') next.delete(key);
+          else next.set(key, value);
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setParams],
+  );
+
+  const setFolder = (f: Folder) => updateParam('folder', f === 'inbox' ? null : f);
+  const setChannel = (c: Channel) => updateParam('channel', c === 'all' ? null : c);
+  const setActiveThreadId = (id: string | null) => updateParam('thread', id);
+  const setSearch = (q: string) => updateParam('q', q);
 
   const folderQ = folder === 'unread' ? 'inbox' : folder;
   const state = useApi(`/inbox?folder=${folderQ}`, InboxResponseSchema);
@@ -99,10 +133,24 @@ export function InboxPage() {
           </p>
         </div>
         <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
-          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
+          <button
+            type="button"
+            aria-disabled="true"
+            tabIndex={-1}
+            onClick={(e) => e.preventDefault()}
+            className="inline-flex shrink-0 items-center gap-1.5 border border-brand-navy/40 bg-brand-paper px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-navy min-h-[36px]"
+          >
             All Entities <ChevronDown size={12} />
           </button>
-          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">Public tracking</button>
+          <button
+            type="button"
+            aria-disabled="true"
+            tabIndex={-1}
+            onClick={(e) => e.preventDefault()}
+            className="inline-flex shrink-0 items-center gap-1.5 border border-brand-navy/40 bg-brand-paper px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-navy min-h-[36px]"
+          >
+            Public tracking
+          </button>
         </div>
       </header>
 
@@ -121,7 +169,7 @@ export function InboxPage() {
           }
           return (
             <>
-              {/* Mobile chip rails */}
+              {/* Mobile + tablet chip rails (hidden on desktop ≥1024) */}
               <div className="space-y-2 lg:hidden">
                 <div className="-mx-1 flex flex-nowrap gap-2 overflow-x-auto px-1 pb-1">
                   {(Object.keys(FOLDER_LABELS) as Folder[]).map((f) => {
@@ -142,7 +190,7 @@ export function InboxPage() {
                         type="button"
                         onClick={() => setFolder(f)}
                         className={clsx(
-                          'inline-flex shrink-0 items-center gap-1.5 border px-3 py-1.5 text-[12px] min-h-[36px]',
+                          'inline-flex shrink-0 items-center gap-1.5 border px-3 py-2 text-[12px] min-h-[44px]',
                           active
                             ? 'border-brand-navy bg-brand-navy text-brand-paper'
                             : 'border-brand-rule bg-brand-paper text-brand-navy/70',
@@ -164,7 +212,7 @@ export function InboxPage() {
                         type="button"
                         onClick={() => setChannel(c.id)}
                         className={clsx(
-                          'inline-flex shrink-0 items-center gap-1.5 border px-3 py-1.5 text-[12px] min-h-[36px]',
+                          'inline-flex shrink-0 items-center gap-1.5 border px-3 py-2 text-[12px] min-h-[44px]',
                           active
                             ? 'border-brand-navy bg-brand-bone text-brand-navy font-medium'
                             : 'border-brand-rule bg-brand-paper text-brand-navy/70',
@@ -178,11 +226,11 @@ export function InboxPage() {
                 </div>
               </div>
 
-              {/* Mobile single-pane swap */}
-              <div className="lg:hidden">
+              {/* Mobile single-pane swap (<768) */}
+              <div className="md:hidden">
                 {!activeThreadId ? (
                   <div className="border border-brand-rule bg-brand-paper">
-                    <div className="flex items-center gap-2 border-b border-brand-rule px-3 py-2">
+                    <div className="flex items-center gap-2 border-b border-brand-rule px-3 py-3">
                       <Search size={14} className="text-brand-navy/55" />
                       <input
                         value={search}
@@ -208,20 +256,19 @@ export function InboxPage() {
                       )}
                     </ul>
                     <div className="border-t border-brand-rule p-3">
-                      <button className="ft-pill ft-pill-primary ft-pill-sm w-full">
-                        <Plus size={12} /> New message
-                      </button>
+                      <InertNewMessageButton />
                     </div>
                   </div>
                 ) : (
                   <div className="border border-brand-rule bg-brand-paper">
-                    <div className="flex items-center gap-2 border-b border-brand-rule px-3 py-2">
+                    <div className="flex items-center gap-2 border-b border-brand-rule px-2 py-1">
                       <button
                         type="button"
                         onClick={() => setActiveThreadId(null)}
-                        className="ft-eyebrow inline-flex items-center gap-1 text-brand-navy/65"
+                        className="inline-flex items-center gap-1 px-2 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-navy/70 min-h-[44px]"
+                        aria-label="Back to threads"
                       >
-                        <ChevronLeft size={12} /> All threads
+                        <ChevronLeft size={14} /> All threads
                       </button>
                     </div>
                     <div className="p-3">
@@ -233,12 +280,57 @@ export function InboxPage() {
                 )}
               </div>
 
-              {/* Desktop 3-pane */}
+              {/* Tablet 2-pane (768–1023): list left, detail right */}
+              <div className="hidden md:grid md:grid-cols-12 md:gap-4 lg:hidden">
+                <div className="col-span-5 border border-brand-rule bg-brand-paper">
+                  <div className="flex items-center gap-2 border-b border-brand-rule px-3 py-2">
+                    <Search size={14} className="text-brand-navy/55" />
+                    <input
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Search…"
+                      className="w-full bg-transparent text-[14px] text-brand-navy outline-none placeholder:text-brand-navy/40"
+                    />
+                  </div>
+                  <ul className="max-h-[640px] overflow-y-auto">
+                    {threads.length === 0 ? (
+                      <li className="px-4 py-8 text-center text-[12px] text-brand-navy/55">
+                        No conversations match this filter.
+                      </li>
+                    ) : (
+                      threads.map((t) => (
+                        <ThreadRow
+                          key={t.id}
+                          t={t}
+                          active={activeThreadId === t.id}
+                          onSelect={() => setActiveThreadId(t.id)}
+                        />
+                      ))
+                    )}
+                  </ul>
+                  <div className="border-t border-brand-rule p-3">
+                    <InertNewMessageButton />
+                  </div>
+                </div>
+                <div className="col-span-7 border border-brand-rule bg-brand-paper p-4">
+                  {activeThreadId ? (
+                    <DataState state={messages}>
+                      {(m) => <ThreadView messages={m.messages} />}
+                    </DataState>
+                  ) : (
+                    <div className="flex h-full min-h-[200px] items-center justify-center text-center text-[12px] text-brand-navy/55">
+                      Select a conversation to view messages.
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Desktop 3-pane (≥1024) */}
               <div className="hidden grid-cols-12 gap-4 lg:grid">
                 <aside className="col-span-3 border border-brand-rule bg-brand-paper p-3">
-                  <button className="ft-pill ft-pill-primary ft-pill-sm mb-3 w-full">
-                    <Plus size={12} /> New message
-                  </button>
+                  <div className="mb-3">
+                    <InertNewMessageButton />
+                  </div>
                   <div className="ft-eyebrow mb-1 px-1 text-brand-navy/55">Folders</div>
                   <ul className="mb-3 space-y-0.5">
                     {(Object.keys(FOLDER_LABELS) as Folder[]).map((f) => {
@@ -392,6 +484,21 @@ function ThreadRow({
         </div>
       </button>
     </li>
+  );
+}
+
+function InertNewMessageButton() {
+  return (
+    <button
+      type="button"
+      aria-disabled="true"
+      tabIndex={-1}
+      onClick={(e) => e.preventDefault()}
+      title="Compose is not available yet"
+      className="inline-flex w-full items-center justify-center gap-2 border border-brand-red bg-brand-red px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-paper min-h-[44px] cursor-default opacity-90"
+    >
+      <Plus size={12} /> New message
+    </button>
   );
 }
 
