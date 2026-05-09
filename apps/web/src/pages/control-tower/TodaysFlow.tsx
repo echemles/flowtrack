@@ -39,8 +39,8 @@ export function TodaysFlow({
 }) {
   return (
     <section className="border border-brand-rule bg-brand-paper">
-      <header className="flex items-center justify-between border-b border-brand-rule px-4 py-3">
-        <div className="flex items-center gap-2">
+      <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-brand-rule px-4 py-3">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
           <Calendar size={14} className="text-brand-navy/55" />
           <h3
             className="text-brand-navy"
@@ -58,11 +58,14 @@ export function TodaysFlow({
             · 19 Apr 2026 · arrivals + dispatches in next 48h
           </span>
         </div>
-        <Link to="/app/shipments" className="ft-eyebrow text-brand-red hover:text-brand-redInk">
+        <Link
+          to="/app/shipments"
+          className="ft-eyebrow text-brand-red hover:text-brand-redInk"
+        >
           All shipments →
         </Link>
       </header>
-      <div className="grid grid-cols-1 gap-0 md:grid-cols-2 md:divide-x md:divide-brand-rule">
+      <div className="grid grid-cols-1 gap-0 divide-y divide-brand-rule md:grid-cols-2 md:divide-y-0 md:divide-x md:divide-brand-rule">
         <Column title="ARRIVING" count={flow.arriving.length} tone="navy">
           {flow.arriving.length === 0 ? (
             <Empty>No arrivals in the window.</Empty>

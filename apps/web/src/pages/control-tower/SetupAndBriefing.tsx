@@ -23,8 +23,12 @@ export function SetupAndBriefing({ briefing }: { briefing: BriefingItem[] }) {
         <p className="mt-2 text-[13px] text-brand-navy/70">
           Connect Maersk and your ERP to unlock automatic milestone tracking and PO sync.
         </p>
-        <div className="mt-4 flex items-center gap-3">
-          <button className="ft-pill ft-pill-primary ft-pill-sm">
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={(e) => e.preventDefault()}
+            className="ft-pill ft-pill-primary ft-pill-sm min-h-[44px] sm:min-h-0"
+          >
             Continue setup <ChevronRight size={12} />
           </button>
           <span className="ft-micro text-brand-navy/55">4 / 28 connected</span>
@@ -32,7 +36,7 @@ export function SetupAndBriefing({ briefing }: { briefing: BriefingItem[] }) {
       </div>
 
       <div className="border border-brand-rule bg-brand-paper p-4">
-        <div className="mb-3 flex items-center justify-between">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
           <div className="ft-micro flex items-center gap-2 text-brand-navy">
             <Calendar size={12} /> Daily Briefing
           </div>

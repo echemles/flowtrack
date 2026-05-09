@@ -56,7 +56,7 @@ export function NeedsYouNow({ items }: { items: Alert[] }) {
 
   return (
     <section className="border border-brand-rule bg-brand-paper">
-      <header className="flex items-center justify-between border-b border-brand-rule px-4 py-3">
+      <header className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2 border-b border-brand-rule px-4 py-3 sm:items-center sm:flex-nowrap">
         <div>
           <h3
             className="text-brand-navy"
@@ -102,11 +102,11 @@ export function NeedsYouNow({ items }: { items: Alert[] }) {
                   </span>
                 </div>
               ) : null}
-              <div className="mt-3 flex items-center gap-2">
+              <div className="mt-3 flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={() => openThread(a)}
-                  className="ft-pill ft-pill-ghost ft-pill-sm"
+                  className="ft-pill ft-pill-ghost ft-pill-sm min-h-[44px] sm:min-h-0"
                 >
                   Open thread
                 </button>
@@ -114,7 +114,7 @@ export function NeedsYouNow({ items }: { items: Alert[] }) {
                   type="button"
                   onClick={() => askAgiToTriage(a)}
                   disabled={triageId === a.id}
-                  className="ft-pill ft-pill-primary ft-pill-sm"
+                  className="ft-pill ft-pill-primary ft-pill-sm min-h-[44px] sm:min-h-0"
                 >
                   {triageId === a.id ? (
                     <>

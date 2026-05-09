@@ -27,7 +27,7 @@ export function GlobalNetworkMap({ lanes }: { lanes: NetworkLane[] }) {
   );
   return (
     <section className="overflow-hidden border border-brand-rule bg-brand-paper">
-      <header className="flex items-center justify-between border-b border-brand-rule px-4 py-3">
+      <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-brand-rule px-4 py-3">
         <div>
           <h3
             className="text-brand-navy"
@@ -43,7 +43,11 @@ export function GlobalNetworkMap({ lanes }: { lanes: NetworkLane[] }) {
           </h3>
           <p className="ft-micro mt-1 text-brand-navy/55">Origin-to-destination lanes, live</p>
         </div>
-        <button className="ft-eyebrow text-brand-red hover:text-brand-redInk">
+        <button
+          type="button"
+          onClick={(e) => e.preventDefault()}
+          className="ft-eyebrow text-brand-red hover:text-brand-redInk"
+        >
           View all lanes →
         </button>
       </header>

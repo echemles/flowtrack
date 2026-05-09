@@ -63,10 +63,10 @@ export function AlertsQueue({ alerts }: { alerts: Alert[] }) {
           return (
             <li
               key={a.id}
-              className="flex items-start gap-3 border-t border-brand-rule px-4 py-3 first:border-t-0"
+              className="flex flex-col gap-3 border-t border-brand-rule px-4 py-3 first:border-t-0 sm:flex-row sm:items-start"
             >
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span
                     className={clsx(
                       'ft-micro',
@@ -101,8 +101,8 @@ export function AlertsQueue({ alerts }: { alerts: Alert[] }) {
               </div>
               <button
                 type="button"
-                className="ft-pill ft-pill-ghost ft-pill-sm shrink-0"
-                onClick={() => console.info('alert action', a.kind, a.id)}
+                className="ft-pill ft-pill-ghost ft-pill-sm w-full min-h-[44px] sm:w-auto sm:min-h-0 sm:shrink-0"
+                onClick={(e) => e.preventDefault()}
               >
                 {action}
                 <ChevronRight size={12} />

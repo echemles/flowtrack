@@ -16,8 +16,8 @@ export function PulseKpis({ pulse }: { pulse: Kpi[] }) {
   const industries = findKpi(pulse, 'industry_coverage');
 
   return (
-    <section className="border border-brand-rule bg-brand-paper p-5">
-      <header className="mb-5 flex items-center justify-between">
+    <section className="border border-brand-rule bg-brand-paper p-4 sm:p-5">
+      <header className="mb-5 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
         <div className="flex items-center gap-2.5">
           <div className="border border-brand-rule p-1.5">
             <Activity size={14} className="text-brand-red" />
@@ -38,7 +38,13 @@ export function PulseKpis({ pulse }: { pulse: Kpi[] }) {
             <p className="ft-micro mt-1 text-brand-navy/55">Financial · operational health</p>
           </div>
         </div>
-        <button className="ft-pill ft-pill-ghost ft-pill-sm">ROI calc</button>
+        <button
+          type="button"
+          onClick={(e) => e.preventDefault()}
+          className="ft-pill ft-pill-ghost ft-pill-sm min-h-[44px] sm:min-h-0"
+        >
+          ROI calc
+        </button>
       </header>
 
       {/* On-time bar */}
@@ -67,7 +73,7 @@ export function PulseKpis({ pulse }: { pulse: Kpi[] }) {
       </div>
 
       {/* KPI grid */}
-      <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid grid-cols-1 gap-5 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <KpiCell
           label="VALUE IN TRANSIT"
           value={valueInTransit ? formatMoneyCompactK(valueInTransit.value_minor ?? 0) : '$371K'}
