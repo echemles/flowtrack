@@ -1,0 +1,142 @@
+{
+  "stats": {
+    "outstanding_minor": 48499,
+    "disputed_minor": 23740,
+    "flagged_count": 2,
+    "currency": "USD"
+  },
+  "invoices": [
+    {
+      "id": "01KR6YAAHJ44QKYJJ2KEE1PKDF",
+      "number": "INV-26-001",
+      "carrier": "Maersk",
+      "shipment_ref": "FT-26-S891",
+      "expected_minor": 14999,
+      "actual_minor": 14999,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "outstanding"
+    },
+    {
+      "id": "01KR6YAAHJFBR0FJGCPHK82A6Y",
+      "number": "INV-26-002",
+      "carrier": "Kuehne+Nagel",
+      "shipment_ref": "FT-26-A557",
+      "expected_minor": 9000,
+      "actual_minor": 9000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "outstanding"
+    },
+    {
+      "id": "01KR6YAAHJA77EP36FNK2PHGSA",
+      "number": "INV-26-003",
+      "carrier": "DHL Global",
+      "shipment_ref": "FT-26-A103",
+      "expected_minor": 95000,
+      "actual_minor": 99900,
+      "variance_minor": 4900,
+      "currency": "USD",
+      "status": "flagged"
+    },
+    {
+      "id": "01KR6YAAHJTJ30VEZN2SXPM4A1",
+      "number": "INV-26-004",
+      "carrier": "CMA CGM",
+      "shipment_ref": "FT-26-S442",
+      "expected_minor": 11500,
+      "actual_minor": 11870,
+      "variance_minor": 370,
+      "currency": "USD",
+      "status": "disputed"
+    },
+    {
+      "id": "01KR6YAAHJ86GZVKB3Y1CPSVMP",
+      "number": "INV-26-005",
+      "carrier": "MSC",
+      "shipment_ref": "FT-26-S918",
+      "expected_minor": 11500,
+      "actual_minor": 11870,
+      "variance_minor": 370,
+      "currency": "USD",
+      "status": "disputed"
+    },
+    {
+      "id": "01KR6YAAHJ241AA2FT8C6HN3CQ",
+      "number": "INV-26-006",
+      "carrier": "DHL Freight",
+      "shipment_ref": "FT-26-R221",
+      "expected_minor": 50000,
+      "actual_minor": 50000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "paid"
+    },
+    {
+      "id": "01KR6YAAHJ7JV3T43J4Y0073QX",
+      "number": "INV-26-007",
+      "carrier": "DHL Freight",
+      "shipment_ref": "FT-26-R338",
+      "expected_minor": 40000,
+      "actual_minor": 40000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "paid"
+    },
+    {
+      "id": "01KR6YAAHJBR78ENCMYZD8N29Z",
+      "number": "INV-26-008",
+      "carrier": "DHL",
+      "shipment_ref": "FT-26-E672",
+      "expected_minor": 30000,
+      "actual_minor": 31000,
+      "variance_minor": 1000,
+      "currency": "USD",
+      "status": "flagged"
+    },
+    {
+      "id": "01KR6YAAHJ3Q9N2ZFG53JT7C23",
+      "number": "INV-26-009",
+      "carrier": "Turkish Cargo",
+      "shipment_ref": "FT-26-A774",
+      "expected_minor": 60000,
+      "actual_minor": 60000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "paid"
+    },
+    {
+      "id": "01KR6YAAHJT11KSS91NMK5YEK0",
+      "number": "INV-26-010",
+      "carrier": "UPS",
+      "shipment_ref": "FT-26-C015",
+      "expected_minor": 8000,
+      "actual_minor": 8000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "paid"
+    },
+    {
+      "id": "01KR6YAAHJYMN1GHNHXT3PG1KP",
+      "number": "INV-26-011",
+      "carrier": "Hapag-Lloyd",
+      "shipment_ref": "FT-26-S205",
+      "expected_minor": 16000,
+      "actual_minor": 16000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "outstanding"
+    },
+    {
+      "id": "01KR6YAAHJCYJ3M38706VV48XG",
+      "number": "INV-26-012",
+      "carrier": "FedEx",
+      "shipment_ref": "FT-26-A881",
+      "expected_minor": 8500,
+      "actual_minor": 8500,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "outstanding"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "01KR6YAAHG6H1K2148GXW1ZC95",
+    "ref": "FT-26-S918",
+    "mode": "sea",
+    "status": "overdue",
+    "origin_city": "Antwerp",
+    "origin_country": "BE",
+    "dest_city": "Santos",
+    "dest_country": "BR",
+    "carrier": "MSC",
+    "client": "Mercat Gourmet",
+    "atd": "2026-04-01T00:00:00.000Z",
+    "eta_carrier": "2026-05-05T00:00:00.000Z",
+    "eta_agi": "2026-05-08T00:00:00.000Z",
+    "percent_complete": 72,
+    "days_remaining": -2,
+    "value_minor": 6800000,
+    "currency": "USD",
+    "has_incident": true
+  }
+]

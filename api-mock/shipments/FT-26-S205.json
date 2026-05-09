@@ -1,0 +1,35 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGAAZFF1PNS2QZ0FYN",
+    "ref": "FT-26-S205",
+    "mode": "sea",
+    "status": "planned",
+    "origin_city": "Yokohama",
+    "origin_country": "JP",
+    "dest_city": "Hamburg",
+    "dest_country": "DE",
+    "carrier": "Hapag-Lloyd",
+    "client": "Asia Commerce Hub",
+    "atd": null,
+    "eta_carrier": "2026-06-12T00:00:00.000Z",
+    "eta_agi": "2026-06-12T00:00:00.000Z",
+    "percent_complete": 5,
+    "days_remaining": 34,
+    "value_minor": 11200000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "timeline": [],
+  "skus": [],
+  "documents": [],
+  "supplyChain": [],
+  "purchaseOrder": null,
+  "financials": {
+    "value_minor": 11200000,
+    "currency": "USD",
+    "committed_minor": null,
+    "billed_minor": null,
+    "variance_minor": null
+  },
+  "notifications": []
+}

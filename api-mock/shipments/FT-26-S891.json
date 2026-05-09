@@ -1,0 +1,246 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGZPM70PT6RGSAZ5FK",
+    "ref": "FT-26-S891",
+    "mode": "sea",
+    "status": "in_transit",
+    "origin_city": "Ho Chi Minh",
+    "origin_country": "VN",
+    "dest_city": "Rotterdam",
+    "dest_country": "NL",
+    "carrier": "Maersk",
+    "client": "Voltrex Industrial",
+    "atd": "2026-04-08T00:00:00.000Z",
+    "eta_carrier": "2026-05-04T00:00:00.000Z",
+    "eta_agi": "2026-05-02T00:00:00.000Z",
+    "percent_complete": 48,
+    "days_remaining": 13,
+    "value_minor": 12000000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "timeline": [
+    {
+      "id": "01KR6YAAHG1G6YM17F5BCKGD1K",
+      "ord": 1,
+      "label": "Booking Confirmed",
+      "at": "2026-04-08T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHGCTM0SJJ78SK078J9",
+      "ord": 2,
+      "label": "Cargo Received",
+      "at": "2026-04-11T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHG022NDBZNFBXVBTZP",
+      "ord": 3,
+      "label": "Export Customs Cleared",
+      "at": "2026-04-14T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHGTMJ0B1KQQVGKNN52",
+      "ord": 4,
+      "label": "Departed Origin",
+      "at": "2026-04-17T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHGVKNENBHVCP41BH7P",
+      "ord": 5,
+      "label": "In Transit",
+      "at": "2026-04-20T00:00:00.000Z",
+      "status": "active"
+    },
+    {
+      "id": "01KR6YAAHG9S0RC4B8P9CNX9DE",
+      "ord": 6,
+      "label": "Arrived at Destination",
+      "at": null,
+      "status": "pending"
+    },
+    {
+      "id": "01KR6YAAHHQSCPMZDQ8HSY8K2R",
+      "ord": 7,
+      "label": "Import Customs Cleared",
+      "at": null,
+      "status": "pending"
+    },
+    {
+      "id": "01KR6YAAHH7X1F70E3PANEXD4W",
+      "ord": 8,
+      "label": "Out for Delivery",
+      "at": null,
+      "status": "pending"
+    }
+  ],
+  "skus": [
+    {
+      "id": "01KR6YAAHH023EZR5FFKHA7S51",
+      "sku": "VLT-IND-220V",
+      "description": "Industrial inverter 220V",
+      "qty": 240,
+      "weight_kg": 1080
+    },
+    {
+      "id": "01KR6YAAHH4CRVJX4995T17N5S",
+      "sku": "VLT-CAB-12M",
+      "description": "Power cabling 12m",
+      "qty": 600,
+      "weight_kg": 720
+    },
+    {
+      "id": "01KR6YAAHHFNPVRP8GHEDR6XGS",
+      "sku": "VLT-PCB-A4",
+      "description": "Control PCB rev A4",
+      "qty": 1200,
+      "weight_kg": 180
+    }
+  ],
+  "documents": [
+    {
+      "id": "01KR6YAAHHM72J8SEE3GMYK9HH",
+      "kind": "Bill of Lading",
+      "status": "approved",
+      "url": null
+    },
+    {
+      "id": "01KR6YAAHHN4E8NZH5DF2FEPFM",
+      "kind": "Commercial Invoice",
+      "status": "approved",
+      "url": null
+    },
+    {
+      "id": "01KR6YAAHH3KNHKYMBNCXMBQ05",
+      "kind": "Packing List",
+      "status": "approved",
+      "url": null
+    },
+    {
+      "id": "01KR6YAAHHDNXN3WABZ1JGGN04",
+      "kind": "Certificate of Origin",
+      "status": "pending",
+      "url": null
+    }
+  ],
+  "supplyChain": [
+    {
+      "id": "01KR6YAAHHJP5ATJ81VMY3RCMJ",
+      "ord": 1,
+      "provider": "Voltrex Components VN",
+      "role": "origin_supplier",
+      "on_time_pct": 96
+    },
+    {
+      "id": "01KR6YAAHHPCDGSF162GF3QSYR",
+      "ord": 2,
+      "provider": "DSV Global",
+      "role": "origin_freight",
+      "on_time_pct": 92
+    },
+    {
+      "id": "01KR6YAAHH0E5H1KNGEBBZFY5D",
+      "ord": 3,
+      "provider": "Cat Lai Port",
+      "role": "origin_port",
+      "on_time_pct": 88
+    },
+    {
+      "id": "01KR6YAAHHGWESSESJXWP2M6HT",
+      "ord": 4,
+      "provider": "Maersk",
+      "role": "vessel",
+      "on_time_pct": 94
+    },
+    {
+      "id": "01KR6YAAHHH0JTRQ3ASYJH1W6N",
+      "ord": 5,
+      "provider": "Port of Rotterdam",
+      "role": "destination_port",
+      "on_time_pct": 95
+    },
+    {
+      "id": "01KR6YAAHHS9JWG61J9Y3FD5GF",
+      "ord": 6,
+      "provider": "Europa Worldwide",
+      "role": "destination_freight",
+      "on_time_pct": 91
+    },
+    {
+      "id": "01KR6YAAHH78AC0VGW86R286TZ",
+      "ord": 7,
+      "provider": "XPO Logistics",
+      "role": "last_mile",
+      "on_time_pct": 98
+    }
+  ],
+  "purchaseOrder": {
+    "row": {
+      "id": "01KR6YAAHHATB8CJSXYGECTX58",
+      "number": "SPO-26-S891",
+      "shipment_ref": "FT-26-S891",
+      "provider": "Maersk",
+      "lines_count": 6,
+      "committed_minor": 150000,
+      "billed_minor": 30200,
+      "variance_minor": -39800,
+      "currency": "USD",
+      "status": "at_risk"
+    },
+    "lines": [
+      {
+        "id": "01KR6YAAHHDKCXF6DFG9RCW4AS",
+        "ord": 1,
+        "description": "Ocean freight Ho Chi Minh → Rotterdam",
+        "qty": 1,
+        "unit_price_minor": 80000
+      },
+      {
+        "id": "01KR6YAAHH3BPD957PFKWYZET3",
+        "ord": 2,
+        "description": "Container handling origin",
+        "qty": 1,
+        "unit_price_minor": 20000
+      },
+      {
+        "id": "01KR6YAAHH1WHEA9BTBTXRFCZB",
+        "ord": 3,
+        "description": "Customs origin",
+        "qty": 1,
+        "unit_price_minor": 15000
+      },
+      {
+        "id": "01KR6YAAHHP0WACQXG5MYTVM4K",
+        "ord": 4,
+        "description": "Container handling destination",
+        "qty": 1,
+        "unit_price_minor": 18000
+      },
+      {
+        "id": "01KR6YAAHHGC72VF2PE5WG3WJE",
+        "ord": 5,
+        "description": "Customs destination",
+        "qty": 1,
+        "unit_price_minor": 12000
+      },
+      {
+        "id": "01KR6YAAHH4B0Q4WMJYG4GR2C6",
+        "ord": 6,
+        "description": "Last-mile",
+        "qty": 1,
+        "unit_price_minor": 5000
+      }
+    ]
+  },
+  "financials": {
+    "value_minor": 12000000,
+    "currency": "USD",
+    "committed_minor": 150000,
+    "billed_minor": 30200,
+    "variance_minor": -39800
+  },
+  "notifications": []
+}

@@ -1,0 +1,136 @@
+{
+  "stats": {
+    "total": 8,
+    "at_risk": 1,
+    "in_service": 7,
+    "committed_minor": 757000,
+    "billed_minor": 624200,
+    "variance_minor": -52800,
+    "currency": "USD"
+  },
+  "topProviders": [
+    {
+      "provider": "Kuehne+Nagel",
+      "committed_minor": 244000,
+      "currency": "USD"
+    },
+    {
+      "provider": "DHL Global",
+      "committed_minor": 174000,
+      "currency": "USD"
+    },
+    {
+      "provider": "Maersk",
+      "committed_minor": 150000,
+      "currency": "USD"
+    },
+    {
+      "provider": "Crane Worldwide",
+      "committed_minor": 71000,
+      "currency": "USD"
+    },
+    {
+      "provider": "DSV Global",
+      "committed_minor": 60000,
+      "currency": "USD"
+    }
+  ],
+  "pos": [
+    {
+      "id": "01KR6YAAHHD8715GFXRMNXVBW5",
+      "number": "PO-26-A103",
+      "shipment_ref": "FT-26-A103",
+      "provider": "DHL Global",
+      "lines_count": 5,
+      "committed_minor": 114000,
+      "billed_minor": 110000,
+      "variance_minor": -4000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    {
+      "id": "01KR6YAAHH1J1DPCDEXDDZM7J6",
+      "number": "PO-26-A557",
+      "shipment_ref": "FT-26-A557",
+      "provider": "Kuehne+Nagel",
+      "lines_count": 4,
+      "committed_minor": 152000,
+      "billed_minor": 152000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    {
+      "id": "01KR6YAAHHND3EPZDGMMG0Y2B0",
+      "number": "PO-26-E672",
+      "shipment_ref": "FT-26-E672",
+      "provider": "Europa Worldwide",
+      "lines_count": 2,
+      "committed_minor": 58000,
+      "billed_minor": 57000,
+      "variance_minor": -1000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    {
+      "id": "01KR6YAAHHY26PGJG99VP7WHSP",
+      "number": "PO-26-R221",
+      "shipment_ref": "FT-26-R221",
+      "provider": "DHL Global",
+      "lines_count": 2,
+      "committed_minor": 60000,
+      "billed_minor": 58000,
+      "variance_minor": -2000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    {
+      "id": "01KR6YAAHH7M9Z10YQB3MQ9WAP",
+      "number": "PO-26-R338",
+      "shipment_ref": "FT-26-R338",
+      "provider": "DSV Global",
+      "lines_count": 2,
+      "committed_minor": 60000,
+      "billed_minor": 60000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    {
+      "id": "01KR6YAAHH61W62YDMQCNEC5JK",
+      "number": "PO-26-S442",
+      "shipment_ref": "FT-26-S442",
+      "provider": "Kuehne+Nagel",
+      "lines_count": 4,
+      "committed_minor": 92000,
+      "billed_minor": 89000,
+      "variance_minor": -3000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    {
+      "id": "01KR6YAAHHBTB0TDY2YGN4NGFP",
+      "number": "PO-26-S918",
+      "shipment_ref": "FT-26-S918",
+      "provider": "Crane Worldwide",
+      "lines_count": 3,
+      "committed_minor": 71000,
+      "billed_minor": 68000,
+      "variance_minor": -3000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    {
+      "id": "01KR6YAAHHATB8CJSXYGECTX58",
+      "number": "SPO-26-S891",
+      "shipment_ref": "FT-26-S891",
+      "provider": "Maersk",
+      "lines_count": 6,
+      "committed_minor": 150000,
+      "billed_minor": 30200,
+      "variance_minor": -39800,
+      "currency": "USD",
+      "status": "at_risk"
+    }
+  ]
+}

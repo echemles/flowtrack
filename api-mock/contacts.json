@@ -1,0 +1,228 @@
+{
+  "stats": {
+    "companies": 61,
+    "people": 96,
+    "clients": 8,
+    "active_providers": 51
+  },
+  "team": [
+    {
+      "id": "01KR6YAAHE0VG3SKNM705BAFG8",
+      "name": "Avery Chen",
+      "role": "Operations Lead",
+      "email": "avery@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHEFBDH5Q219KHQ5NPM",
+      "name": "Jordan Kim",
+      "role": "Carrier Manager",
+      "email": "jordan@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHEYSRNM9CPZV2FQ17A",
+      "name": "Priya Patel",
+      "role": "Customs Specialist",
+      "email": "priya@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHEW921CQYYP01NHDXR",
+      "name": "Marco Rossi",
+      "role": "Finance Ops",
+      "email": "marco@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHECEYBXH9H1EVBXAR1",
+      "name": "Sara Lopez",
+      "role": "Customer Success",
+      "email": "sara@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHE293MBNMQVT8BJ3X2",
+      "name": "Diego Alvarez",
+      "role": "Last-mile Coordinator",
+      "email": "diego@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    }
+  ],
+  "clientsPreview": [
+    {
+      "id": "01KR6YAAHDJPZ90PW5FATEB0G9",
+      "name": "Asia Commerce Hub",
+      "kind": "client",
+      "country": "SG",
+      "industry": "Commerce",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHD2MQYQCNSP3GC5XNA",
+      "name": "Direct-to-Consumer Inc.",
+      "kind": "client",
+      "country": "US",
+      "industry": "D2C",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHDWN60BA6JZCKT5HJX",
+      "name": "Helix Electronics",
+      "kind": "client",
+      "country": "GB",
+      "industry": "Electronics",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHD573473V1WWER76D4",
+      "name": "Lumen Beauty Co.",
+      "kind": "client",
+      "country": "US",
+      "industry": "Beauty",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHDZR1DZGBBFKYWPWA9",
+      "name": "Mercat Gourmet",
+      "kind": "client",
+      "country": "ES",
+      "industry": "Food",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHDGVY77ZXBEKVWQX2S",
+      "name": "Meridian Pharma",
+      "kind": "client",
+      "country": "CH",
+      "industry": "Pharma",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHD9QJBYSVP0080XFNY",
+      "name": "Nordic Apparel Group",
+      "kind": "client",
+      "country": "SE",
+      "industry": "Apparel",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHDH7AGKPJ380FH22Z4",
+      "name": "Voltrex Industrial",
+      "kind": "client",
+      "country": "DE",
+      "industry": "Industrial",
+      "website": null
+    }
+  ],
+  "providersPreview": [
+    {
+      "id": "01KR6YAAHD7HDSG754BWZMMVPX",
+      "name": "British Airways Cargo",
+      "kind": "provider",
+      "country": "GB",
+      "industry": "Air",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHE0RPPA5ZDKHTBWYH3",
+      "name": "Cat Lai Port",
+      "kind": "provider",
+      "country": "VN",
+      "industry": "Port",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHDFNFRP4D2T22BJGF2",
+      "name": "CMA CGM",
+      "kind": "provider",
+      "country": "FR",
+      "industry": "Ocean",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHEQVVCXVKZ6S7S9RPG",
+      "name": "Crane Worldwide",
+      "kind": "provider",
+      "country": "US",
+      "industry": "Freight",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHE7MVE4Z7VW3QWNHEB",
+      "name": "DHL",
+      "kind": "provider",
+      "country": "DE",
+      "industry": "Ecom",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHEASY3YN6PRZMRWZ95",
+      "name": "DHL Freight",
+      "kind": "provider",
+      "country": "DE",
+      "industry": "Road",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHE09PFJPGM6689MMND",
+      "name": "DHL Global",
+      "kind": "provider",
+      "country": "DE",
+      "industry": "Freight",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHEA60N271MSKCNXPWX",
+      "name": "DSV Global",
+      "kind": "provider",
+      "country": "DK",
+      "industry": "Freight",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHE56SRVPQGYHP79N7W",
+      "name": "Europa Worldwide",
+      "kind": "provider",
+      "country": "GB",
+      "industry": "Freight",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHEBZ7ZMMSYSCC32WZS",
+      "name": "FedEx",
+      "kind": "provider",
+      "country": "US",
+      "industry": "Air",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHD753CMVBHJHH8BMTW",
+      "name": "Hapag-Lloyd",
+      "kind": "provider",
+      "country": "DE",
+      "industry": "Ocean",
+      "website": null
+    },
+    {
+      "id": "01KR6YAAHEBCVY1HWT4TVPY34R",
+      "name": "Kuehne+Nagel",
+      "kind": "provider",
+      "country": "CH",
+      "industry": "Freight",
+      "website": null
+    }
+  ]
+}

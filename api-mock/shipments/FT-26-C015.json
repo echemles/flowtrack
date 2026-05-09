@@ -1,0 +1,35 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGEBWYRX2JYJHBTAPW",
+    "ref": "FT-26-C015",
+    "mode": "courier",
+    "status": "dispatched",
+    "origin_city": "San Francisco",
+    "origin_country": "US",
+    "dest_city": "Austin",
+    "dest_country": "US",
+    "carrier": "UPS",
+    "client": "Direct-to-Consumer Inc.",
+    "atd": "2026-05-09T00:00:00.000Z",
+    "eta_carrier": "2026-05-10T00:00:00.000Z",
+    "eta_agi": "2026-05-10T00:00:00.000Z",
+    "percent_complete": 20,
+    "days_remaining": 1,
+    "value_minor": 80000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "timeline": [],
+  "skus": [],
+  "documents": [],
+  "supplyChain": [],
+  "purchaseOrder": null,
+  "financials": {
+    "value_minor": 80000,
+    "currency": "USD",
+    "committed_minor": null,
+    "billed_minor": null,
+    "variance_minor": null
+  },
+  "notifications": []
+}

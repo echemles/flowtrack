@@ -1,0 +1,35 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGP5883SNV63R7Z33P",
+    "ref": "FT-26-A103",
+    "mode": "air",
+    "status": "arriving",
+    "origin_city": "Frankfurt",
+    "origin_country": "DE",
+    "dest_city": "New York",
+    "dest_country": "US",
+    "carrier": "Lufthansa Cargo",
+    "client": "Helix Electronics",
+    "atd": "2026-05-07T00:00:00.000Z",
+    "eta_carrier": "2026-05-09T00:00:00.000Z",
+    "eta_agi": "2026-05-09T00:00:00.000Z",
+    "percent_complete": 88,
+    "days_remaining": 1,
+    "value_minor": 9200000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "milestones": [],
+  "route": {
+    "origin": [
+      8.6821,
+      50.1109
+    ],
+    "dest": [
+      -74.006,
+      40.7128
+    ]
+  },
+  "percent": 88,
+  "daysRemaining": 1
+}

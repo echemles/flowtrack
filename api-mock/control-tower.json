@@ -1,0 +1,418 @@
+{
+  "alerts": [
+    {
+      "id": "01KR6YAAHMBW6XCH81QMZWG669",
+      "kind": "invoice_variance",
+      "title": "Invoice Variance",
+      "body": "INV-26-008 flagged +3.3%",
+      "severity": "med",
+      "shipment_ref": "FT-26-E672",
+      "created_at": "2026-05-09T15:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHMMX2BQ0TGXG7955MA",
+      "kind": "missing_document",
+      "title": "Missing Document",
+      "body": "BOL outstanding on FT-26-A103",
+      "severity": "med",
+      "shipment_ref": "FT-26-A103",
+      "created_at": "2026-05-09T14:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHM9SGDM56J7P292T4R",
+      "kind": "agi_escalation",
+      "title": "AGI Escalation",
+      "body": "Customs query awaiting reply",
+      "severity": "high",
+      "shipment_ref": "FT-26-S891",
+      "created_at": "2026-05-09T13:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHMY9XZDZ7Z0MYS510E",
+      "kind": "incident",
+      "title": "Incident reported",
+      "body": "Container damage flagged at port",
+      "severity": "high",
+      "shipment_ref": "FT-26-S918",
+      "created_at": "2026-05-09T12:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHMST044SAHBKBGTTQG",
+      "kind": "overdue",
+      "title": "Shipment overdue",
+      "body": "FT-26-S918 ETA passed by 2 days",
+      "severity": "high",
+      "shipment_ref": "FT-26-S918",
+      "created_at": "2026-05-09T11:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHM5TCA35G9THJ56SF1",
+      "kind": "invoice_variance",
+      "title": "Invoice variance flagged",
+      "body": "INV-26-003 +5.2% over expected",
+      "severity": "med",
+      "shipment_ref": "FT-26-A103",
+      "created_at": "2026-05-09T10:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHMTDPR715YATG9G7HY",
+      "kind": "sms_driver_arriving",
+      "title": "Driver arriving in 5 minutes",
+      "body": "Stuart driver inbound to Madrid DC",
+      "severity": "low",
+      "shipment_ref": "FT-26-R221",
+      "created_at": "2026-05-09T09:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHMCJNKK08FACJ5YTNZ",
+      "kind": "hs_code_reclassification",
+      "title": "HS code reclassification proposed",
+      "body": "8504.40 → 8504.50 saves $420",
+      "severity": "low",
+      "shipment_ref": "FT-26-S891",
+      "created_at": "2026-05-09T08:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHMFJ6VT0973WBKT5NF",
+      "kind": "missing_document",
+      "title": "Missing document — Cert. of Origin",
+      "body": "FT-26-S891 cert of origin not yet uploaded",
+      "severity": "med",
+      "shipment_ref": "FT-26-S891",
+      "created_at": "2026-05-09T07:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHKC7YS80F77Y8SG4NS",
+      "kind": "reroute_approval",
+      "title": "Reroute approval needed",
+      "body": "Hapag suggests reroute via Hamburg",
+      "severity": "high",
+      "shipment_ref": "FT-26-S205",
+      "created_at": "2026-05-09T06:00:00.000Z"
+    }
+  ],
+  "briefing": [
+    {
+      "id": "01KR6YAAHMD2MN8WGMHBZFWAXF",
+      "title": "12 shipments in motion",
+      "body": "4 arriving today, 1 overdue.",
+      "link": "/shipments"
+    },
+    {
+      "id": "01KR6YAAHMFNVYWB9K6CVY8PVG",
+      "title": "$371K value in transit",
+      "body": "Across SEA, AIR, ROAD, ECOM.",
+      "link": "/"
+    },
+    {
+      "id": "01KR6YAAHMKYJ9SBGM7QG4PDV6",
+      "title": "On-time delivery 100% (last 7d)",
+      "body": "No SLA misses since FT-26-S801.",
+      "link": "/"
+    }
+  ],
+  "needsYouNow": [
+    {
+      "id": "01KR6YAAHMBW6XCH81QMZWG669",
+      "kind": "invoice_variance",
+      "title": "Invoice Variance",
+      "body": "INV-26-008 flagged +3.3%",
+      "severity": "med",
+      "shipment_ref": "FT-26-E672",
+      "created_at": "2026-05-09T15:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHMMX2BQ0TGXG7955MA",
+      "kind": "missing_document",
+      "title": "Missing Document",
+      "body": "BOL outstanding on FT-26-A103",
+      "severity": "med",
+      "shipment_ref": "FT-26-A103",
+      "created_at": "2026-05-09T14:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHM9SGDM56J7P292T4R",
+      "kind": "agi_escalation",
+      "title": "AGI Escalation",
+      "body": "Customs query awaiting reply",
+      "severity": "high",
+      "shipment_ref": "FT-26-S891",
+      "created_at": "2026-05-09T13:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHM5TCA35G9THJ56SF1",
+      "kind": "invoice_variance",
+      "title": "Invoice variance flagged",
+      "body": "INV-26-003 +5.2% over expected",
+      "severity": "med",
+      "shipment_ref": "FT-26-A103",
+      "created_at": "2026-05-09T10:00:00.000Z"
+    },
+    {
+      "id": "01KR6YAAHMFJ6VT0973WBKT5NF",
+      "kind": "missing_document",
+      "title": "Missing document — Cert. of Origin",
+      "body": "FT-26-S891 cert of origin not yet uploaded",
+      "severity": "med",
+      "shipment_ref": "FT-26-S891",
+      "created_at": "2026-05-09T07:00:00.000Z"
+    }
+  ],
+  "todaysFlow": {
+    "arriving": [
+      {
+        "id": "01KR6YAAHGP5883SNV63R7Z33P",
+        "ref": "FT-26-A103",
+        "mode": "air",
+        "status": "arriving",
+        "origin_city": "Frankfurt",
+        "origin_country": "DE",
+        "dest_city": "New York",
+        "dest_country": "US",
+        "carrier": "Lufthansa Cargo",
+        "client": "Helix Electronics",
+        "atd": "2026-05-07T00:00:00.000Z",
+        "eta_carrier": "2026-05-09T00:00:00.000Z",
+        "eta_agi": "2026-05-09T00:00:00.000Z",
+        "percent_complete": 88,
+        "days_remaining": 1,
+        "value_minor": 9200000,
+        "currency": "USD",
+        "has_incident": false
+      },
+      {
+        "id": "01KR6YAAHGX221PBPVASX68PFD",
+        "ref": "FT-26-E672",
+        "mode": "ecom",
+        "status": "arriving",
+        "origin_city": "Shenzhen",
+        "origin_country": "CN",
+        "dest_city": "Berlin",
+        "dest_country": "DE",
+        "carrier": "DHL",
+        "client": "Lumen Beauty Co.",
+        "atd": "2026-04-30T00:00:00.000Z",
+        "eta_carrier": "2026-05-09T00:00:00.000Z",
+        "eta_agi": "2026-05-09T00:00:00.000Z",
+        "percent_complete": 92,
+        "days_remaining": 0,
+        "value_minor": 320000,
+        "currency": "USD",
+        "has_incident": false
+      },
+      {
+        "id": "01KR6YAAHG85J87GWKWZFRRER1",
+        "ref": "FT-26-A881",
+        "mode": "air",
+        "status": "arriving",
+        "origin_city": "Singapore",
+        "origin_country": "SG",
+        "dest_city": "Los Angeles",
+        "dest_country": "US",
+        "carrier": "FedEx",
+        "client": "Asia Commerce Hub",
+        "atd": "2026-05-08T00:00:00.000Z",
+        "eta_carrier": "2026-05-09T00:00:00.000Z",
+        "eta_agi": "2026-05-09T00:00:00.000Z",
+        "percent_complete": 90,
+        "days_remaining": 0,
+        "value_minor": 2700000,
+        "currency": "USD",
+        "has_incident": false
+      }
+    ],
+    "dispatched": [
+      {
+        "id": "01KR6YAAHG6S4073RQDBSD5831",
+        "ref": "FT-26-R221",
+        "mode": "road",
+        "status": "dispatched",
+        "origin_city": "Madrid",
+        "origin_country": "ES",
+        "dest_city": "Paris",
+        "dest_country": "FR",
+        "carrier": "DHL Freight",
+        "client": "Mercat Gourmet",
+        "atd": "2026-05-08T00:00:00.000Z",
+        "eta_carrier": "2026-05-10T00:00:00.000Z",
+        "eta_agi": "2026-05-10T00:00:00.000Z",
+        "percent_complete": 30,
+        "days_remaining": 1,
+        "value_minor": 1200000,
+        "currency": "USD",
+        "has_incident": false
+      },
+      {
+        "id": "01KR6YAAHGEBWYRX2JYJHBTAPW",
+        "ref": "FT-26-C015",
+        "mode": "courier",
+        "status": "dispatched",
+        "origin_city": "San Francisco",
+        "origin_country": "US",
+        "dest_city": "Austin",
+        "dest_country": "US",
+        "carrier": "UPS",
+        "client": "Direct-to-Consumer Inc.",
+        "atd": "2026-05-09T00:00:00.000Z",
+        "eta_carrier": "2026-05-10T00:00:00.000Z",
+        "eta_agi": "2026-05-10T00:00:00.000Z",
+        "percent_complete": 20,
+        "days_remaining": 1,
+        "value_minor": 80000,
+        "currency": "USD",
+        "has_incident": false
+      }
+    ]
+  },
+  "pulse": [
+    {
+      "slug": "on_time_delivery",
+      "label": "On-Time Delivery",
+      "value_minor": null,
+      "value_pct": 100,
+      "currency": null,
+      "text": null
+    },
+    {
+      "slug": "value_in_transit",
+      "label": "Value in Transit",
+      "value_minor": 37100000,
+      "value_pct": null,
+      "currency": "USD",
+      "text": null
+    },
+    {
+      "slug": "outstanding",
+      "label": "Outstanding",
+      "value_minor": 4849900,
+      "value_pct": null,
+      "currency": "USD",
+      "text": null
+    },
+    {
+      "slug": "disputed",
+      "label": "Disputed",
+      "value_minor": 2374000,
+      "value_pct": null,
+      "currency": "USD",
+      "text": null
+    },
+    {
+      "slug": "variance_exposure",
+      "label": "Variance Exposure",
+      "value_minor": 339000,
+      "value_pct": null,
+      "currency": "USD",
+      "text": null
+    },
+    {
+      "slug": "industry_coverage",
+      "label": "Industry Coverage",
+      "value_minor": null,
+      "value_pct": null,
+      "currency": null,
+      "text": [
+        "Industrial",
+        "Electronics",
+        "Beauty",
+        "Apparel",
+        "Pharma",
+        "D2C",
+        "Commerce",
+        "Food"
+      ]
+    }
+  ],
+  "networkLanes": [
+    {
+      "id": "01KR6YAAHM9XMX8N1JXP2XE0DE",
+      "origin_city": "Ho Chi Minh",
+      "origin_country": "VN",
+      "dest_city": "Rotterdam",
+      "dest_country": "NL",
+      "mode": "sea",
+      "is_active": true,
+      "weight": 5
+    },
+    {
+      "id": "01KR6YAAHMDX4MJ4J0ZXQA8QJG",
+      "origin_city": "Mumbai",
+      "origin_country": "IN",
+      "dest_city": "London",
+      "dest_country": "GB",
+      "mode": "air",
+      "is_active": true,
+      "weight": 6
+    },
+    {
+      "id": "01KR6YAAHMG543ECYJG7HD5KHP",
+      "origin_city": "Frankfurt",
+      "origin_country": "DE",
+      "dest_city": "New York",
+      "dest_country": "US",
+      "mode": "air",
+      "is_active": true,
+      "weight": 7
+    },
+    {
+      "id": "01KR6YAAHMNJ9GQETAA6KRED3S",
+      "origin_city": "Shanghai",
+      "origin_country": "CN",
+      "dest_city": "Long Beach",
+      "dest_country": "US",
+      "mode": "sea",
+      "is_active": true,
+      "weight": 8
+    },
+    {
+      "id": "01KR6YAAHMK05YYCVZ9K0W20KP",
+      "origin_city": "Antwerp",
+      "origin_country": "BE",
+      "dest_city": "Santos",
+      "dest_country": "BR",
+      "mode": "sea",
+      "is_active": true,
+      "weight": 9
+    },
+    {
+      "id": "01KR6YAAHMX8SPT2YZ2AGE39Z2",
+      "origin_city": "Madrid",
+      "origin_country": "ES",
+      "dest_city": "Paris",
+      "dest_country": "FR",
+      "mode": "road",
+      "is_active": true,
+      "weight": 5
+    },
+    {
+      "id": "01KR6YAAHMTKMP9G7TFBGRG2R5",
+      "origin_city": "Lyon",
+      "origin_country": "FR",
+      "dest_city": "Milan",
+      "dest_country": "IT",
+      "mode": "road",
+      "is_active": true,
+      "weight": 6
+    },
+    {
+      "id": "01KR6YAAHMR24N1QAQQR6DB1NK",
+      "origin_city": "Shenzhen",
+      "origin_country": "CN",
+      "dest_city": "Berlin",
+      "dest_country": "DE",
+      "mode": "ecom",
+      "is_active": true,
+      "weight": 7
+    },
+    {
+      "id": "01KR6YAAHM8TYGW8J68NQKY790",
+      "origin_city": "Singapore",
+      "origin_country": "SG",
+      "dest_city": "Los Angeles",
+      "dest_country": "US",
+      "mode": "air",
+      "is_active": true,
+      "weight": 8
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "threads": [
+    {
+      "id": "01KR6YAAHJSV8A6T26C26AS42D",
+      "channel": "whatsapp",
+      "counterpart": "MSC",
+      "subject": "MSC — incident escalated",
+      "last_at": "2026-05-09T17:00:00.000Z",
+      "unread": false,
+      "starred": false,
+      "folder": "agi_escalations",
+      "shipment_ref": "FT-26-S918"
+    },
+    {
+      "id": "01KR6YAAHJV41PZZAFSEFW52JT",
+      "channel": "slack",
+      "counterpart": "Turkish Cargo",
+      "subject": "Turkish Cargo — load tender",
+      "last_at": "2026-05-09T13:00:00.000Z",
+      "unread": false,
+      "starred": false,
+      "folder": "agi_escalations",
+      "shipment_ref": "FT-26-A774"
+    },
+    {
+      "id": "01KR6YAAHJX6B68TS3D9MZ6S7B",
+      "channel": "voice",
+      "counterpart": "DHL Freight",
+      "subject": "DHL Freight — call transcript",
+      "last_at": "2026-05-09T12:00:00.000Z",
+      "unread": false,
+      "starred": false,
+      "folder": "agi_escalations",
+      "shipment_ref": "FT-26-R338"
+    }
+  ],
+  "counts": {
+    "inbox": 6,
+    "unread": 4,
+    "starred": 2,
+    "agi_escalations": 3,
+    "archived": 1
+  }
+}

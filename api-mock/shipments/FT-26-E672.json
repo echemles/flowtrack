@@ -1,0 +1,93 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGX221PBPVASX68PFD",
+    "ref": "FT-26-E672",
+    "mode": "ecom",
+    "status": "arriving",
+    "origin_city": "Shenzhen",
+    "origin_country": "CN",
+    "dest_city": "Berlin",
+    "dest_country": "DE",
+    "carrier": "DHL",
+    "client": "Lumen Beauty Co.",
+    "atd": "2026-04-30T00:00:00.000Z",
+    "eta_carrier": "2026-05-09T00:00:00.000Z",
+    "eta_agi": "2026-05-09T00:00:00.000Z",
+    "percent_complete": 92,
+    "days_remaining": 0,
+    "value_minor": 320000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "timeline": [
+    {
+      "id": "01KR6YAAHHYB13D4CDCYTT9PM4",
+      "ord": 1,
+      "label": "Booking Confirmed",
+      "at": "2026-04-30T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHHA8SJZF2TP4YWSCRN",
+      "ord": 2,
+      "label": "Cargo Received",
+      "at": "2026-05-01T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHHRDQP6FA8AFBCHVBC",
+      "ord": 3,
+      "label": "Departed Origin",
+      "at": "2026-05-02T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHHV6X2SBVB4G4WG0FN",
+      "ord": 4,
+      "label": "In Transit",
+      "at": "2026-05-03T00:00:00.000Z",
+      "status": "active"
+    }
+  ],
+  "skus": [],
+  "documents": [],
+  "supplyChain": [],
+  "purchaseOrder": {
+    "row": {
+      "id": "01KR6YAAHHND3EPZDGMMG0Y2B0",
+      "number": "PO-26-E672",
+      "shipment_ref": "FT-26-E672",
+      "provider": "Europa Worldwide",
+      "lines_count": 2,
+      "committed_minor": 58000,
+      "billed_minor": 57000,
+      "variance_minor": -1000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    "lines": [
+      {
+        "id": "01KR6YAAHJC4AGVTBDW4WD36R1",
+        "ord": 1,
+        "description": "Line 1 for PO-26-E672",
+        "qty": 1,
+        "unit_price_minor": 29000
+      },
+      {
+        "id": "01KR6YAAHJXYRJPVZA7E3V8TY9",
+        "ord": 2,
+        "description": "Line 2 for PO-26-E672",
+        "qty": 1,
+        "unit_price_minor": 29000
+      }
+    ]
+  },
+  "financials": {
+    "value_minor": 320000,
+    "currency": "USD",
+    "committed_minor": 58000,
+    "billed_minor": 57000,
+    "variance_minor": -1000
+  },
+  "notifications": []
+}

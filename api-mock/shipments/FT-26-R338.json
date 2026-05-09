@@ -1,0 +1,64 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGXF9F33E1FTBQBC26",
+    "ref": "FT-26-R338",
+    "mode": "road",
+    "status": "in_transit",
+    "origin_city": "Lyon",
+    "origin_country": "FR",
+    "dest_city": "Milan",
+    "dest_country": "IT",
+    "carrier": "DHL Freight",
+    "client": "Nordic Apparel Group",
+    "atd": "2026-05-08T00:00:00.000Z",
+    "eta_carrier": "2026-05-09T00:00:00.000Z",
+    "eta_agi": "2026-05-09T00:00:00.000Z",
+    "percent_complete": 65,
+    "days_remaining": 0,
+    "value_minor": 850000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "timeline": [],
+  "skus": [],
+  "documents": [],
+  "supplyChain": [],
+  "purchaseOrder": {
+    "row": {
+      "id": "01KR6YAAHH7M9Z10YQB3MQ9WAP",
+      "number": "PO-26-R338",
+      "shipment_ref": "FT-26-R338",
+      "provider": "DSV Global",
+      "lines_count": 2,
+      "committed_minor": 60000,
+      "billed_minor": 60000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    "lines": [
+      {
+        "id": "01KR6YAAHJPCQ2A0V2A5PCW4WP",
+        "ord": 1,
+        "description": "Line 1 for PO-26-R338",
+        "qty": 1,
+        "unit_price_minor": 30000
+      },
+      {
+        "id": "01KR6YAAHJHEYKW52M4YPTGEJ5",
+        "ord": 2,
+        "description": "Line 2 for PO-26-R338",
+        "qty": 1,
+        "unit_price_minor": 30000
+      }
+    ]
+  },
+  "financials": {
+    "value_minor": 850000,
+    "currency": "USD",
+    "committed_minor": 60000,
+    "billed_minor": 60000,
+    "variance_minor": 0
+  },
+  "notifications": []
+}

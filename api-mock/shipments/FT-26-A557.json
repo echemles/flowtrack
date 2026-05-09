@@ -1,0 +1,135 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGJ43S2YA7HQPETF43",
+    "ref": "FT-26-A557",
+    "mode": "air",
+    "status": "delivered",
+    "origin_city": "Mumbai",
+    "origin_country": "IN",
+    "dest_city": "London",
+    "dest_country": "GB",
+    "carrier": "British Airways Cargo",
+    "client": "Helix Electronics",
+    "atd": "2026-05-04T00:00:00.000Z",
+    "eta_carrier": "2026-05-06T00:00:00.000Z",
+    "eta_agi": "2026-05-06T00:00:00.000Z",
+    "percent_complete": 97,
+    "days_remaining": 0,
+    "value_minor": 8500000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "timeline": [
+    {
+      "id": "01KR6YAAHG7A35Q95M2903SA4R",
+      "ord": 1,
+      "label": "Booking Confirmed",
+      "at": "2026-05-01T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHG4Q9V06FZHC29SQAG",
+      "ord": 2,
+      "label": "Cargo Received",
+      "at": "2026-05-02T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHGWKBPPNRHBDHZ5YZX",
+      "ord": 3,
+      "label": "Export Customs Cleared",
+      "at": "2026-05-03T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHG9A5BPRS5EZ02PEGC",
+      "ord": 4,
+      "label": "Departed Origin",
+      "at": "2026-05-04T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHGZ5C7QJD40DYQ7KCC",
+      "ord": 5,
+      "label": "In Transit",
+      "at": "2026-05-05T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHG3RHP98AC7HSQ02BF",
+      "ord": 6,
+      "label": "Arrived at Destination",
+      "at": "2026-05-06T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHG03JP20F74RM2NGVH",
+      "ord": 7,
+      "label": "Import Customs Cleared",
+      "at": "2026-05-07T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "id": "01KR6YAAHGZRST7YWR4HE80MR6",
+      "ord": 8,
+      "label": "Out for Delivery",
+      "at": "2026-05-08T00:00:00.000Z",
+      "status": "done"
+    }
+  ],
+  "skus": [],
+  "documents": [],
+  "supplyChain": [],
+  "purchaseOrder": {
+    "row": {
+      "id": "01KR6YAAHH1J1DPCDEXDDZM7J6",
+      "number": "PO-26-A557",
+      "shipment_ref": "FT-26-A557",
+      "provider": "Kuehne+Nagel",
+      "lines_count": 4,
+      "committed_minor": 152000,
+      "billed_minor": 152000,
+      "variance_minor": 0,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    "lines": [
+      {
+        "id": "01KR6YAAHH8YPHF6AHWDBD97J7",
+        "ord": 1,
+        "description": "Line 1 for PO-26-A557",
+        "qty": 1,
+        "unit_price_minor": 38000
+      },
+      {
+        "id": "01KR6YAAHHD4MV9HN3N52M1HVY",
+        "ord": 2,
+        "description": "Line 2 for PO-26-A557",
+        "qty": 1,
+        "unit_price_minor": 38000
+      },
+      {
+        "id": "01KR6YAAHH71TJQQBWD1BNJYEW",
+        "ord": 3,
+        "description": "Line 3 for PO-26-A557",
+        "qty": 1,
+        "unit_price_minor": 38000
+      },
+      {
+        "id": "01KR6YAAHHSVMB8M3JSPE8DFWC",
+        "ord": 4,
+        "description": "Line 4 for PO-26-A557",
+        "qty": 1,
+        "unit_price_minor": 38000
+      }
+    ]
+  },
+  "financials": {
+    "value_minor": 8500000,
+    "currency": "USD",
+    "committed_minor": 152000,
+    "billed_minor": 152000,
+    "variance_minor": 0
+  },
+  "notifications": []
+}

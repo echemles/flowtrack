@@ -1,0 +1,71 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHG6H1K2148GXW1ZC95",
+    "ref": "FT-26-S918",
+    "mode": "sea",
+    "status": "overdue",
+    "origin_city": "Antwerp",
+    "origin_country": "BE",
+    "dest_city": "Santos",
+    "dest_country": "BR",
+    "carrier": "MSC",
+    "client": "Mercat Gourmet",
+    "atd": "2026-04-01T00:00:00.000Z",
+    "eta_carrier": "2026-05-05T00:00:00.000Z",
+    "eta_agi": "2026-05-08T00:00:00.000Z",
+    "percent_complete": 72,
+    "days_remaining": -2,
+    "value_minor": 6800000,
+    "currency": "USD",
+    "has_incident": true
+  },
+  "timeline": [],
+  "skus": [],
+  "documents": [],
+  "supplyChain": [],
+  "purchaseOrder": {
+    "row": {
+      "id": "01KR6YAAHHBTB0TDY2YGN4NGFP",
+      "number": "PO-26-S918",
+      "shipment_ref": "FT-26-S918",
+      "provider": "Crane Worldwide",
+      "lines_count": 3,
+      "committed_minor": 71000,
+      "billed_minor": 68000,
+      "variance_minor": -3000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    "lines": [
+      {
+        "id": "01KR6YAAHJKGM3S1X2YTMA7Q5S",
+        "ord": 1,
+        "description": "Line 1 for PO-26-S918",
+        "qty": 1,
+        "unit_price_minor": 23666
+      },
+      {
+        "id": "01KR6YAAHJ66TJ2JQY9A2D2ZBJ",
+        "ord": 2,
+        "description": "Line 2 for PO-26-S918",
+        "qty": 1,
+        "unit_price_minor": 23666
+      },
+      {
+        "id": "01KR6YAAHJSAXCYX6YDJZVNECK",
+        "ord": 3,
+        "description": "Line 3 for PO-26-S918",
+        "qty": 1,
+        "unit_price_minor": 23666
+      }
+    ]
+  },
+  "financials": {
+    "value_minor": 6800000,
+    "currency": "USD",
+    "committed_minor": 71000,
+    "billed_minor": 68000,
+    "variance_minor": -3000
+  },
+  "notifications": []
+}

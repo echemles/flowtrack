@@ -1,0 +1,103 @@
+{
+  "team": [
+    {
+      "id": "01KR6YAAHE0VG3SKNM705BAFG8",
+      "name": "Avery Chen",
+      "role": "Operations Lead",
+      "email": "avery@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHEFBDH5Q219KHQ5NPM",
+      "name": "Jordan Kim",
+      "role": "Carrier Manager",
+      "email": "jordan@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHEYSRNM9CPZV2FQ17A",
+      "name": "Priya Patel",
+      "role": "Customs Specialist",
+      "email": "priya@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHEW921CQYYP01NHDXR",
+      "name": "Marco Rossi",
+      "role": "Finance Ops",
+      "email": "marco@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHECEYBXH9H1EVBXAR1",
+      "name": "Sara Lopez",
+      "role": "Customer Success",
+      "email": "sara@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    },
+    {
+      "id": "01KR6YAAHE293MBNMQVT8BJ3X2",
+      "name": "Diego Alvarez",
+      "role": "Last-mile Coordinator",
+      "email": "diego@innovtex.com",
+      "phone": null,
+      "is_internal": true,
+      "company": "Innovtex Logistics"
+    }
+  ],
+  "notificationDefaults": [
+    {
+      "key": "shipment_status_change",
+      "label": "Shipment status change",
+      "enabled": true
+    },
+    {
+      "key": "invoice_variance",
+      "label": "Invoice variance",
+      "enabled": true
+    },
+    {
+      "key": "agi_escalation",
+      "label": "AGI escalation",
+      "enabled": true
+    },
+    {
+      "key": "new_inbox_thread",
+      "label": "New inbox thread",
+      "enabled": false
+    },
+    {
+      "key": "po_at_risk",
+      "label": "PO at risk",
+      "enabled": true
+    }
+  ],
+  "moreTools": [
+    {
+      "key": "api_keys",
+      "label": "API keys"
+    },
+    {
+      "key": "webhooks",
+      "label": "Webhooks"
+    },
+    {
+      "key": "audit_log",
+      "label": "Audit log"
+    },
+    {
+      "key": "roles",
+      "label": "Roles & permissions"
+    }
+  ]
+}

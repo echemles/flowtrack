@@ -1,0 +1,20 @@
+{
+  "messages": [
+    {
+      "id": "01KR6YAAHKA9C0MWZG41TYT464",
+      "ord": 1,
+      "from_name": "Counterpart",
+      "body": "Initial message body",
+      "at": "2026-05-09T16:00:00.000Z",
+      "direction": "in"
+    },
+    {
+      "id": "01KR6YAAHKYRMCARVEW7ATSRK3",
+      "ord": 2,
+      "from_name": "Innovtex",
+      "body": "Acknowledged.",
+      "at": "2026-05-09T16:05:00.000Z",
+      "direction": "out"
+    }
+  ]
+}
