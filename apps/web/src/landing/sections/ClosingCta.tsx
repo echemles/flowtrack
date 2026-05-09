@@ -37,7 +37,7 @@ export function ClosingCta() {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: 'url(/landing/ship-night.jpg)',
+            backgroundImage: `url(${import.meta.env.BASE_URL}landing/ship-night.jpg)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.22,

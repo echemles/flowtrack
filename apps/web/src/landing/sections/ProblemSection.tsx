@@ -60,7 +60,7 @@ export function ProblemSection() {
                 marginTop: 48,
                 width: '100%',
                 aspectRatio: '16 / 9',
-                backgroundImage: 'url(/landing/problem-fragments.jpg)',
+                backgroundImage: `url(${import.meta.env.BASE_URL}landing/problem-fragments.jpg)`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 borderRadius: 0,

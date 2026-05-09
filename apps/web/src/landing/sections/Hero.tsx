@@ -6,7 +6,7 @@ import { PillButton } from '../components/PillButton';
 import { ScrollHint } from '../components/ScrollHint';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
-const HERO_IMG = '/landing/hero-port.jpg';
+const HERO_IMG = `${import.meta.env.BASE_URL}landing/hero-port.jpg`;
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);

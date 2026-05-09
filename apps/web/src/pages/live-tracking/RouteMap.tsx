@@ -72,7 +72,7 @@ export function RouteMap({
         projection={proj as any}
         style={{ width: '100%', height: aspectClass ? '100%' : 'auto' }}
       >
-        <Geographies geography="/world-110m.json">
+        <Geographies geography={`${import.meta.env.BASE_URL}world-110m.json`}>
           {({ geographies }) =>
             geographies.map((geo) => (
               <Geography

@@ -31,7 +31,7 @@ export function LiveTrackingSection() {
               style={{
                 width: '100%',
                 aspectRatio: '4 / 3',
-                backgroundImage: 'url(/landing/routes-globe.jpg)',
+                backgroundImage: `url(${import.meta.env.BASE_URL}landing/routes-globe.jpg)`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}

@@ -69,7 +69,7 @@ export function GlobalNetworkMap({ lanes }: { lanes: NetworkLane[] }) {
                 <stop offset="100%" stopColor="#F32735" stopOpacity="0" />
               </radialGradient>
             </defs>
-            <Geographies geography="/world-110m.json">
+            <Geographies geography={`${import.meta.env.BASE_URL}world-110m.json`}>
               {({ geographies }) =>
                 geographies.map((geo) => (
                   <Geography

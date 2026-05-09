@@ -58,7 +58,7 @@ export function ControlTowerSection() {
                 aspectRatio: '16 / 10',
                 background: 'rgba(255,255,255,0.04)',
                 border: '1px solid var(--rule)',
-                backgroundImage: 'url(/landing/dashboard.png)',
+                backgroundImage: `url(${import.meta.env.BASE_URL}landing/dashboard.png)`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'top center',
               }}
