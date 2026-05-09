@@ -34,20 +34,29 @@ export function PurchaseOrdersPage() {
 
   return (
     <div className="mx-auto max-w-[1180px] space-y-4">
-      <header className="flex items-start justify-between gap-3">
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-text-primary">Purchase Orders</h1>
-          <p className="mt-0.5 text-xs text-text-secondary">
-            Service POs to carriers, forwarders & 3PLs
+          <h1
+            className="text-brand-navy"
+            style={{
+              fontFamily: 'Switzer, sans-serif',
+              fontWeight: 400,
+              fontSize: '28px',
+              lineHeight: 1.1,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Purchase Orders
+          </h1>
+          <p className="ft-micro mt-2 text-brand-navy/55">
+            Service POs to carriers, forwarders &amp; 3PLs
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
+        <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
             All Entities <ChevronDown size={12} />
           </button>
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
-            Public tracking
-          </button>
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">Public tracking</button>
         </div>
       </header>
 
@@ -57,7 +66,7 @@ export function PurchaseOrdersPage() {
           const max = Math.max(...d.topProviders.map((p) => p.committed_minor), 1);
           return (
             <>
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <StatusTile
                   label="At-risk POs"
                   value={d.stats.at_risk}
@@ -72,11 +81,9 @@ export function PurchaseOrdersPage() {
                 />
               </div>
 
-              <section className="rounded-lg border border-border-subtle bg-surface-card p-4">
-                <div className="mb-1 text-sm font-semibold text-text-primary">
-                  Top providers by committed spend
-                </div>
-                <p className="mb-3 text-xs text-text-secondary">
+              <section className="border border-brand-rule bg-brand-paper p-4">
+                <div className="ft-eyebrow text-brand-navy/55">Top providers by committed spend</div>
+                <p className="mt-1 mb-3 text-[13px] text-brand-navy/70">
                   Aggregated across line items of all in-scope POs
                 </p>
                 <ul className="space-y-3">
@@ -84,7 +91,7 @@ export function PurchaseOrdersPage() {
                     const pct = (p.committed_minor / max) * 100;
                     return (
                       <li key={p.provider} className="flex items-center gap-3">
-                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-blue-100 text-xs font-bold text-blue-700">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center border border-brand-rule bg-brand-bone text-[11px] font-bold text-brand-navy">
                           {p.provider
                             .split(/\s+/)
                             .filter(Boolean)
@@ -93,22 +100,22 @@ export function PurchaseOrdersPage() {
                             .join('')
                             .toUpperCase()}
                         </span>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <div className="text-sm font-medium text-text-primary">
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+                            <div className="min-w-0">
+                              <div className="truncate text-[14px] font-medium text-brand-navy">
                                 {p.provider}
                               </div>
-                              <div className="text-[11px] text-text-secondary">
-                                ~3 lines across POs · Freight Forwarder
+                              <div className="ft-micro text-brand-navy/55">
+                                ~3 lines · Freight forwarder
                               </div>
                             </div>
-                            <div className="text-sm font-semibold tabular-nums text-text-primary">
+                            <div className="text-[14px] font-semibold tabular-nums text-brand-navy">
                               {formatMoneyWhole(p.committed_minor, p.currency)}
                             </div>
                           </div>
-                          <div className="mt-1 h-1 overflow-hidden rounded-full bg-surface-canvas">
-                            <div className="h-full bg-text-primary" style={{ width: `${pct}%` }} />
+                          <div className="mt-1.5 h-1 overflow-hidden bg-brand-bone">
+                            <div className="h-full bg-brand-navy" style={{ width: `${pct}%` }} />
                           </div>
                         </div>
                       </li>
@@ -117,111 +124,180 @@ export function PurchaseOrdersPage() {
                 </ul>
               </section>
 
-              <div className="rounded-lg border border-border-subtle bg-surface-card">
-                <div className="flex items-center gap-2 border-b border-border-subtle px-4 py-2">
-                  <div className="flex flex-1 items-center gap-2 rounded-md border border-border-subtle bg-surface-canvas px-3 py-1 text-sm">
-                    <Search size={14} className="text-text-muted" />
+              <div className="border border-brand-rule bg-brand-paper">
+                <div className="flex items-center gap-2 border-b border-brand-rule px-3 py-2 sm:px-4">
+                  <div className="flex flex-1 items-center gap-2 border border-brand-rule bg-brand-bone/40 px-3 py-1.5 text-[14px] text-brand-navy">
+                    <Search size={14} className="text-brand-navy/50" />
                     <input
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
-                      className="w-full bg-transparent outline-none placeholder:text-text-muted"
+                      className="w-full bg-transparent outline-none placeholder:text-brand-navy/40"
                       placeholder="Search PO, shipment ref, provider…"
                     />
                   </div>
                 </div>
-                <div className="flex flex-wrap items-center gap-2 border-b border-border-subtle px-4 py-2">
-                  {STATUS_FILTERS.map((s) => (
-                    <button
-                      key={s.id}
-                      onClick={() => setStatus(s.id)}
-                      className={clsx(
-                        'rounded-md px-2 py-1 text-xs',
-                        status === s.id
-                          ? 'bg-text-primary text-white'
-                          : 'border border-border-subtle bg-surface-card text-text-secondary hover:bg-surface-canvas',
-                      )}
-                    >
-                      {s.label}
-                    </button>
-                  ))}
+                <div className="flex flex-wrap items-center gap-2 border-b border-brand-rule px-3 py-2 sm:px-4">
+                  <div className="-mx-1 flex flex-1 items-center gap-2 overflow-x-auto px-1 sm:overflow-visible">
+                    {STATUS_FILTERS.map((s) => (
+                      <button
+                        key={s.id}
+                        onClick={() => setStatus(s.id)}
+                        className={clsx(
+                          'inline-flex shrink-0 items-center px-2.5 py-1.5 text-[12px] transition-colors min-h-[32px]',
+                          status === s.id
+                            ? 'bg-brand-navy text-brand-paper'
+                            : 'border border-brand-rule bg-brand-paper text-brand-navy/70 hover:bg-brand-bone/60',
+                        )}
+                      >
+                        {s.label}
+                      </button>
+                    ))}
+                  </div>
                   <div className="ml-auto flex items-center gap-2">
-                    <span className="text-xs text-text-muted">{filtered.length} of {d.pos.length}</span>
-                    <button className="inline-flex items-center gap-1 rounded-md bg-blue-600 px-2 py-1 text-xs font-medium text-white hover:bg-blue-700">
+                    <span className="ft-micro text-brand-navy/55">
+                      {filtered.length} of {d.pos.length}
+                    </span>
+                    <button className="ft-pill ft-pill-primary ft-pill-sm">
                       <Plus size={12} /> Raise PO
                     </button>
                   </div>
                 </div>
 
-                <table className="w-full text-left text-sm">
-                  <thead>
-                    <tr className="border-b border-border-subtle bg-surface-canvas text-[11px] font-bold uppercase tracking-wider text-text-muted">
-                      <th className="px-3 py-2">PO Number</th>
-                      <th className="px-3 py-2">Shipment</th>
-                      <th className="px-3 py-2 text-right">Lines</th>
-                      <th className="px-3 py-2 text-right">Committed</th>
-                      <th className="px-3 py-2 text-right">Billed</th>
-                      <th className="px-3 py-2 text-right">Variance</th>
-                      <th className="px-3 py-2"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filtered.map((po) => {
-                      const variancePositive = po.variance_minor >= 0;
-                      const variancePct =
-                        po.committed_minor > 0
-                          ? Math.round((po.variance_minor / po.committed_minor) * 1000) / 10
-                          : 0;
-                      return (
-                        <tr key={po.id} className="border-b border-border-subtle last:border-b-0 hover:bg-surface-canvas/60">
-                          <td className="px-3 py-3">
-                            <div className="flex items-center gap-2">
-                              {po.status === 'at_risk' ? (
-                                <AlertOctagon size={14} className="text-red-500" />
-                              ) : null}
-                              <div>
-                                <div className="font-medium text-text-primary">{po.number}</div>
-                                <div className="text-[11px] text-text-muted">
-                                  {po.provider ?? '—'}
+                {/* Desktop table */}
+                <div className="hidden md:block">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-brand-rule bg-brand-bone/40">
+                        <th className="ft-eyebrow px-3 py-3 text-brand-navy/55">PO Number</th>
+                        <th className="ft-eyebrow px-3 py-3 text-brand-navy/55">Shipment</th>
+                        <th className="ft-eyebrow px-3 py-3 text-right text-brand-navy/55">Lines</th>
+                        <th className="ft-eyebrow px-3 py-3 text-right text-brand-navy/55">Committed</th>
+                        <th className="ft-eyebrow px-3 py-3 text-right text-brand-navy/55">Billed</th>
+                        <th className="ft-eyebrow px-3 py-3 text-right text-brand-navy/55">Variance</th>
+                        <th className="ft-eyebrow px-3 py-3 text-brand-navy/55"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filtered.map((po) => {
+                        const variancePositive = po.variance_minor >= 0;
+                        const variancePct =
+                          po.committed_minor > 0
+                            ? Math.round((po.variance_minor / po.committed_minor) * 1000) / 10
+                            : 0;
+                        return (
+                          <tr
+                            key={po.id}
+                            className="border-b border-brand-rule last:border-b-0 hover:bg-brand-bone/40"
+                          >
+                            <td className="px-3 py-3">
+                              <div className="flex items-center gap-2">
+                                {po.status === 'at_risk' ? (
+                                  <AlertOctagon size={14} className="text-brand-red" />
+                                ) : null}
+                                <div>
+                                  <div className="font-medium text-brand-navy">{po.number}</div>
+                                  <div className="text-[11px] text-brand-navy/50">{po.provider ?? '—'}</div>
                                 </div>
                               </div>
-                            </div>
-                          </td>
-                          <td className="px-3 py-3 text-text-primary">
-                            {po.shipment_ref ? (
-                              <Link to={`/shipments/${po.shipment_ref}`} className="hover:underline">
-                                {po.shipment_ref}
-                              </Link>
-                            ) : '—'}
-                          </td>
-                          <td className="px-3 py-3 text-right tabular-nums">{po.lines_count}</td>
-                          <td className="px-3 py-3 text-right tabular-nums">
-                            {formatMoneyWhole(po.committed_minor, po.currency)}
-                          </td>
-                          <td className="px-3 py-3 text-right tabular-nums">
-                            {formatMoneyWhole(po.billed_minor, po.currency)}
-                          </td>
-                          <td className="px-3 py-3 text-right tabular-nums">
-                            <span className={variancePositive ? 'text-emerald-700' : 'text-red-600'}>
-                              {variancePositive ? '+' : ''}
-                              {formatMoneyWhole(po.variance_minor, po.currency)}
-                              <span className="ml-1 text-[10px] opacity-70">{variancePct}%</span>
-                            </span>
-                          </td>
-                          <td className="px-3 py-3 text-right">
-                            <ChevronRight size={14} className="text-text-muted" />
+                            </td>
+                            <td className="px-3 py-3 text-brand-navy">
+                              {po.shipment_ref ? (
+                                <Link to={`/shipments/${po.shipment_ref}`} className="hover:text-brand-red">
+                                  {po.shipment_ref}
+                                </Link>
+                              ) : '—'}
+                            </td>
+                            <td className="px-3 py-3 text-right tabular-nums">{po.lines_count}</td>
+                            <td className="px-3 py-3 text-right tabular-nums">
+                              {formatMoneyWhole(po.committed_minor, po.currency)}
+                            </td>
+                            <td className="px-3 py-3 text-right tabular-nums">
+                              {formatMoneyWhole(po.billed_minor, po.currency)}
+                            </td>
+                            <td className="px-3 py-3 text-right tabular-nums">
+                              <span className={variancePositive ? 'text-brand-navy' : 'text-brand-red'}>
+                                {variancePositive ? '+' : ''}
+                                {formatMoneyWhole(po.variance_minor, po.currency)}
+                                <span className="ml-1 text-[10px] opacity-70">{variancePct}%</span>
+                              </span>
+                            </td>
+                            <td className="px-3 py-3 text-right">
+                              <ChevronRight size={14} className="text-brand-navy/40" />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                      {filtered.length === 0 ? (
+                        <tr>
+                          <td colSpan={7} className="px-3 py-6 text-center text-[13px] text-brand-navy/55">
+                            No POs match this filter.
                           </td>
                         </tr>
+                      ) : null}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Mobile card list */}
+                <ul className="block md:hidden">
+                  {filtered.length === 0 ? (
+                    <li className="px-4 py-6 text-center text-[13px] text-brand-navy/55">
+                      No POs match this filter.
+                    </li>
+                  ) : (
+                    filtered.map((po) => {
+                      const variancePositive = po.variance_minor >= 0;
+                      return (
+                        <li
+                          key={po.id}
+                          className="border-b border-brand-rule last:border-b-0 px-4 py-3"
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-2">
+                                {po.status === 'at_risk' ? (
+                                  <AlertOctagon size={14} className="text-brand-red" />
+                                ) : null}
+                                <span className="font-medium text-brand-navy">{po.number}</span>
+                              </div>
+                              <div className="mt-0.5 truncate text-[12px] text-brand-navy/55">
+                                {po.provider ?? '—'}
+                                {po.shipment_ref ? (
+                                  <>
+                                    <span className="mx-1">·</span>
+                                    <Link to={`/shipments/${po.shipment_ref}`} className="text-brand-red">
+                                      {po.shipment_ref}
+                                    </Link>
+                                  </>
+                                ) : null}
+                              </div>
+                            </div>
+                            <ChevronRight size={14} className="mt-1 shrink-0 text-brand-navy/40" />
+                          </div>
+                          <dl className="mt-2 grid grid-cols-3 gap-x-2 text-[12px]">
+                            <div>
+                              <dt className="ft-micro text-brand-navy/55">Lines</dt>
+                              <dd className="mt-0.5 tabular-nums text-brand-navy">{po.lines_count}</dd>
+                            </div>
+                            <div>
+                              <dt className="ft-micro text-brand-navy/55">Committed</dt>
+                              <dd className="mt-0.5 tabular-nums text-brand-navy">
+                                {formatMoneyWhole(po.committed_minor, po.currency)}
+                              </dd>
+                            </div>
+                            <div>
+                              <dt className="ft-micro text-brand-navy/55">Variance</dt>
+                              <dd className={clsx('mt-0.5 tabular-nums', variancePositive ? 'text-brand-navy' : 'text-brand-red')}>
+                                {variancePositive ? '+' : ''}
+                                {formatMoneyWhole(po.variance_minor, po.currency)}
+                              </dd>
+                            </div>
+                          </dl>
+                        </li>
                       );
-                    })}
-                    {filtered.length === 0 ? (
-                      <tr>
-                        <td colSpan={7} className="px-3 py-6 text-center text-xs text-text-muted">
-                          No POs match this filter.
-                        </td>
-                      </tr>
-                    ) : null}
-                  </tbody>
-                </table>
+                    })
+                  )}
+                </ul>
               </div>
             </>
           );
@@ -261,19 +337,31 @@ function StatusTile({
   icon: JSX.Element;
 }) {
   return (
-    <div className="flex items-start justify-between rounded-lg border border-border-subtle bg-surface-card p-4">
+    <div className="flex items-start justify-between border border-brand-rule bg-brand-paper p-4">
       <div>
-        <div className="text-[11px] font-bold uppercase tracking-wider text-text-secondary">{label}</div>
+        <div className="ft-eyebrow text-brand-navy/55">{label}</div>
         <div
           className={clsx(
-            'mt-1 text-2xl font-semibold',
-            tone === 'danger' ? 'text-red-600' : 'text-amber-700',
+            'mt-2 text-brand-navy',
+            tone === 'danger' ? 'text-brand-red' : 'text-brand-navy',
           )}
+          style={{
+            fontFamily: 'Switzer, sans-serif',
+            fontWeight: 300,
+            fontSize: '32px',
+            lineHeight: 1.04,
+            letterSpacing: '-0.01em',
+          }}
         >
           {value}
         </div>
       </div>
-      <div className={clsx('rounded-md p-2', tone === 'danger' ? 'bg-red-50 text-red-600' : 'bg-amber-50 text-amber-700')}>
+      <div
+        className={clsx(
+          'border p-2',
+          tone === 'danger' ? 'border-brand-red/30 text-brand-red' : 'border-brand-rule text-brand-navy/70',
+        )}
+      >
         {icon}
       </div>
     </div>

@@ -30,31 +30,31 @@ export function ShipmentDetailLayout({ data }: { data: ShipmentDetail }) {
 
   return (
     <div className="space-y-4">
-      <header className="rounded-lg border border-border-subtle bg-surface-card p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-medium text-text-secondary">
-              <span className="rounded-md bg-blue-50 p-1.5 text-blue-600">
+      <header className="border border-brand-rule bg-brand-paper p-4 sm:p-5">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2 text-[12px] text-brand-navy/70">
+              <span className="border border-brand-rule p-1.5 text-brand-red">
                 <Package size={14} />
               </span>
-              <span className="text-base font-semibold text-text-primary">{s.ref}</span>
+              <span className="text-[16px] font-medium text-brand-navy">{s.ref}</span>
               <StatusPill status={s.status} />
             </div>
-            <div className="mt-2 text-lg font-semibold text-text-primary">
-              {s.origin_city}, {s.origin_country}{' '}
-              <span className="mx-1 text-text-muted">→</span>
-              {s.dest_city}, {s.dest_country}
+            <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[18px] font-medium text-brand-navy sm:text-[20px]">
+              <span>{s.origin_city}, {s.origin_country}</span>
+              <span className="text-brand-navy/40">→</span>
+              <span>{s.dest_city}, {s.dest_country}</span>
             </div>
-            <div className="mt-1 flex items-center gap-2 text-xs text-text-secondary">
+            <div className="mt-1 flex flex-wrap items-center gap-2 text-[12px] text-brand-navy/70">
               <span>{s.client}</span>
-              <span className="text-text-muted">·</span>
+              <span className="text-brand-navy/40">·</span>
               <span>FOB · via {s.carrier}</span>
-              <span className="rounded-md bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-700">
+              <span className="ft-micro inline-flex items-center border border-brand-rule px-2 py-0.5 text-brand-navy">
                 Outbound
               </span>
               {data.purchaseOrder ? (
                 <>
-                  <span className="text-text-muted">·</span>
+                  <span className="text-brand-navy/40">·</span>
                   <span>{data.purchaseOrder.row.number}</span>
                 </>
               ) : null}
@@ -62,10 +62,7 @@ export function ShipmentDetailLayout({ data }: { data: ShipmentDetail }) {
           </div>
           <div className="flex items-center gap-2">
             <ModeChip mode={s.mode} />
-            <Link
-              to="/app/live"
-              className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs font-medium text-text-primary hover:bg-surface-canvas"
-            >
+            <Link to="/app/live" className="ft-pill ft-pill-ghost ft-pill-sm">
               <MapPin size={12} /> Track live
             </Link>
           </div>
@@ -77,9 +74,7 @@ export function ShipmentDetailLayout({ data }: { data: ShipmentDetail }) {
             label="ETA"
             value={formatDateLong(s.eta_agi)}
             subtitle={
-              s.eta_carrier
-                ? `Predicted: ${formatDateLong(s.eta_carrier)} (carrier)`
-                : undefined
+              s.eta_carrier ? `Predicted: ${formatDateLong(s.eta_carrier)} (carrier)` : undefined
             }
             icon={<AgiBadge label="AGI" />}
           />
@@ -92,15 +87,11 @@ export function ShipmentDetailLayout({ data }: { data: ShipmentDetail }) {
         </div>
       </header>
 
-      <div className="rounded-lg border border-border-subtle bg-surface-card">
-        <div className="px-4">
-          <TabStrip
-            tabs={tabs}
-            activeId={tab}
-            onChange={(id) => setTab(id as TabId)}
-          />
+      <div className="border border-brand-rule bg-brand-paper">
+        <div className="overflow-x-auto px-3 sm:px-4">
+          <TabStrip tabs={tabs} activeId={tab} onChange={(id) => setTab(id as TabId)} />
         </div>
-        <div className="p-4">
+        <div className="p-3 sm:p-4">
           {tab === 'timeline' && <TimelineTab data={data} />}
           {tab === 'skus' && <SkusTab data={data} />}
           {tab === 'documents' && <DocumentsTab data={data} />}
@@ -127,16 +118,12 @@ function KeyVal({
 }) {
   return (
     <div>
-      <div className="text-[11px] font-bold uppercase tracking-wider text-text-secondary">
-        {label}
-      </div>
-      <div className="mt-0.5 flex items-center gap-1.5 text-sm font-semibold text-text-primary">
+      <div className="ft-eyebrow text-brand-navy/55">{label}</div>
+      <div className="mt-1 flex items-center gap-1.5 text-[14px] font-medium text-brand-navy">
         {icon}
         {value}
       </div>
-      {subtitle ? (
-        <div className="text-[11px] text-text-muted">{subtitle}</div>
-      ) : null}
+      {subtitle ? <div className="text-[11px] text-brand-navy/50">{subtitle}</div> : null}
     </div>
   );
 }
@@ -144,10 +131,10 @@ function KeyVal({
 function ProgressBar({ pct }: { pct: number }) {
   return (
     <div className="space-y-1">
-      <div className="h-1.5 overflow-hidden rounded-full bg-surface-canvas">
-        <div className="h-full bg-blue-500" style={{ width: `${pct}%` }} />
+      <div className="h-1 overflow-hidden bg-brand-bone">
+        <div className="h-full bg-brand-navy" style={{ width: `${pct}%` }} />
       </div>
-      <div className="text-[11px] text-text-muted">{pct}%</div>
+      <div className="ft-micro text-brand-navy/55">{pct}%</div>
     </div>
   );
 }
@@ -160,20 +147,20 @@ function TimelineTab({ data }: { data: ShipmentDetail }) {
           <span
             className={
               m.status === 'done'
-                ? 'mt-1 h-5 w-5 shrink-0 rounded-full bg-text-primary text-white flex items-center justify-center text-[12px]'
+                ? 'mt-1 flex h-5 w-5 shrink-0 items-center justify-center bg-brand-navy text-[12px] text-brand-paper'
                 : m.status === 'active'
-                  ? 'mt-1 h-5 w-5 shrink-0 rounded-full bg-blue-600 text-white flex items-center justify-center text-[12px]'
-                  : 'mt-1 h-5 w-5 shrink-0 rounded-full border border-border-subtle bg-surface-canvas'
+                  ? 'mt-1 flex h-5 w-5 shrink-0 items-center justify-center bg-brand-red text-[12px] text-brand-paper'
+                  : 'mt-1 h-5 w-5 shrink-0 border border-brand-rule bg-brand-paper'
             }
           >
             {m.status === 'done' ? '✓' : m.status === 'active' ? '●' : ''}
           </span>
           <div>
-            <div className="text-sm font-medium text-text-primary">{m.label}</div>
-            <div className="text-xs text-text-muted">
+            <div className="text-[14px] font-medium text-brand-navy">{m.label}</div>
+            <div className="text-[12px] text-brand-navy/55">
               {m.at ? `${formatDateLong(m.at)} · 02:00` : 'Pending'}
               {m.status === 'active' ? (
-                <span className="ml-2 text-blue-600">● Current</span>
+                <span className="ml-2 text-brand-red">● Current</span>
               ) : null}
             </div>
           </div>
@@ -186,26 +173,28 @@ function TimelineTab({ data }: { data: ShipmentDetail }) {
 function SkusTab({ data }: { data: ShipmentDetail }) {
   if (data.skus.length === 0) return <Empty>No SKUs declared.</Empty>;
   return (
-    <table className="w-full text-left text-sm">
-      <thead className="text-[11px] font-bold uppercase tracking-wider text-text-muted">
-        <tr>
-          <th className="px-2 py-2">SKU</th>
-          <th className="px-2 py-2">Description</th>
-          <th className="px-2 py-2 text-right">Qty</th>
-          <th className="px-2 py-2 text-right">Weight (kg)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.skus.map((sku) => (
-          <tr key={sku.id} className="border-t border-border-subtle">
-            <td className="px-2 py-2 font-medium">{sku.sku}</td>
-            <td className="px-2 py-2 text-text-secondary">{sku.description}</td>
-            <td className="px-2 py-2 text-right">{sku.qty.toLocaleString()}</td>
-            <td className="px-2 py-2 text-right">{sku.weight_kg.toLocaleString()}</td>
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[480px] text-left text-[14px]">
+        <thead>
+          <tr className="border-b border-brand-rule">
+            <th className="ft-eyebrow px-2 py-2 text-brand-navy/55">SKU</th>
+            <th className="ft-eyebrow px-2 py-2 text-brand-navy/55">Description</th>
+            <th className="ft-eyebrow px-2 py-2 text-right text-brand-navy/55">Qty</th>
+            <th className="ft-eyebrow px-2 py-2 text-right text-brand-navy/55">Weight (kg)</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.skus.map((sku) => (
+            <tr key={sku.id} className="border-b border-brand-rule last:border-0">
+              <td className="px-2 py-2 font-medium text-brand-navy">{sku.sku}</td>
+              <td className="px-2 py-2 text-brand-navy/70">{sku.description}</td>
+              <td className="px-2 py-2 text-right tabular-nums">{sku.qty.toLocaleString()}</td>
+              <td className="px-2 py-2 text-right tabular-nums">{sku.weight_kg.toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -216,11 +205,11 @@ function DocumentsTab({ data }: { data: ShipmentDetail }) {
       {data.documents.map((d) => (
         <li
           key={d.id}
-          className="flex items-center justify-between rounded-md border border-border-subtle bg-surface-canvas px-3 py-2"
+          className="flex items-center justify-between gap-2 border border-brand-rule bg-brand-bone/40 px-3 py-2"
         >
-          <div className="flex items-center gap-2 text-sm">
-            <Activity size={14} className="text-text-muted" />
-            {d.kind}
+          <div className="flex min-w-0 items-center gap-2 text-[14px] text-brand-navy">
+            <Activity size={14} className="text-brand-navy/55" />
+            <span className="truncate">{d.kind}</span>
           </div>
           <StatusPill status={d.status} />
         </li>
@@ -232,20 +221,32 @@ function DocumentsTab({ data }: { data: ShipmentDetail }) {
 function FinancialsTab({ data }: { data: ShipmentDetail }) {
   const f = data.financials;
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
       <Stat label="Cargo Value" value={formatMoney(f.value_minor, f.currency, { cents: false })} />
       <Stat
         label="Committed"
-        value={f.committed_minor != null ? formatMoney(f.committed_minor, f.currency, { cents: false }) : '—'}
+        value={
+          f.committed_minor != null
+            ? formatMoney(f.committed_minor, f.currency, { cents: false })
+            : '—'
+        }
       />
       <Stat
         label="Billed"
-        value={f.billed_minor != null ? formatMoney(f.billed_minor, f.currency, { cents: false }) : '—'}
+        value={
+          f.billed_minor != null ? formatMoney(f.billed_minor, f.currency, { cents: false }) : '—'
+        }
       />
       <Stat
         label="Variance"
-        value={f.variance_minor != null ? formatMoney(f.variance_minor, f.currency, { cents: false }) : '—'}
-        valueClassName={f.variance_minor && f.variance_minor < 0 ? 'text-red-600' : 'text-emerald-700'}
+        value={
+          f.variance_minor != null
+            ? formatMoney(f.variance_minor, f.currency, { cents: false })
+            : '—'
+        }
+        valueClassName={
+          f.variance_minor && f.variance_minor < 0 ? 'text-brand-red' : 'text-brand-navy'
+        }
       />
     </div>
   );
@@ -255,8 +256,8 @@ function SupplyChainTab({ data }: { data: ShipmentDetail }) {
   if (data.supplyChain.length === 0) return <Empty>No supply chain data.</Empty>;
   const avg =
     data.supplyChain.reduce((a, b) => a + b.on_time_pct, 0) / data.supplyChain.length;
-  const weakest = data.supplyChain.reduce((min, leg) =>
-    leg.on_time_pct < min.on_time_pct ? leg : min,
+  const weakest = data.supplyChain.reduce(
+    (min, leg) => (leg.on_time_pct < min.on_time_pct ? leg : min),
     data.supplyChain[0],
   );
   return (
@@ -264,7 +265,7 @@ function SupplyChainTab({ data }: { data: ShipmentDetail }) {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Stat label="Providers in chain" value={data.supplyChain.length.toString()} />
         <Stat label="Logistics cost" value="$1,500" />
-        <Stat label="Chain on-time avg" value={formatPct(avg)} valueClassName="text-emerald-700" />
+        <Stat label="Chain on-time avg" value={formatPct(avg)} valueClassName="text-brand-navy" />
         <Stat
           label="Weakest link"
           value={weakest.provider}
@@ -273,34 +274,34 @@ function SupplyChainTab({ data }: { data: ShipmentDetail }) {
       </div>
 
       <div>
-        <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-text-secondary">
+        <div className="ft-eyebrow mb-2 text-brand-navy/55">
           Handoff chain · {data.supplyChain.length} providers
         </div>
         <ul className="space-y-2">
           {data.supplyChain.map((l) => (
             <li
               key={l.id}
-              className="flex items-center justify-between rounded-md border border-border-subtle bg-surface-canvas px-3 py-3"
+              className="flex flex-wrap items-center justify-between gap-2 border border-brand-rule bg-brand-bone/40 px-3 py-3"
             >
-              <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-surface-card text-xs font-bold text-text-secondary ring-1 ring-border-subtle">
+              <div className="flex min-w-0 items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-brand-rule bg-brand-paper text-[12px] font-bold text-brand-navy/70">
                   {l.ord}
                 </span>
-                <div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-text-secondary">
-                    {l.role}
+                <div className="min-w-0">
+                  <div className="ft-micro text-brand-navy/55">{l.role}</div>
+                  <div className="truncate text-[14px] font-medium text-brand-navy">
+                    {l.provider}
                   </div>
-                  <div className="text-sm font-medium text-text-primary">{l.provider}</div>
                 </div>
               </div>
-              <div className="text-xs">
+              <div className="text-[12px]">
                 <span
                   className={
                     l.on_time_pct >= 90
-                      ? 'text-emerald-700'
+                      ? 'text-brand-navy'
                       : l.on_time_pct >= 80
-                        ? 'text-amber-700'
-                        : 'text-red-600'
+                        ? 'text-brand-navy/55'
+                        : 'text-brand-red'
                   }
                 >
                   {formatPct(l.on_time_pct)} on-time
@@ -322,33 +323,40 @@ function PoTab({ data }: { data: ShipmentDetail }) {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Stat label="PO number" value={po.row.number} />
         <Stat label="Provider" value={po.row.provider ?? '—'} />
-        <Stat label="Committed" value={formatMoney(po.row.committed_minor, po.row.currency, { cents: false })} />
+        <Stat
+          label="Committed"
+          value={formatMoney(po.row.committed_minor, po.row.currency, { cents: false })}
+        />
         <Stat
           label="Variance"
           value={formatMoney(po.row.variance_minor, po.row.currency, { cents: false })}
-          valueClassName={po.row.variance_minor < 0 ? 'text-red-600' : 'text-emerald-700'}
+          valueClassName={po.row.variance_minor < 0 ? 'text-brand-red' : 'text-brand-navy'}
         />
       </div>
-      <table className="w-full text-left text-sm">
-        <thead className="text-[11px] font-bold uppercase tracking-wider text-text-muted">
-          <tr>
-            <th className="px-2 py-2">#</th>
-            <th className="px-2 py-2">Description</th>
-            <th className="px-2 py-2 text-right">Qty</th>
-            <th className="px-2 py-2 text-right">Unit price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {po.lines.map((l) => (
-            <tr key={l.id} className="border-t border-border-subtle">
-              <td className="px-2 py-2">{l.ord}</td>
-              <td className="px-2 py-2 text-text-secondary">{l.description}</td>
-              <td className="px-2 py-2 text-right">{l.qty.toLocaleString()}</td>
-              <td className="px-2 py-2 text-right">{formatMoney(l.unit_price_minor, po.row.currency, { cents: false })}</td>
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[480px] text-left text-[14px]">
+          <thead>
+            <tr className="border-b border-brand-rule">
+              <th className="ft-eyebrow px-2 py-2 text-brand-navy/55">#</th>
+              <th className="ft-eyebrow px-2 py-2 text-brand-navy/55">Description</th>
+              <th className="ft-eyebrow px-2 py-2 text-right text-brand-navy/55">Qty</th>
+              <th className="ft-eyebrow px-2 py-2 text-right text-brand-navy/55">Unit price</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {po.lines.map((l) => (
+              <tr key={l.id} className="border-b border-brand-rule last:border-0">
+                <td className="px-2 py-2">{l.ord}</td>
+                <td className="px-2 py-2 text-brand-navy/70">{l.description}</td>
+                <td className="px-2 py-2 text-right tabular-nums">{l.qty.toLocaleString()}</td>
+                <td className="px-2 py-2 text-right tabular-nums">
+                  {formatMoney(l.unit_price_minor, po.row.currency, { cents: false })}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
@@ -359,7 +367,10 @@ function NotificationsTab({ data }: { data: ShipmentDetail }) {
   return (
     <ul className="space-y-2">
       {data.notifications.map((n) => (
-        <li key={n.id} className="rounded-md border border-border-subtle bg-surface-canvas px-3 py-2 text-sm">
+        <li
+          key={n.id}
+          className="border border-brand-rule bg-brand-bone/40 px-3 py-2 text-[14px] text-brand-navy"
+        >
           {n.title}
         </li>
       ))}
@@ -379,23 +390,19 @@ function Stat({
   valueClassName?: string;
 }) {
   return (
-    <div className="rounded-md border border-border-subtle bg-surface-canvas p-3">
-      <div className="text-[11px] font-bold uppercase tracking-wider text-text-secondary">
-        {label}
-      </div>
-      <div className={`mt-1 text-base font-semibold text-text-primary ${valueClassName ?? ''}`}>
+    <div className="border border-brand-rule bg-brand-bone/40 p-3">
+      <div className="ft-eyebrow text-brand-navy/55">{label}</div>
+      <div className={`mt-1 text-[16px] font-medium text-brand-navy ${valueClassName ?? ''}`}>
         {value}
       </div>
-      {subtitle ? (
-        <div className="text-[11px] text-text-muted">{subtitle}</div>
-      ) : null}
+      {subtitle ? <div className="text-[11px] text-brand-navy/50">{subtitle}</div> : null}
     </div>
   );
 }
 
 function Empty({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-md border border-dashed border-border-subtle px-3 py-8 text-center text-xs text-text-muted">
+    <div className="border border-dashed border-brand-rule px-3 py-8 text-center text-[12px] text-brand-navy/55">
       {children}
     </div>
   );

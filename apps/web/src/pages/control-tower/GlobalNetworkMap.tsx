@@ -26,22 +26,34 @@ export function GlobalNetworkMap({ lanes }: { lanes: NetworkLane[] }) {
     (l) => coordsFor(l.origin_city) && coordsFor(l.dest_city),
   );
   return (
-    <section className="rounded-lg border border-border-subtle bg-surface-card overflow-hidden">
-      <header className="flex items-center justify-between border-b border-border-subtle px-4 py-3">
+    <section className="overflow-hidden border border-brand-rule bg-brand-paper">
+      <header className="flex items-center justify-between border-b border-brand-rule px-4 py-3">
         <div>
-          <h3 className="text-sm font-semibold text-text-primary">Global network</h3>
-          <p className="text-xs text-text-secondary">Origin-to-destination lanes, live</p>
+          <h3
+            className="text-brand-navy"
+            style={{
+              fontFamily: 'Switzer, sans-serif',
+              fontWeight: 400,
+              fontSize: '18px',
+              lineHeight: 1.2,
+              letterSpacing: '-0.005em',
+            }}
+          >
+            Global network
+          </h3>
+          <p className="ft-micro mt-1 text-brand-navy/55">Origin-to-destination lanes, live</p>
         </div>
-        <button className="text-xs font-medium text-blue-600 hover:underline">
+        <button className="ft-eyebrow text-brand-red hover:text-brand-redInk">
           View all lanes →
         </button>
       </header>
-      <div className="bg-[#0B1220] p-4">
-        <div className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-blue-200/80">
-          <span className="rounded-md bg-blue-500/20 px-2 py-0.5 text-blue-200 ring-1 ring-blue-400/40">
-            ◉ Live network
+      <div className="bg-brand-ink p-4">
+        <div className="mb-2 ft-micro flex items-center gap-2 text-brand-paper/70">
+          <span className="ft-micro inline-flex items-center gap-1.5 border border-brand-ruleDark px-2 py-1 text-brand-paper">
+            <span aria-hidden className="inline-block h-1.5 w-1.5 bg-brand-red" />
+            Live network
           </span>
-          <span className="text-blue-100/70">{valid.length} active lanes</span>
+          <span>{valid.length} active lanes</span>
         </div>
         <div className="relative">
           <ComposableMap
@@ -53,8 +65,8 @@ export function GlobalNetworkMap({ lanes }: { lanes: NetworkLane[] }) {
           >
             <defs>
               <radialGradient id="dotGlow">
-                <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#60a5fa" stopOpacity="0" />
+                <stop offset="0%" stopColor="#F32735" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="#F32735" stopOpacity="0" />
               </radialGradient>
             </defs>
             <Geographies geography="/world-110m.json">
@@ -84,19 +96,19 @@ export function GlobalNetworkMap({ lanes }: { lanes: NetworkLane[] }) {
                   <path
                     d={d}
                     fill="none"
-                    stroke="#60a5fa"
+                    stroke="#F32735"
                     strokeWidth={1.2}
                     strokeOpacity={0.7}
                   />
                   <circle cx={ax} cy={ay} r={6} fill="url(#dotGlow)" />
-                  <circle cx={ax} cy={ay} r={2} fill="#7dd3fc" />
+                  <circle cx={ax} cy={ay} r={2} fill="#F4F1EB" />
                   <circle cx={bx} cy={by} r={6} fill="url(#dotGlow)" />
-                  <circle cx={bx} cy={by} r={2} fill="#7dd3fc" />
+                  <circle cx={bx} cy={by} r={2} fill="#F4F1EB" />
                 </g>
               );
             })}
           </ComposableMap>
-          <div className="absolute bottom-2 right-2 rounded-md bg-[#111d33]/80 px-2 py-1 text-[10px] text-blue-100/70 ring-1 ring-blue-400/20">
+          <div className="ft-micro absolute bottom-2 right-2 border border-brand-ruleDark bg-brand-ink/80 px-2 py-1 text-brand-paper/70">
             Origin / Destination
           </div>
         </div>

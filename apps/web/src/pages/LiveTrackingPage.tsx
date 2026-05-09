@@ -36,26 +36,35 @@ export function LiveTrackingPage() {
 
   return (
     <div className="mx-auto max-w-[1180px] space-y-4">
-      <header className="flex items-start justify-between gap-3">
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-text-primary">Live Tracking</h1>
-          <p className="mt-0.5 text-xs text-text-secondary">
-            Real-time position · air, sea & road — animated route view
+          <h1
+            className="text-brand-navy"
+            style={{
+              fontFamily: 'Switzer, sans-serif',
+              fontWeight: 400,
+              fontSize: '28px',
+              lineHeight: 1.1,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Live Tracking
+          </h1>
+          <p className="ft-micro mt-2 text-brand-navy/55">
+            Real-time position · air, sea &amp; road — animated route view
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
+        <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
             All Entities <ChevronDown size={12} />
           </button>
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
-            Public tracking
-          </button>
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">Public tracking</button>
         </div>
       </header>
 
       <DataState<Shipment[]> state={all}>
         {(shipments) => (
-          <div className="flex flex-wrap gap-2">
+          <div className="-mx-1 flex flex-nowrap items-center gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible">
             {shipments.map((s) => {
               const active = s.ref === selectedRef;
               return (
@@ -64,10 +73,10 @@ export function LiveTrackingPage() {
                   type="button"
                   onClick={() => setSelectedRef(s.ref)}
                   className={clsx(
-                    'inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs transition-colors',
+                    'inline-flex shrink-0 items-center gap-1.5 border px-3 py-2 text-[12px] min-h-[36px] transition-colors',
                     active
-                      ? 'border-blue-600 bg-blue-50 text-blue-700 font-semibold'
-                      : 'border-border-subtle bg-surface-card text-text-secondary hover:bg-surface-canvas',
+                      ? 'border-brand-navy bg-brand-navy text-brand-paper font-medium'
+                      : 'border-brand-rule bg-brand-paper text-brand-navy/75 hover:bg-brand-bone/60',
                   )}
                 >
                   <ModeIcon mode={s.mode} />

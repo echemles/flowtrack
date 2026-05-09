@@ -21,7 +21,7 @@ import { useAddShipments } from '../components/AddShipmentsContext';
 type TabId = 'all' | 'arriving' | 'dispatched' | 'needs_action' | 'overdue';
 
 function ModeIcon({ mode }: { mode: string }) {
-  const cls = 'text-text-muted';
+  const cls = 'text-brand-navy/50';
   if (mode === 'sea') return <Ship size={12} className={cls} />;
   if (mode === 'air') return <Plane size={12} className={cls} />;
   if (mode === 'road') return <Truck size={12} className={cls} />;
@@ -70,32 +70,39 @@ export function ShipmentsPage() {
 
   return (
     <div className="mx-auto max-w-[1180px] space-y-4">
-      <header className="flex items-start justify-between gap-3">
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-text-primary">Shipments</h1>
-          <p className="mt-0.5 text-xs text-text-secondary">
-            {counts.all} total · all routes
-          </p>
+          <h1
+            className="text-brand-navy"
+            style={{
+              fontFamily: 'Switzer, sans-serif',
+              fontWeight: 400,
+              fontSize: '28px',
+              lineHeight: 1.1,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Shipments
+          </h1>
+          <p className="ft-micro mt-2 text-brand-navy/55">{counts.all} total · all routes</p>
         </div>
-        <div className="flex items-center gap-2">
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
+        <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
             All Entities <ChevronDown size={12} />
           </button>
           <button
             type="button"
             onClick={openAddShipments}
-            className="inline-flex items-center gap-1.5 rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
+            className="ft-pill ft-pill-primary ft-pill-sm shrink-0"
           >
             <Plus size={12} /> Add shipments
           </button>
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
-            Public tracking
-          </button>
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">Public tracking</button>
         </div>
       </header>
 
-      <div className="rounded-lg border border-border-subtle bg-surface-card">
-        <div className="px-3">
+      <div className="border border-brand-rule bg-brand-paper">
+        <div className="overflow-x-auto px-3">
           <TabStrip
             tabs={tabs}
             activeId={tabId}
@@ -108,81 +115,132 @@ export function ShipmentsPage() {
           />
         </div>
 
-        <div className="flex items-center justify-between gap-3 border-b border-border-subtle px-4 py-2.5">
-          <div className="flex flex-1 items-center gap-2 rounded-md border border-border-subtle bg-surface-canvas px-3 py-1.5 text-sm text-text-secondary">
-            <Search size={14} />
+        <div className="flex flex-col gap-3 border-b border-brand-rule px-3 py-3 sm:flex-row sm:items-center sm:px-4">
+          <div className="flex flex-1 items-center gap-2 border border-brand-rule bg-brand-bone/40 px-3 py-2 text-[14px] text-brand-navy">
+            <Search size={14} className="text-brand-navy/50" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-transparent outline-none"
+              className="w-full bg-transparent outline-none placeholder:text-brand-navy/35"
               placeholder="Search ref, client, origin…"
             />
           </div>
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
-            <SlidersHorizontal size={12} /> More filters
-          </button>
-          <div className="text-xs text-text-muted">
-            {filtered.length} of {counts.all}
+          <div className="flex items-center justify-between gap-3">
+            <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
+              <SlidersHorizontal size={12} /> More filters
+            </button>
+            <div className="ft-micro text-brand-navy/55">
+              {filtered.length} of {counts.all}
+            </div>
           </div>
         </div>
 
         <DataState<Shipment[]> state={state}>
           {() => (
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className="border-b border-border-subtle bg-surface-canvas text-[11px] font-bold uppercase tracking-wider text-text-muted">
-                  <th className="px-4 py-2 w-8">
-                    <input type="checkbox" className="accent-blue-600" disabled />
-                  </th>
-                  <th className="px-2 py-2">Ref</th>
-                  <th className="px-2 py-2">Route</th>
-                  <th className="px-2 py-2">Mode</th>
-                  <th className="px-2 py-2">Carrier</th>
-                  <th className="px-2 py-2">Client</th>
-                  <th className="px-2 py-2">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((s) => (
-                  <tr
-                    key={s.id}
-                    className="border-b border-border-subtle last:border-b-0 hover:bg-surface-canvas/60"
-                  >
-                    <td className="px-4 py-3">
-                      <input type="checkbox" className="accent-blue-600" />
-                    </td>
-                    <td className="px-2 py-3 font-medium text-text-primary">
-                      <Link to={`/shipments/${s.ref}`} className="hover:underline">
-                        {s.ref}
-                      </Link>
-                    </td>
-                    <td className="px-2 py-3 text-text-primary">
-                      <span className="text-text-primary">{s.origin_city}</span>
-                      <span className="mx-1 text-text-muted">→</span>
-                      <span className="text-text-primary">{s.dest_city}</span>
-                    </td>
-                    <td className="px-2 py-3">
-                      <span className="inline-flex items-center gap-1">
-                        <ModeIcon mode={s.mode} />
-                        <ModeChip mode={s.mode} />
-                      </span>
-                    </td>
-                    <td className="px-2 py-3 text-text-primary">{s.carrier ?? '—'}</td>
-                    <td className="px-2 py-3 text-text-primary">{s.client ?? '—'}</td>
-                    <td className="px-2 py-3">
-                      <StatusPill status={s.status} />
-                    </td>
-                  </tr>
-                ))}
+            <>
+              {/* Desktop table */}
+              <div className="hidden md:block">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="border-b border-brand-rule">
+                      <th className="ft-eyebrow w-8 px-4 py-3 text-brand-navy/55">
+                        <input type="checkbox" className="accent-brand-red" disabled />
+                      </th>
+                      <th className="ft-eyebrow px-2 py-3 text-brand-navy/55">Ref</th>
+                      <th className="ft-eyebrow px-2 py-3 text-brand-navy/55">Route</th>
+                      <th className="ft-eyebrow px-2 py-3 text-brand-navy/55">Mode</th>
+                      <th className="ft-eyebrow px-2 py-3 text-brand-navy/55">Carrier</th>
+                      <th className="ft-eyebrow px-2 py-3 text-brand-navy/55">Client</th>
+                      <th className="ft-eyebrow px-2 py-3 text-brand-navy/55">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filtered.map((s) => (
+                      <tr
+                        key={s.id}
+                        className="border-b border-brand-rule last:border-b-0 hover:bg-brand-bone/40"
+                      >
+                        <td className="px-4 py-3">
+                          <input type="checkbox" className="accent-brand-red" />
+                        </td>
+                        <td className="px-2 py-3 text-[14px] font-medium text-brand-navy">
+                          <Link to={`/shipments/${s.ref}`} className="hover:text-brand-red">
+                            {s.ref}
+                          </Link>
+                        </td>
+                        <td className="px-2 py-3 text-[14px] text-brand-navy">
+                          <span>{s.origin_city}</span>
+                          <span className="mx-1 text-brand-navy/40">→</span>
+                          <span>{s.dest_city}</span>
+                        </td>
+                        <td className="px-2 py-3">
+                          <span className="inline-flex items-center gap-1.5">
+                            <ModeIcon mode={s.mode} />
+                            <ModeChip mode={s.mode} />
+                          </span>
+                        </td>
+                        <td className="px-2 py-3 text-[14px] text-brand-navy">
+                          {s.carrier ?? '—'}
+                        </td>
+                        <td className="px-2 py-3 text-[14px] text-brand-navy">
+                          {s.client ?? '—'}
+                        </td>
+                        <td className="px-2 py-3">
+                          <StatusPill status={s.status} />
+                        </td>
+                      </tr>
+                    ))}
+                    {filtered.length === 0 ? (
+                      <tr>
+                        <td
+                          colSpan={7}
+                          className="px-4 py-8 text-center text-[13px] text-brand-navy/55"
+                        >
+                          No shipments match this filter.
+                        </td>
+                      </tr>
+                    ) : null}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile card list */}
+              <ul className="block md:hidden">
                 {filtered.length === 0 ? (
-                  <tr>
-                    <td colSpan={7} className="px-4 py-8 text-center text-sm text-text-muted">
-                      No shipments match this filter.
-                    </td>
-                  </tr>
-                ) : null}
-              </tbody>
-            </table>
+                  <li className="px-4 py-8 text-center text-[13px] text-brand-navy/55">
+                    No shipments match this filter.
+                  </li>
+                ) : (
+                  filtered.map((s) => (
+                    <li key={s.id} className="border-b border-brand-rule last:border-b-0">
+                      <Link
+                        to={`/shipments/${s.ref}`}
+                        className="flex min-h-[72px] items-start justify-between gap-3 px-4 py-3 active:bg-brand-bone/60"
+                      >
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-[14px] font-medium text-brand-navy">{s.ref}</span>
+                            <ModeChip mode={s.mode} />
+                          </div>
+                          <div className="mt-1 flex items-center gap-1.5 text-[12px] text-brand-navy/70">
+                            <ModeIcon mode={s.mode} />
+                            <span className="truncate">
+                              {s.origin_city} <span className="text-brand-navy/40">→</span>{' '}
+                              {s.dest_city}
+                            </span>
+                          </div>
+                          <div className="mt-0.5 truncate text-[11px] text-brand-navy/50">
+                            {s.carrier ?? '—'}
+                            {s.client ? ` · ${s.client}` : ''}
+                          </div>
+                        </div>
+                        <StatusPill status={s.status} />
+                      </Link>
+                    </li>
+                  ))
+                )}
+              </ul>
+            </>
           )}
         </DataState>
       </div>

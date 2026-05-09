@@ -3,15 +3,6 @@ import { Activity } from 'lucide-react';
 import { formatMoneyCompactK, formatMoney } from '../../lib/format';
 import clsx from 'clsx';
 
-const INDUSTRY_COLORS: Record<string, string> = {
-  Industrial: 'bg-slate-100 text-slate-700',
-  Electronics: 'bg-blue-100 text-blue-700',
-  Beauty: 'bg-pink-100 text-pink-700',
-  Apparel: 'bg-violet-100 text-violet-700',
-  Pharma: 'bg-emerald-100 text-emerald-700',
-  Food: 'bg-amber-100 text-amber-700',
-};
-
 function findKpi(pulse: Kpi[], slug: string) {
   return pulse.find((k) => k.slug === slug);
 }
@@ -25,39 +16,58 @@ export function PulseKpis({ pulse }: { pulse: Kpi[] }) {
   const industries = findKpi(pulse, 'industry_coverage');
 
   return (
-    <section className="rounded-lg border border-border-subtle bg-surface-card p-4">
-      <header className="mb-4 flex items-center justify-between">
-        <div className="flex items-start gap-2">
-          <div className="rounded-md bg-violet-50 p-1.5">
-            <Activity size={14} className="text-violet-600" />
+    <section className="border border-brand-rule bg-brand-paper p-5">
+      <header className="mb-5 flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="border border-brand-rule p-1.5">
+            <Activity size={14} className="text-brand-red" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-text-primary">Pulse</h3>
-            <p className="text-xs text-text-secondary">Financial · operational health</p>
+            <h3
+              className="text-brand-navy"
+              style={{
+                fontFamily: 'Switzer, sans-serif',
+                fontWeight: 400,
+                fontSize: '18px',
+                lineHeight: 1.2,
+                letterSpacing: '-0.005em',
+              }}
+            >
+              Pulse
+            </h3>
+            <p className="ft-micro mt-1 text-brand-navy/55">Financial · operational health</p>
           </div>
         </div>
-        <button className="rounded-md border border-border-subtle bg-surface-card px-2 py-1 text-[11px] text-text-secondary hover:bg-surface-canvas">
-          ROI calc
-        </button>
+        <button className="ft-pill ft-pill-ghost ft-pill-sm">ROI calc</button>
       </header>
 
       {/* On-time bar */}
-      <div className="space-y-1.5">
-        <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-text-secondary">
+      <div className="space-y-2">
+        <div className="ft-eyebrow flex items-center justify-between text-brand-navy/55">
           <span>On-time delivery</span>
-          <span className="text-emerald-600 text-base">{onTime?.value_pct ?? 100}%</span>
+          <span
+            className="text-brand-navy"
+            style={{
+              fontFamily: 'Switzer, sans-serif',
+              fontWeight: 300,
+              fontSize: '24px',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            {onTime?.value_pct ?? 100}%
+          </span>
         </div>
-        <div className="h-1.5 overflow-hidden rounded-full bg-surface-canvas">
+        <div className="h-1 overflow-hidden bg-brand-bone">
           <div
-            className="h-full bg-emerald-500"
+            className="h-full bg-brand-navy"
             style={{ width: `${onTime?.value_pct ?? 100}%` }}
           />
         </div>
-        <p className="text-[11px] text-text-muted">vs. 92% industry benchmark</p>
+        <p className="text-[12px] text-brand-navy/55">vs. 92% industry benchmark</p>
       </div>
 
       {/* KPI grid */}
-      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <KpiCell
           label="VALUE IN TRANSIT"
           value={valueInTransit ? formatMoneyCompactK(valueInTransit.value_minor ?? 0) : '$371K'}
@@ -80,27 +90,22 @@ export function PulseKpis({ pulse }: { pulse: Kpi[] }) {
           label="VARIANCE EXPOSURE"
           value={variance ? formatMoney(variance.value_minor ?? 0, 'USD', { cents: false }) : '$3,390'}
           footnote="cumulative over-quote across all invoices"
-          tone="warn"
+          tone="danger"
         />
       </div>
 
       {/* Industry coverage */}
-      <div className="mt-5 space-y-2">
-        <div className="text-[11px] font-bold uppercase tracking-wider text-text-secondary">
-          Industry coverage
-        </div>
+      <div className="mt-6 space-y-2.5">
+        <div className="ft-eyebrow text-brand-navy/55">Industry coverage</div>
         <div className="flex flex-wrap gap-2">
           {(industries?.text ?? []).map((entry) => {
             const [name, count] = entry.split(':').map((s) => s.trim());
             return (
               <span
                 key={entry}
-                className={clsx(
-                  'inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-medium',
-                  INDUSTRY_COLORS[name] ?? 'bg-slate-100 text-slate-700',
-                )}
+                className="ft-micro inline-flex items-center gap-1.5 border border-brand-rule bg-brand-paper px-2 py-1 text-brand-navy"
               >
-                {name} <span className="text-[10px] opacity-70">{count}</span>
+                {name} <span className="text-brand-navy/50">{count}</span>
               </span>
             );
           })}
@@ -121,19 +126,23 @@ function KpiCell({
   footnote: string;
   tone: 'neutral' | 'warn' | 'danger';
 }) {
-  const valueCls =
-    tone === 'danger'
-      ? 'text-red-600'
-      : tone === 'warn'
-        ? 'text-amber-600'
-        : 'text-text-primary';
+  const valueCls = tone === 'danger' ? 'text-brand-red' : 'text-brand-navy';
   return (
     <div>
-      <div className="text-[11px] font-bold uppercase tracking-wider text-text-secondary">
-        {label}
+      <div className="ft-micro text-brand-navy/55">{label}</div>
+      <div
+        className={clsx('mt-2', valueCls)}
+        style={{
+          fontFamily: 'Switzer, sans-serif',
+          fontWeight: 300,
+          fontSize: '34px',
+          lineHeight: 1.04,
+          letterSpacing: '-0.01em',
+        }}
+      >
+        {value}
       </div>
-      <div className={clsx('mt-0.5 text-2xl font-semibold', valueCls)}>{value}</div>
-      <div className="mt-0.5 text-[11px] text-text-muted">{footnote}</div>
+      <div className="mt-1.5 text-[12px] text-brand-navy/55">{footnote}</div>
     </div>
   );
 }

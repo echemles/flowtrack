@@ -43,20 +43,29 @@ export function ContactsPage() {
 
   return (
     <div className="mx-auto max-w-[1180px] space-y-4">
-      <header className="flex items-start justify-between gap-3">
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-text-primary">Contacts</h1>
-          <p className="mt-0.5 text-xs text-text-secondary">
+          <h1
+            className="text-brand-navy"
+            style={{
+              fontFamily: 'Switzer, sans-serif',
+              fontWeight: 400,
+              fontSize: '28px',
+              lineHeight: 1.1,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Contacts
+          </h1>
+          <p className="ft-micro mt-2 text-brand-navy/55">
             65 companies · team, clients, providers
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
+        <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
             All Entities <ChevronDown size={12} />
           </button>
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
-            Public tracking
-          </button>
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">Public tracking</button>
         </div>
       </header>
 
@@ -64,7 +73,7 @@ export function ContactsPage() {
         {(d) => (
           <>
             {/* Stat tiles */}
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-4">
               <StatTile label="Companies" value={d.stats.companies} icon={<Building2 size={16} />} />
               <StatTile label="People" value={d.stats.people} icon={<Users size={16} />} />
               <StatTile label="Client accounts" value={d.stats.clients} icon={<Briefcase size={16} />} />
@@ -72,15 +81,15 @@ export function ContactsPage() {
             </div>
 
             {/* Filters card */}
-            <div className="rounded-lg border border-border-subtle bg-surface-card p-3">
-              <div className="mb-3 flex items-center gap-2 rounded-md border border-border-subtle bg-surface-canvas px-3 py-1.5">
-                <Search size={14} className="text-text-muted" />
+            <div className="border border-brand-rule bg-brand-paper p-3">
+              <div className="mb-3 flex items-center gap-2 border border-brand-rule bg-brand-bone/40 px-3 py-2">
+                <Search size={14} className="text-brand-navy/55" />
                 <input
-                  className="w-full bg-transparent text-sm outline-none placeholder:text-text-muted"
+                  className="w-full bg-transparent text-[14px] text-brand-navy outline-none placeholder:text-brand-navy/40"
                   placeholder="Search name, role, email, city…"
                 />
               </div>
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="-mx-1 flex flex-nowrap items-center gap-2 overflow-x-auto px-1 pb-1 md:flex-wrap md:overflow-visible md:pb-0">
                 {FILTERS.map((f) => {
                   const active = filter === f;
                   const count =
@@ -97,10 +106,10 @@ export function ContactsPage() {
                       type="button"
                       onClick={() => setFilter(f)}
                       className={clsx(
-                        'inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs',
+                        'inline-flex shrink-0 items-center gap-1.5 px-2.5 py-1.5 text-[12px] min-h-[32px] transition-colors',
                         active
-                          ? 'bg-text-primary text-white'
-                          : 'border border-border-subtle bg-surface-card text-text-secondary hover:bg-surface-canvas',
+                          ? 'bg-brand-navy text-brand-paper'
+                          : 'border border-brand-rule bg-brand-paper text-brand-navy/70 hover:bg-brand-bone/60',
                       )}
                     >
                       {ICON_FOR_FILTER[f]}
@@ -109,13 +118,15 @@ export function ContactsPage() {
                     </button>
                   );
                 })}
-                <div className="ml-auto flex items-center gap-2">
-                  <div className="flex items-center rounded-md border border-border-subtle bg-surface-card text-xs">
+                <div className="ml-auto hidden items-center gap-2 md:flex">
+                  <div className="flex items-center border border-brand-rule bg-brand-paper text-[12px]">
                     <button
                       onClick={() => setView('grid')}
                       className={clsx(
-                        'px-2 py-1',
-                        view === 'grid' ? 'bg-surface-canvas font-semibold text-text-primary' : 'text-text-secondary',
+                        'px-2.5 py-1.5 min-h-[32px]',
+                        view === 'grid'
+                          ? 'bg-brand-bone font-medium text-brand-navy'
+                          : 'text-brand-navy/65',
                       )}
                     >
                       Grid
@@ -123,40 +134,47 @@ export function ContactsPage() {
                     <button
                       onClick={() => setView('list')}
                       className={clsx(
-                        'px-2 py-1',
-                        view === 'list' ? 'bg-surface-canvas font-semibold text-text-primary' : 'text-text-secondary',
+                        'px-2.5 py-1.5 min-h-[32px]',
+                        view === 'list'
+                          ? 'bg-brand-bone font-medium text-brand-navy'
+                          : 'text-brand-navy/65',
                       )}
                     >
                       List
                     </button>
                   </div>
-                  <button className="inline-flex items-center gap-1 rounded-md bg-blue-600 px-2 py-1 text-xs font-medium text-white hover:bg-blue-700">
+                  <button className="ft-pill ft-pill-primary ft-pill-sm">
                     <Plus size={12} /> Add contact
                   </button>
                 </div>
+              </div>
+              <div className="mt-3 flex justify-end md:hidden">
+                <button className="ft-pill ft-pill-primary ft-pill-sm">
+                  <Plus size={12} /> Add contact
+                </button>
               </div>
             </div>
 
             {/* Team */}
             <Section title="Team" count={d.team.length}>
               <div className="grid gap-3 md:grid-cols-2">
-                <div className="rounded-md border border-border-subtle bg-surface-card p-4">
+                <div className="border border-brand-rule bg-brand-paper p-4">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-md bg-violet-100 text-sm font-bold text-violet-700">
+                      <span className="flex h-10 w-10 items-center justify-center border border-brand-rule bg-brand-bone text-[13px] font-bold text-brand-navy">
                         I
                       </span>
                       <div>
-                        <div className="text-sm font-semibold text-text-primary">
+                        <div className="text-[14px] font-medium text-brand-navy">
                           Innovtex (internal team)
                         </div>
-                        <div className="text-[11px] text-text-secondary">Team</div>
+                        <div className="ft-micro text-brand-navy/55">Team</div>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-3 flex items-center gap-3 text-xs text-text-secondary">
-                    <span className="flex items-center gap-1">📍 Innovtex HQ</span>
-                    <span className="flex items-center gap-1">👥 {d.team.length}</span>
+                  <div className="mt-3 flex flex-wrap items-center gap-3 text-[12px] text-brand-navy/65">
+                    <span>Innovtex HQ</span>
+                    <span>· {d.team.length} people</span>
                     <span>· 12 ship.</span>
                   </div>
                 </div>
@@ -165,7 +183,7 @@ export function ContactsPage() {
 
             {/* Clients */}
             <Section title="Clients" count={d.clientsPreview.length}>
-              <div className="grid gap-3 md:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2">
                 {d.clientsPreview.map((c) => {
                   const initials = c.name
                     .split(/\s+/)
@@ -175,21 +193,22 @@ export function ContactsPage() {
                     .join('')
                     .toUpperCase();
                   return (
-                    <div key={c.id} className="rounded-md border border-border-subtle bg-surface-card p-4">
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-center gap-3">
-                          <span className="flex h-10 w-10 items-center justify-center rounded-md bg-blue-100 text-sm font-bold text-blue-700">
+                    <div key={c.id} className="border border-brand-rule bg-brand-paper p-4">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex min-w-0 items-center gap-3">
+                          <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-brand-rule bg-brand-bone text-[13px] font-bold text-brand-navy">
                             {initials}
                           </span>
-                          <div>
-                            <div className="text-sm font-semibold text-text-primary">{c.name}</div>
-                            <div className="text-[11px] text-text-secondary">Clients</div>
+                          <div className="min-w-0">
+                            <div className="truncate text-[14px] font-medium text-brand-navy">
+                              {c.name}
+                            </div>
+                            <div className="ft-micro text-brand-navy/55">Clients</div>
                           </div>
                         </div>
-                        <span className="text-[11px] text-text-muted">{c.country}</span>
+                        <span className="ft-micro text-brand-navy/50">{c.country}</span>
                       </div>
-                      <div className="mt-3 flex items-center gap-3 text-xs text-text-secondary">
-                        <span>—</span>
+                      <div className="mt-3 flex items-center gap-3 text-[12px] text-brand-navy/65">
                         <span className="flex items-center gap-1">
                           <Users size={12} /> 3
                         </span>
@@ -203,16 +222,18 @@ export function ContactsPage() {
 
             {/* Providers */}
             <Section title="Providers (top)" count={d.providersPreview.length}>
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {d.providersPreview.slice(0, 9).map((p) => (
-                  <div key={p.id} className="rounded-md border border-border-subtle bg-surface-card p-3">
+                  <div key={p.id} className="border border-brand-rule bg-brand-paper p-3">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-md bg-emerald-100 text-xs font-bold text-emerald-700">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-brand-rule bg-brand-bone text-[12px] font-bold text-brand-navy">
                         {p.name.slice(0, 2).toUpperCase()}
                       </span>
-                      <div>
-                        <div className="text-sm font-semibold text-text-primary">{p.name}</div>
-                        <div className="text-[11px] text-text-secondary">
+                      <div className="min-w-0">
+                        <div className="truncate text-[14px] font-medium text-brand-navy">
+                          {p.name}
+                        </div>
+                        <div className="ft-micro text-brand-navy/55">
                           {p.industry ?? 'Provider'} · {p.country ?? '—'}
                         </div>
                       </div>
@@ -230,22 +251,41 @@ export function ContactsPage() {
 
 function StatTile({ label, value, icon }: { label: string; value: number; icon: JSX.Element }) {
   return (
-    <div className="flex items-start justify-between rounded-lg border border-border-subtle bg-surface-card p-4">
+    <div className="flex items-start justify-between border border-brand-rule bg-brand-paper p-4">
       <div>
-        <div className="text-[11px] font-bold uppercase tracking-wider text-text-secondary">{label}</div>
-        <div className="mt-1 text-2xl font-semibold text-text-primary">{value}</div>
+        <div className="ft-eyebrow text-brand-navy/55">{label}</div>
+        <div
+          className="mt-2 text-brand-navy"
+          style={{
+            fontFamily: 'Switzer, sans-serif',
+            fontWeight: 300,
+            fontSize: '28px',
+            lineHeight: 1.04,
+            letterSpacing: '-0.01em',
+          }}
+        >
+          {value}
+        </div>
       </div>
-      <div className="rounded-md bg-surface-canvas p-2 text-text-secondary">{icon}</div>
+      <div className="border border-brand-rule p-2 text-brand-navy/70">{icon}</div>
     </div>
   );
 }
 
-function Section({ title, count, children }: { title: string; count: number; children: React.ReactNode }) {
+function Section({
+  title,
+  count,
+  children,
+}: {
+  title: string;
+  count: number;
+  children: React.ReactNode;
+}) {
   return (
     <section>
-      <header className="mb-2 flex items-center gap-2">
-        <h2 className="text-sm font-semibold text-text-primary">{title}</h2>
-        <span className="text-xs text-text-muted">{count}</span>
+      <header className="mb-2 flex items-baseline gap-2">
+        <h2 className="ft-eyebrow text-brand-navy">{title}</h2>
+        <span className="ft-micro text-brand-navy/50">{count}</span>
       </header>
       {children}
     </section>

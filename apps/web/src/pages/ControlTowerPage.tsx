@@ -35,42 +35,47 @@ export function ControlTowerPage() {
 function Header() {
   const { open: openAddShipments } = useAddShipments();
   return (
-    <div className="flex items-start justify-between gap-3">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-text-primary">Control Tower</h1>
-        <p className="mt-0.5 text-xs text-text-secondary">
+        <h1
+          className="text-brand-navy"
+          style={{
+            fontFamily: 'Switzer, sans-serif',
+            fontWeight: 400,
+            fontSize: '28px',
+            lineHeight: 1.1,
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Control Tower
+        </h1>
+        <p className="ft-micro mt-2 text-brand-navy/55">
           Global shipment visibility · all modes
         </p>
       </div>
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas"
-        >
+      <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
+        <button type="button" className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
           All Entities
           <ChevronDown size={12} />
         </button>
         <button
           type="button"
           onClick={openAddShipments}
-          className="inline-flex items-center gap-1.5 rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
+          className="ft-pill ft-pill-primary ft-pill-sm shrink-0"
         >
           <Plus size={12} />
           Add shipments
         </button>
-        <button
-          type="button"
-          className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas"
-        >
+        <button type="button" className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
           <Activity size={12} />
           Public tracking
         </button>
         <button
           type="button"
-          className="relative rounded-md border border-border-subtle bg-surface-card p-1.5 text-text-secondary hover:bg-surface-canvas"
+          className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center border border-brand-rule bg-brand-paper text-brand-navy/70 transition-colors hover:bg-brand-bone"
         >
           <Bell size={14} />
-          <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-semibold text-white">
+          <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center bg-brand-red px-1 text-[10px] font-bold text-brand-paper">
             4
           </span>
         </button>

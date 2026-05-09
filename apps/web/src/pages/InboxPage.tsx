@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { z } from 'zod';
 import {
   ChevronDown,
+  ChevronLeft,
   Inbox,
   Mail,
   MessageCircle,
@@ -54,12 +55,12 @@ const CHANNELS: { id: Channel; label: string; icon: JSX.Element }[] = [
 ];
 
 const CHANNEL_DOT: Record<string, string> = {
-  email: 'bg-red-500',
-  whatsapp: 'bg-emerald-500',
-  sms: 'bg-amber-500',
-  voice: 'bg-violet-500',
-  slack: 'bg-pink-500',
-  teams: 'bg-blue-500',
+  email: 'bg-brand-red',
+  whatsapp: 'bg-mode-sea',
+  sms: 'bg-mode-ecom',
+  voice: 'bg-brand-navy',
+  slack: 'bg-brand-ink',
+  teams: 'bg-mode-sea',
 };
 
 const ThreadMessagesSchema = z.object({ messages: z.array(InboxMessageSchema) });
@@ -79,20 +80,29 @@ export function InboxPage() {
 
   return (
     <div className="mx-auto max-w-[1280px] space-y-4">
-      <header className="flex items-start justify-between gap-3">
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-text-primary">Inbox</h1>
-          <p className="mt-0.5 text-xs text-text-secondary">
+          <h1
+            className="text-brand-navy"
+            style={{
+              fontFamily: 'Switzer, sans-serif',
+              fontWeight: 400,
+              fontSize: '28px',
+              lineHeight: 1.1,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Inbox
+          </h1>
+          <p className="ft-micro mt-2 text-brand-navy/55">
             Unified provider conversations · all channels
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
+        <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
             All Entities <ChevronDown size={12} />
           </button>
-          <button className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-canvas">
-            Public tracking
-          </button>
+          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">Public tracking</button>
         </div>
       </header>
 
@@ -110,15 +120,10 @@ export function InboxPage() {
             );
           }
           return (
-            <div className="grid grid-cols-12 gap-4">
-              <aside className="col-span-3 rounded-lg border border-border-subtle bg-surface-card p-3">
-                <button className="mb-3 flex w-full items-center justify-center gap-1.5 rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700">
-                  <Plus size={12} /> New message
-                </button>
-                <div className="mb-1 px-1 text-[10px] font-bold uppercase tracking-wider text-text-muted">
-                  Folders
-                </div>
-                <ul className="mb-3 space-y-0.5">
+            <>
+              {/* Mobile chip rails */}
+              <div className="space-y-2 lg:hidden">
+                <div className="-mx-1 flex flex-nowrap gap-2 overflow-x-auto px-1 pb-1">
                   {(Object.keys(FOLDER_LABELS) as Folder[]).map((f) => {
                     const count =
                       f === 'unread'
@@ -130,92 +135,213 @@ export function InboxPage() {
                             : f === 'archived'
                               ? data.counts.archived
                               : data.counts.inbox;
+                    const active = folder === f;
                     return (
-                      <li key={f}>
-                        <button
-                          type="button"
-                          onClick={() => setFolder(f)}
-                          className={clsx(
-                            'flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-xs',
-                            folder === f
-                              ? 'bg-blue-50 font-semibold text-blue-700'
-                              : 'text-text-secondary hover:bg-surface-canvas',
-                          )}
-                        >
-                          <span className="flex items-center gap-2">
-                            {FOLDER_ICONS[f]}
-                            {FOLDER_LABELS[f]}
-                          </span>
-                          <span className={clsx('text-[11px]', folder === f ? 'text-blue-700' : 'text-text-muted')}>
-                            {count}
-                          </span>
-                        </button>
-                      </li>
+                      <button
+                        key={f}
+                        type="button"
+                        onClick={() => setFolder(f)}
+                        className={clsx(
+                          'inline-flex shrink-0 items-center gap-1.5 border px-3 py-1.5 text-[12px] min-h-[36px]',
+                          active
+                            ? 'border-brand-navy bg-brand-navy text-brand-paper'
+                            : 'border-brand-rule bg-brand-paper text-brand-navy/70',
+                        )}
+                      >
+                        {FOLDER_ICONS[f]}
+                        {FOLDER_LABELS[f]}
+                        <span className="text-[10px] opacity-70">{count}</span>
+                      </button>
                     );
                   })}
-                </ul>
-                <div className="mb-1 px-1 text-[10px] font-bold uppercase tracking-wider text-text-muted">
-                  Channels
                 </div>
-                <ul className="space-y-0.5">
-                  {CHANNELS.map((c) => (
-                    <li key={c.id}>
+                <div className="-mx-1 flex flex-nowrap gap-2 overflow-x-auto px-1 pb-1">
+                  {CHANNELS.map((c) => {
+                    const active = channel === c.id;
+                    return (
                       <button
+                        key={c.id}
                         type="button"
                         onClick={() => setChannel(c.id)}
                         className={clsx(
-                          'flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-xs',
-                          channel === c.id
-                            ? 'bg-blue-50 font-semibold text-blue-700'
-                            : 'text-text-secondary hover:bg-surface-canvas',
+                          'inline-flex shrink-0 items-center gap-1.5 border px-3 py-1.5 text-[12px] min-h-[36px]',
+                          active
+                            ? 'border-brand-navy bg-brand-bone text-brand-navy font-medium'
+                            : 'border-brand-rule bg-brand-paper text-brand-navy/70',
                         )}
                       >
                         {c.icon}
                         {c.label}
                       </button>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-              <div className="col-span-5 rounded-lg border border-border-subtle bg-surface-card">
-                <div className="flex items-center gap-2 border-b border-border-subtle px-3 py-2">
-                  <Search size={14} className="text-text-muted" />
-                  <input
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search conversations…"
-                    className="w-full bg-transparent text-sm outline-none placeholder:text-text-muted"
-                  />
+                    );
+                  })}
                 </div>
-                <ul className="max-h-[640px] overflow-y-auto">
-                  {threads.length === 0 ? (
-                    <li className="px-4 py-8 text-center text-xs text-text-muted">
-                      No conversations match this filter.
-                    </li>
-                  ) : (
-                    threads.map((t) => (
-                      <ThreadRow
-                        key={t.id}
-                        t={t}
-                        active={activeThreadId === t.id}
-                        onSelect={() => setActiveThreadId(t.id)}
-                      />
-                    ))
-                  )}
-                </ul>
               </div>
-              <div className="col-span-4 rounded-lg border border-border-subtle bg-surface-card p-4">
-                {activeThreadId ? (
-                  <DataState state={messages}>
-                    {(m) => <ThreadView messages={m.messages} />}
-                  </DataState>
+
+              {/* Mobile single-pane swap */}
+              <div className="lg:hidden">
+                {!activeThreadId ? (
+                  <div className="border border-brand-rule bg-brand-paper">
+                    <div className="flex items-center gap-2 border-b border-brand-rule px-3 py-2">
+                      <Search size={14} className="text-brand-navy/55" />
+                      <input
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search conversations…"
+                        className="w-full bg-transparent text-[14px] text-brand-navy outline-none placeholder:text-brand-navy/40"
+                      />
+                    </div>
+                    <ul>
+                      {threads.length === 0 ? (
+                        <li className="px-4 py-8 text-center text-[12px] text-brand-navy/55">
+                          No conversations match this filter.
+                        </li>
+                      ) : (
+                        threads.map((t) => (
+                          <ThreadRow
+                            key={t.id}
+                            t={t}
+                            active={false}
+                            onSelect={() => setActiveThreadId(t.id)}
+                          />
+                        ))
+                      )}
+                    </ul>
+                    <div className="border-t border-brand-rule p-3">
+                      <button className="ft-pill ft-pill-primary ft-pill-sm w-full">
+                        <Plus size={12} /> New message
+                      </button>
+                    </div>
+                  </div>
                 ) : (
-                  <div className="flex h-full min-h-[200px] items-center justify-center text-center text-xs text-text-muted">
-                    Select a conversation to view messages.
+                  <div className="border border-brand-rule bg-brand-paper">
+                    <div className="flex items-center gap-2 border-b border-brand-rule px-3 py-2">
+                      <button
+                        type="button"
+                        onClick={() => setActiveThreadId(null)}
+                        className="ft-eyebrow inline-flex items-center gap-1 text-brand-navy/65"
+                      >
+                        <ChevronLeft size={12} /> All threads
+                      </button>
+                    </div>
+                    <div className="p-3">
+                      <DataState state={messages}>
+                        {(m) => <ThreadView messages={m.messages} />}
+                      </DataState>
+                    </div>
                   </div>
                 )}
               </div>
-            </div>
+
+              {/* Desktop 3-pane */}
+              <div className="hidden grid-cols-12 gap-4 lg:grid">
+                <aside className="col-span-3 border border-brand-rule bg-brand-paper p-3">
+                  <button className="ft-pill ft-pill-primary ft-pill-sm mb-3 w-full">
+                    <Plus size={12} /> New message
+                  </button>
+                  <div className="ft-eyebrow mb-1 px-1 text-brand-navy/55">Folders</div>
+                  <ul className="mb-3 space-y-0.5">
+                    {(Object.keys(FOLDER_LABELS) as Folder[]).map((f) => {
+                      const count =
+                        f === 'unread'
+                          ? data.counts.unread
+                          : f === 'starred'
+                            ? data.counts.starred
+                            : f === 'agi_escalations'
+                              ? data.counts.agi_escalations
+                              : f === 'archived'
+                                ? data.counts.archived
+                                : data.counts.inbox;
+                      return (
+                        <li key={f}>
+                          <button
+                            type="button"
+                            onClick={() => setFolder(f)}
+                            className={clsx(
+                              'flex w-full items-center justify-between gap-2 px-2 py-1.5 text-[12px]',
+                              folder === f
+                                ? 'bg-brand-bone text-brand-navy font-medium'
+                                : 'text-brand-navy/65 hover:bg-brand-bone/50',
+                            )}
+                          >
+                            <span className="flex items-center gap-2">
+                              {FOLDER_ICONS[f]}
+                              {FOLDER_LABELS[f]}
+                            </span>
+                            <span
+                              className={clsx(
+                                'text-[11px]',
+                                folder === f ? 'text-brand-navy' : 'text-brand-navy/50',
+                              )}
+                            >
+                              {count}
+                            </span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <div className="ft-eyebrow mb-1 px-1 text-brand-navy/55">Channels</div>
+                  <ul className="space-y-0.5">
+                    {CHANNELS.map((c) => (
+                      <li key={c.id}>
+                        <button
+                          type="button"
+                          onClick={() => setChannel(c.id)}
+                          className={clsx(
+                            'flex w-full items-center gap-2 px-2 py-1.5 text-[12px]',
+                            channel === c.id
+                              ? 'bg-brand-bone text-brand-navy font-medium'
+                              : 'text-brand-navy/65 hover:bg-brand-bone/50',
+                          )}
+                        >
+                          {c.icon}
+                          {c.label}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
+                <div className="col-span-5 border border-brand-rule bg-brand-paper">
+                  <div className="flex items-center gap-2 border-b border-brand-rule px-3 py-2">
+                    <Search size={14} className="text-brand-navy/55" />
+                    <input
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Search conversations…"
+                      className="w-full bg-transparent text-[14px] text-brand-navy outline-none placeholder:text-brand-navy/40"
+                    />
+                  </div>
+                  <ul className="max-h-[640px] overflow-y-auto">
+                    {threads.length === 0 ? (
+                      <li className="px-4 py-8 text-center text-[12px] text-brand-navy/55">
+                        No conversations match this filter.
+                      </li>
+                    ) : (
+                      threads.map((t) => (
+                        <ThreadRow
+                          key={t.id}
+                          t={t}
+                          active={activeThreadId === t.id}
+                          onSelect={() => setActiveThreadId(t.id)}
+                        />
+                      ))
+                    )}
+                  </ul>
+                </div>
+                <div className="col-span-4 border border-brand-rule bg-brand-paper p-4">
+                  {activeThreadId ? (
+                    <DataState state={messages}>
+                      {(m) => <ThreadView messages={m.messages} />}
+                    </DataState>
+                  ) : (
+                    <div className="flex h-full min-h-[200px] items-center justify-center text-center text-[12px] text-brand-navy/55">
+                      Select a conversation to view messages.
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
           );
         }}
       </DataState>
@@ -238,28 +364,30 @@ function ThreadRow({
         type="button"
         onClick={onSelect}
         className={clsx(
-          'flex w-full items-start gap-3 border-b border-border-subtle px-4 py-3 text-left transition-colors last:border-b-0',
-          active ? 'bg-blue-50' : 'hover:bg-surface-canvas',
+          'flex w-full items-start gap-3 border-b border-brand-rule px-4 py-3 text-left transition-colors last:border-b-0 min-h-[64px]',
+          active ? 'bg-brand-bone' : 'hover:bg-brand-bone/50',
         )}
       >
         <span
           className={clsx(
             'mt-1 h-2 w-2 shrink-0 rounded-full',
-            CHANNEL_DOT[t.channel] ?? 'bg-slate-400',
+            CHANNEL_DOT[t.channel] ?? 'bg-brand-navy/40',
           )}
         />
-        <div className="flex-1 min-w-0">
+        <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-2">
-            <div className="truncate text-sm font-medium text-text-primary">
+            <div className="truncate text-[14px] font-medium text-brand-navy">
               {t.counterpart ?? 'Unknown'}
-              {t.unread ? <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-blue-500" /> : null}
-              {t.starred ? <span className="ml-1 text-amber-500">★</span> : null}
+              {t.unread ? (
+                <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-brand-red" />
+              ) : null}
+              {t.starred ? <span className="ml-1 text-brand-red">★</span> : null}
             </div>
-            <div className="text-[11px] text-text-muted">{formatRelative(t.last_at)}</div>
+            <div className="text-[11px] text-brand-navy/50">{formatRelative(t.last_at)}</div>
           </div>
-          <div className="mt-0.5 truncate text-xs text-text-secondary">{t.subject}</div>
+          <div className="mt-0.5 truncate text-[12px] text-brand-navy/65">{t.subject}</div>
           {t.shipment_ref ? (
-            <div className="mt-0.5 text-[10px] font-medium text-blue-600">{t.shipment_ref}</div>
+            <div className="ft-micro mt-1 text-brand-red">{t.shipment_ref}</div>
           ) : null}
         </div>
       </button>
@@ -269,26 +397,24 @@ function ThreadRow({
 
 function ThreadView({ messages }: { messages: InboxMessage[] }) {
   if (messages.length === 0)
-    return (
-      <div className="text-xs text-text-muted">No messages on this thread yet.</div>
-    );
+    return <div className="text-[12px] text-brand-navy/55">No messages on this thread yet.</div>;
   return (
     <ul className="space-y-3">
       {messages.map((m) => (
         <li
           key={m.id}
           className={clsx(
-            'rounded-md p-3 text-sm',
+            'border p-3 text-[14px]',
             m.direction === 'in'
-              ? 'bg-surface-canvas border border-border-subtle'
-              : 'bg-blue-50 border border-blue-100',
+              ? 'border-brand-rule bg-brand-bone/60'
+              : 'border-brand-navy/15 bg-brand-paper',
           )}
         >
           <div className="mb-1 flex items-center justify-between">
-            <span className="text-xs font-semibold text-text-primary">{m.from_name}</span>
-            <span className="text-[11px] text-text-muted">{formatRelative(m.at)}</span>
+            <span className="text-[12px] font-medium text-brand-navy">{m.from_name}</span>
+            <span className="text-[11px] text-brand-navy/50">{formatRelative(m.at)}</span>
           </div>
-          <div className="whitespace-pre-wrap text-text-primary">{m.body}</div>
+          <div className="whitespace-pre-wrap text-brand-navy">{m.body}</div>
         </li>
       ))}
     </ul>

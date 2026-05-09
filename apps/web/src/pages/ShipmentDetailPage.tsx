@@ -16,7 +16,7 @@ export function ShipmentDetailPage() {
       <div>
         <Link
           to="/app/shipments"
-          className="inline-flex items-center gap-1 text-xs font-medium text-text-secondary hover:text-text-primary"
+          className="ft-eyebrow inline-flex items-center gap-1 text-brand-navy/65 hover:text-brand-navy"
         >
           <ChevronLeft size={12} /> All shipments
         </Link>

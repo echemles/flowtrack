@@ -5,7 +5,7 @@ import { formatDateLong } from '../../lib/format';
 import { StatusPill } from '../../components/ui/StatusPill';
 
 function ModeIcon({ mode }: { mode: string }) {
-  const cls = 'text-text-muted';
+  const cls = 'text-brand-navy/55';
   if (mode === 'sea') return <Ship size={12} className={cls} />;
   if (mode === 'air') return <Plane size={12} className={cls} />;
   if (mode === 'road') return <Truck size={12} className={cls} />;
@@ -18,11 +18,11 @@ function FlowItem({ s }: { s: Shipment }) {
   return (
     <Link
       to={`/shipments/${s.ref}`}
-      className="flex items-center justify-between gap-3 rounded-md border border-border-subtle bg-surface-card px-3 py-2 hover:bg-surface-canvas"
+      className="flex min-h-[56px] items-center justify-between gap-3 border border-brand-rule bg-brand-paper px-3 py-2.5 transition-colors hover:bg-brand-bone/50"
     >
       <div className="flex flex-col min-w-0">
-        <span className="text-sm font-medium text-text-primary">{s.ref}</span>
-        <span className="flex items-center gap-1 text-xs text-text-secondary">
+        <span className="text-[14px] font-medium text-brand-navy">{s.ref}</span>
+        <span className="mt-0.5 flex items-center gap-1.5 text-[12px] text-brand-navy/70">
           <ModeIcon mode={s.mode} />
           {route} · {formatDateLong(dateIso)}
         </span>
@@ -38,28 +38,39 @@ export function TodaysFlow({
   flow: { arriving: Shipment[]; dispatched: Shipment[] };
 }) {
   return (
-    <section className="rounded-lg border border-border-subtle bg-surface-card">
-      <header className="flex items-center justify-between border-b border-border-subtle px-4 py-3">
+    <section className="border border-brand-rule bg-brand-paper">
+      <header className="flex items-center justify-between border-b border-brand-rule px-4 py-3">
         <div className="flex items-center gap-2">
-          <Calendar size={14} className="text-text-secondary" />
-          <h3 className="text-sm font-semibold text-text-primary">Today's flow</h3>
-          <span className="text-xs text-text-secondary">
+          <Calendar size={14} className="text-brand-navy/55" />
+          <h3
+            className="text-brand-navy"
+            style={{
+              fontFamily: 'Switzer, sans-serif',
+              fontWeight: 400,
+              fontSize: '18px',
+              lineHeight: 1.2,
+              letterSpacing: '-0.005em',
+            }}
+          >
+            Today's flow
+          </h3>
+          <span className="ft-micro text-brand-navy/55">
             · 19 Apr 2026 · arrivals + dispatches in next 48h
           </span>
         </div>
-        <Link to="/app/shipments" className="text-xs font-medium text-blue-600 hover:underline">
+        <Link to="/app/shipments" className="ft-eyebrow text-brand-red hover:text-brand-redInk">
           All shipments →
         </Link>
       </header>
-      <div className="grid grid-cols-1 gap-0 md:grid-cols-2 md:divide-x md:divide-border-subtle">
-        <Column title="ARRIVING" count={flow.arriving.length} accent="text-blue-600">
+      <div className="grid grid-cols-1 gap-0 md:grid-cols-2 md:divide-x md:divide-brand-rule">
+        <Column title="ARRIVING" count={flow.arriving.length} tone="navy">
           {flow.arriving.length === 0 ? (
             <Empty>No arrivals in the window.</Empty>
           ) : (
             flow.arriving.map((s) => <FlowItem key={s.id} s={s} />)
           )}
         </Column>
-        <Column title="DISPATCHED" count={flow.dispatched.length} accent="text-emerald-600">
+        <Column title="DISPATCHED" count={flow.dispatched.length} tone="red">
           {flow.dispatched.length === 0 ? (
             <Empty>No dispatches in the window.</Empty>
           ) : (
@@ -74,19 +85,19 @@ export function TodaysFlow({
 function Column({
   title,
   count,
-  accent,
+  tone,
   children,
 }: {
   title: string;
   count: number;
-  accent: string;
+  tone: 'navy' | 'red';
   children: React.ReactNode;
 }) {
   return (
     <div className="space-y-2 px-4 py-3">
-      <div className="flex items-center justify-between text-[11px] font-bold tracking-wider">
-        <span className={accent}>{title}</span>
-        <span className="text-text-muted">{count}</span>
+      <div className="ft-eyebrow flex items-center justify-between">
+        <span className={tone === 'red' ? 'text-brand-red' : 'text-brand-navy'}>{title}</span>
+        <span className="text-brand-navy/40">{count}</span>
       </div>
       <div className="space-y-2">{children}</div>
     </div>
@@ -95,7 +106,7 @@ function Column({
 
 function Empty({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-md border border-dashed border-border-subtle px-3 py-4 text-center text-xs text-text-muted">
+    <div className="border border-dashed border-brand-rule px-3 py-4 text-center text-[13px] text-brand-navy/55">
       {children}
     </div>
   );
