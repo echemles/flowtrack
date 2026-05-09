@@ -60,7 +60,7 @@ export function ClosingCta() {
 
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div style={{ textAlign: 'center', maxWidth: 1100 }}>
-            <HeadlineReveal text="Ready To See / Your Fleet / Like This?" />
+            <HeadlineReveal text="Ready To See / Your Fleet / Like This?" variant="cta" />
           </div>
         </div>
 

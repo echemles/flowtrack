@@ -22,12 +22,9 @@ export function ControlTowerSection() {
         overflow: 'hidden',
       }}
     >
-      <div
-        aria-hidden
-        style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
-      >
-        <div style={{ position: 'sticky', top: '8vh' }}>
-          <div style={{ paddingLeft: 'clamp(16px, 4vw, 64px)' }}>
+      <div aria-hidden className="ghost-frame">
+        <div className="ghost-sticky ghost-left">
+          <div className="ghost-pad-left">
             <GhostNumeral n="02" light />
           </div>
         </div>

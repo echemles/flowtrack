@@ -1,19 +1,26 @@
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
+type Variant = 'default' | 'hero' | 'cta';
+
 type Props = {
   text: string;
   className?: string;
   asHero?: boolean;
+  variant?: Variant;
 };
 
-export function HeadlineReveal({ text, className = '', asHero = false }: Props) {
+export function HeadlineReveal({ text, className = '', asHero = false, variant }: Props) {
   const reduced = useReducedMotion();
   const lines = text.split('/').map((s) => s.trim()).filter(Boolean);
 
+  const resolved: Variant = variant ?? (asHero ? 'hero' : 'default');
+  const variantClass =
+    resolved === 'hero' ? 'display-hero' : resolved === 'cta' ? 'display-cta' : '';
+
   if (reduced) {
     return (
-      <h1 className={`display ${asHero ? 'display-hero' : ''} ${className}`}>
+      <h1 className={`display ${variantClass} ${className}`}>
         {lines.map((line, i) => (
           <span key={i} style={{ display: 'block' }}>{line}</span>
         ))}
@@ -22,7 +29,7 @@ export function HeadlineReveal({ text, className = '', asHero = false }: Props) 
   }
 
   return (
-    <h1 className={`display ${asHero ? 'display-hero' : ''} ${className}`}>
+    <h1 className={`display ${variantClass} ${className}`}>
       {lines.map((line, lineIdx) => (
         <span key={lineIdx} style={{ display: 'block', overflow: 'hidden' }}>
           <motion.span

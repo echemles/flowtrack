@@ -30,9 +30,9 @@ export function AgiSection() {
         overflow: 'hidden',
       }}
     >
-      <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        <div style={{ position: 'sticky', top: '8vh' }}>
-          <div style={{ paddingLeft: 'clamp(16px, 4vw, 64px)' }}>
+      <div aria-hidden className="ghost-frame">
+        <div className="ghost-sticky ghost-left">
+          <div className="ghost-pad-left">
             <GhostNumeral n="04" light />
           </div>
         </div>
@@ -61,17 +61,12 @@ export function AgiSection() {
           <hr className="hairline-dark" style={{ marginBottom: 0 }} />
           <div className="grid-12" style={{ marginTop: 0 }}>
             {ACTIONS.map((a, i) => (
-              <Reveal key={a.tag} delay={i * 0.08} className="agi-card">
-                <div
-                  style={{
-                    paddingTop: 36,
-                    paddingBottom: 36,
-                    paddingRight: 28,
-                    borderRight: i < ACTIONS.length - 1 ? '1px solid var(--rule)' : 'none',
-                    paddingLeft: i === 0 ? 0 : 28,
-                    height: '100%',
-                  }}
-                >
+              <Reveal
+                key={a.tag}
+                delay={i * 0.08}
+                className={`agi-card${i === 0 ? ' agi-card-first' : ''}${i === ACTIONS.length - 1 ? ' agi-card-last' : ''}`}
+              >
+                <div className="agi-card-inner">
                   <div
                     style={{
                       fontSize: 11,
@@ -99,10 +94,23 @@ export function AgiSection() {
         .agi-text { grid-column: span 12; }
         .agi-body { grid-column: span 12; }
         .agi-card { grid-column: span 12; }
+        .agi-card-inner {
+          padding: 28px 0;
+          border-bottom: 1px solid var(--rule);
+          height: 100%;
+        }
+        .agi-card-last .agi-card-inner { border-bottom: none; }
         @media (min-width: 900px) {
           .agi-text { grid-column: span 7; }
           .agi-body { grid-column: 9 / span 4; align-self: end; }
           .agi-card { grid-column: span 4; }
+          .agi-card-inner {
+            padding: 36px 28px 36px 28px;
+            border-bottom: none;
+            border-right: 1px solid var(--rule);
+          }
+          .agi-card-first .agi-card-inner { padding-left: 0; }
+          .agi-card-last .agi-card-inner { border-right: none; padding-right: 0; }
         }
       `}</style>
     </section>

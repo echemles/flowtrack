@@ -16,16 +16,9 @@ export function ProblemSection() {
       }}
     >
       {/* sticky ghost numeral */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: 0, left: 0, right: 0, bottom: 0,
-          pointerEvents: 'none',
-        }}
-      >
-        <div style={{ position: 'sticky', top: '8vh', display: 'flex', justifyContent: 'flex-end' }}>
-          <div style={{ paddingRight: 'clamp(16px, 4vw, 64px)' }}>
+      <div aria-hidden className="ghost-frame">
+        <div className="ghost-sticky ghost-right">
+          <div className="ghost-pad-right">
             <GhostNumeral n="01" />
           </div>
         </div>

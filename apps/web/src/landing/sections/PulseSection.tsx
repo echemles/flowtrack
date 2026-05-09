@@ -16,9 +16,9 @@ export function PulseSection() {
         overflow: 'hidden',
       }}
     >
-      <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        <div style={{ position: 'sticky', top: '8vh', display: 'flex', justifyContent: 'flex-end' }}>
-          <div style={{ paddingRight: 'clamp(16px, 4vw, 64px)' }}>
+      <div aria-hidden className="ghost-frame">
+        <div className="ghost-sticky ghost-right">
+          <div className="ghost-pad-right">
             <GhostNumeral n="05" />
           </div>
         </div>
@@ -94,8 +94,8 @@ export function PulseSection() {
         }
         .kpi-value {
           font-family: 'Switzer', sans-serif;
-          font-weight: 200;
-          font-size: clamp(56px, 7vw, 112px);
+          font-weight: 300;
+          font-size: clamp(40px, 5.5vw, 88px);
           line-height: 0.92;
           letter-spacing: -0.02em;
           color: var(--navy);
@@ -104,6 +104,19 @@ export function PulseSection() {
           margin-top: 14px;
           font-size: 13px;
           color: rgba(1, 28, 77, 0.55);
+        }
+        @media (min-width: 640px) {
+          .kpi-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+          }
+          .kpi-tile {
+            padding: 28px 24px;
+            border-bottom: none;
+            border-right: 1px solid var(--rule-light);
+          }
+          .kpi-tile:first-child { padding-left: 0; }
+          .kpi-tile:last-child { border-right: none; padding-right: 0; }
         }
         @media (min-width: 900px) {
           .pulse-left { grid-column: span 5; }

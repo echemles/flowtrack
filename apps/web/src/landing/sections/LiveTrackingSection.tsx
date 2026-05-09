@@ -6,7 +6,7 @@ import { Reveal } from '../components/Reveal';
 export function LiveTrackingSection() {
   return (
     <section
-      id="live"
+      id="live-tracking"
       style={{
         background: 'var(--bone)',
         color: 'var(--navy)',
@@ -15,9 +15,9 @@ export function LiveTrackingSection() {
         overflow: 'hidden',
       }}
     >
-      <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        <div style={{ position: 'sticky', top: '8vh', display: 'flex', justifyContent: 'flex-end' }}>
-          <div style={{ paddingRight: 'clamp(16px, 4vw, 64px)' }}>
+      <div aria-hidden className="ghost-frame">
+        <div className="ghost-sticky ghost-right">
+          <div className="ghost-pad-right">
             <GhostNumeral n="03" />
           </div>
         </div>
@@ -27,13 +27,13 @@ export function LiveTrackingSection() {
         <div className="grid-12" style={{ rowGap: 56 }}>
           <Reveal className="lt-image">
             <div
+              className="lt-image-bg"
               style={{
-                width: 'calc(100% + clamp(20px, 4vw, 64px))',
+                width: '100%',
                 aspectRatio: '4 / 3',
                 backgroundImage: 'url(/landing/routes-globe.jpg)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                marginLeft: 'calc(clamp(20px, 4vw, 64px) * -1)',
               }}
             />
           </Reveal>
@@ -88,6 +88,10 @@ export function LiveTrackingSection() {
         @media (min-width: 900px) {
           .lt-image { grid-column: span 7; }
           .lt-text { grid-column: 9 / span 4; }
+          .lt-image-bg {
+            width: calc(100% + clamp(20px, 4vw, 64px));
+            margin-left: calc(clamp(20px, 4vw, 64px) * -1);
+          }
         }
       `}</style>
     </section>

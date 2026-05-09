@@ -1,14 +1,16 @@
-const ITEMS = [
-  '→ Air',
-  '· Sea',
-  '· Road',
-  '· Ecom',
-  '· Courier',
-  '· 9 Active Lanes',
-  '· 12 Shipments Live',
-  '· 4 / 28 Integrations',
-  '· On-time 100%',
-  '· Value in transit $371K',
+// Trim marker: items beyond the first 5 are hidden on <480px so the
+// marquee doesn't run out of breath on tight phones.
+const ITEMS: { text: string; trim?: boolean }[] = [
+  { text: '→ Air' },
+  { text: '· Sea' },
+  { text: '· Road' },
+  { text: '· Ecom' },
+  { text: '· Courier' },
+  { text: '· 9 Active Lanes', trim: true },
+  { text: '· 12 Shipments Live', trim: true },
+  { text: '· 4 / 28 Integrations', trim: true },
+  { text: '· On-time 100%', trim: true },
+  { text: '· Value in transit $371K', trim: true },
 ];
 
 export function Marquee() {
@@ -25,9 +27,10 @@ export function Marquee() {
     >
       <div className="marquee">
         <div className="marquee-track">
-          {loop.map((t, i) => (
+          {loop.map((it, i) => (
             <span
               key={i}
+              className={it.trim ? 'marquee-item-trim' : undefined}
               style={{
                 fontFamily: 'Switzer, sans-serif',
                 fontSize: 13,
@@ -37,7 +40,7 @@ export function Marquee() {
                 whiteSpace: 'nowrap',
               }}
             >
-              {t}
+              {it.text}
             </span>
           ))}
         </div>

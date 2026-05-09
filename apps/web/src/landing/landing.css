@@ -20,6 +20,16 @@
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'ss01', 'ss02';
   letter-spacing: 0.01em;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.landing-root section,
+.landing-root header,
+.landing-root footer {
+  max-width: 100vw;
+  overflow-x: clip;
 }
 
 .landing-root *,
@@ -66,15 +76,22 @@
   font-weight: 200;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  line-height: 0.92;
-  font-size: clamp(48px, 9vw, 168px);
+  line-height: 0.94;
+  font-size: clamp(36px, 6vw, 96px);
   color: inherit;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: none;
 }
 .display-hero {
-  font-size: clamp(64px, 16vw, 280px);
+  font-size: clamp(48px, 10vw, 156px);
+  line-height: 0.92;
 }
 .display-md {
-  font-size: clamp(40px, 6.5vw, 112px);
+  font-size: clamp(32px, 5vw, 80px);
+}
+.display-cta {
+  font-size: clamp(40px, 8vw, 120px);
 }
 
 /* body */
@@ -89,12 +106,13 @@
 .ghost-numeral {
   font-family: 'Switzer', sans-serif;
   font-weight: 200;
-  font-size: clamp(140px, 22vw, 360px);
+  font-size: clamp(120px, 18vw, 280px);
   line-height: 0.8;
   letter-spacing: -0.06em;
   opacity: 0.06;
   pointer-events: none;
   user-select: none;
+  display: inline-block;
 }
 
 /* pill */
@@ -114,6 +132,9 @@
   white-space: nowrap;
   cursor: pointer;
   line-height: 1;
+}
+.pill {
+  min-height: 44px;
 }
 .pill:hover { transform: translateY(-1px); }
 .pill-primary {
@@ -156,6 +177,11 @@
   animation: marquee 50s linear infinite;
   will-change: transform;
 }
+@media (max-width: 480px) {
+  .marquee-track { gap: 32px; animation-duration: 38s; }
+  /* Show only the shorter, snappier subset on small screens. */
+  .marquee-track > .marquee-item-trim { display: none; }
+}
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -196,10 +222,35 @@
   gap: clamp(16px, 2vw, 32px);
 }
 
+/* mobile breakpoints */
 @media (max-width: 768px) {
   .grid-12 { gap: 18px; }
-  .display-hero { font-size: clamp(56px, 18vw, 120px); }
-  .ghost-numeral { font-size: 120px; }
+  .display { font-size: clamp(32px, 8vw, 56px); }
+  .display-hero { font-size: clamp(44px, 12vw, 80px); }
+  .display-md { font-size: clamp(28px, 6.5vw, 48px); }
+  .display-cta { font-size: clamp(36px, 10vw, 72px); }
+  .ghost-numeral { font-size: clamp(60px, 14vw, 100px); }
+  .pill { padding: 14px 22px; }
+}
+
+@media (max-width: 480px) {
+  .display { font-size: clamp(30px, 9vw, 48px); }
+  .display-hero { font-size: clamp(40px, 13vw, 64px); }
+  .display-md { font-size: clamp(26px, 7.5vw, 40px); }
+  .display-cta { font-size: clamp(32px, 11vw, 56px); }
+  .ghost-numeral { font-size: clamp(56px, 16vw, 84px); }
+  .pill {
+    padding: 13px 20px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 360px) {
+  .display { font-size: clamp(26px, 9vw, 40px); }
+  .display-hero { font-size: clamp(36px, 13vw, 56px); }
+  .display-cta { font-size: clamp(30px, 11vw, 48px); }
+  .ghost-numeral { font-size: clamp(48px, 16vw, 72px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -210,6 +261,43 @@
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ghost numeral frame (sticky to viewport on desktop, docks to top on mobile) */
+.ghost-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ghost-sticky {
+  position: sticky;
+  top: 8vh;
+  display: flex;
+}
+.ghost-sticky.ghost-right { justify-content: flex-end; }
+.ghost-pad-right { padding-right: clamp(16px, 4vw, 64px); }
+.ghost-pad-left { padding-left: clamp(16px, 4vw, 64px); }
+
+@media (max-width: 768px) {
+  .ghost-frame {
+    /* Dock to top of section on mobile so ghost stays visible without
+       fighting the smaller viewport height. */
+  }
+  .ghost-sticky {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    left: auto;
+    justify-content: flex-end;
+  }
+  .ghost-sticky.ghost-left {
+    left: 0;
+    right: auto;
+    justify-content: flex-start;
+  }
+  .ghost-pad-right { padding-right: 16px; }
+  .ghost-pad-left { padding-left: 16px; }
 }
 
 /* fallback hero gradient if image missing */
