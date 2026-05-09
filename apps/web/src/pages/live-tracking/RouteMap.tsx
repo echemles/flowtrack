@@ -63,14 +63,22 @@ export function RouteMap({
   const my = (ax[1] + bx[1]) / 2 - Math.hypot(bx[0] - ax[0], bx[1] - ax[1]) * 0.25;
   const arcD = `M ${ax[0]},${ax[1]} Q ${mx},${my} ${bx[0]},${bx[1]}`;
 
+  // Default sizing: graceful min-height on mobile, capped on large screens, aspect preserved.
+  // 4:3 on phones (square-ish, readable), 16:9 on small tablets, ~5:3 on desktop split.
+  const defaultAspect =
+    'min-h-[280px] max-h-[480px] aspect-[4/3] sm:aspect-[16/9] lg:aspect-[5/3]';
+  const sizeClass = aspectClass ?? defaultAspect;
+
   return (
-    <div className={`relative overflow-hidden bg-[#0B1220] ${aspectClass ?? ''}`}>
+    <div className={`relative w-full overflow-hidden bg-[#0B1220] ${sizeClass}`}>
       {topLeft ? <div className="absolute left-3 top-3 z-10">{topLeft}</div> : null}
       <ComposableMap
         width={W}
         height={H}
         projection={proj as any}
-        style={{ width: '100%', height: aspectClass ? '100%' : 'auto' }}
+        viewBox={`0 0 ${W} ${H}`}
+        preserveAspectRatio="xMidYMid slice"
+        style={{ width: '100%', height: '100%', display: 'block' }}
       >
         <Geographies geography={`${import.meta.env.BASE_URL}world-110m.json`}>
           {({ geographies }) =>

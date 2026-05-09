@@ -34,6 +34,9 @@ export function LiveTrackingPage() {
     LiveTrackingSchema,
   );
 
+  // Inert handler for buttons/links that today don't navigate anywhere real.
+  const inert = (e: React.MouseEvent) => e.preventDefault();
+
   return (
     <div className="mx-auto max-w-[1180px] space-y-4">
       <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -55,10 +58,20 @@ export function LiveTrackingPage() {
           </p>
         </div>
         <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
-          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
+          <button
+            type="button"
+            onClick={inert}
+            className="inline-flex shrink-0 items-center gap-1.5 border border-brand-rule bg-brand-paper px-3 py-2 text-[12px] min-h-[44px] text-brand-navy/75 hover:bg-brand-bone/60 transition-colors"
+          >
             All Entities <ChevronDown size={12} />
           </button>
-          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">Public tracking</button>
+          <button
+            type="button"
+            onClick={inert}
+            className="inline-flex shrink-0 items-center border border-brand-rule bg-brand-paper px-3 py-2 text-[12px] min-h-[44px] text-brand-navy/75 hover:bg-brand-bone/60 transition-colors"
+          >
+            Public tracking
+          </button>
         </div>
       </header>
 
@@ -73,7 +86,7 @@ export function LiveTrackingPage() {
                   type="button"
                   onClick={() => setSelectedRef(s.ref)}
                   className={clsx(
-                    'inline-flex shrink-0 items-center gap-1.5 border px-3 py-2 text-[12px] min-h-[36px] transition-colors',
+                    'inline-flex shrink-0 items-center gap-1.5 border px-3 py-2 text-[12px] min-h-[44px] transition-colors',
                     active
                       ? 'border-brand-navy bg-brand-navy text-brand-paper font-medium'
                       : 'border-brand-rule bg-brand-paper text-brand-navy/75 hover:bg-brand-bone/60',
