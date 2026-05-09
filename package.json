@@ -1,0 +1,22 @@
+{
+  "name": "flowtrack",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "db:up": "pg_isready -h localhost -p 5432 -d flowtrack -U flowtrack",
+    "db:down": "echo 'native postgres — leave running (brew services stop postgresql@16 to halt)'",
+    "db:reset": "psql postgres://flowtrack:flowtrack@localhost:5432/postgres -c 'drop database if exists flowtrack' && psql postgres://flowtrack:flowtrack@localhost:5432/postgres -c 'create database flowtrack' && pnpm db:migrate && pnpm db:seed",
+    "db:migrate": "pnpm --filter @flowtrack/db migrate",
+    "db:seed": "pnpm --filter @flowtrack/db seed",
+    "dev:web": "pnpm --filter @flowtrack/web dev",
+    "dev:api": "pnpm --filter @flowtrack/api dev",
+    "dev": "pnpm -r --parallel --filter \"@flowtrack/web\" --filter \"@flowtrack/api\" dev",
+    "build": "pnpm -r build"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
+  }
+}
