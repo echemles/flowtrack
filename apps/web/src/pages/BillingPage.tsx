@@ -44,7 +44,7 @@ export function BillingPage() {
       <DataState state={state}>
         {(d) => (
           <>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-3">
               <Tile
                 label="Outstanding (USD)"
                 value={formatMoneyWhole(d.stats.outstanding_minor, d.stats.currency)}
@@ -73,13 +73,19 @@ export function BillingPage() {
                     {d.invoices.length} carrier invoices · expected vs. actual · USD rollup
                   </p>
                 </div>
-                <button className="ft-pill ft-pill-primary ft-pill-sm self-start sm:self-auto">
+                <button
+                  type="button"
+                  aria-disabled="true"
+                  tabIndex={-1}
+                  onClick={(e) => e.preventDefault()}
+                  className="ft-pill ft-pill-primary ft-pill-sm w-full self-start sm:w-auto sm:self-auto cursor-not-allowed opacity-70"
+                >
                   <Stamp size={12} /> Reconcile batch
                 </button>
               </header>
 
               {/* Desktop table */}
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr className="border-b border-brand-rule bg-brand-bone/40">
@@ -144,8 +150,8 @@ export function BillingPage() {
                 </table>
               </div>
 
-              {/* Mobile cards */}
-              <ul className="block md:hidden">
+              {/* Mobile / tablet cards */}
+              <ul className="block lg:hidden">
                 {d.invoices.map((inv) => {
                   const variancePct =
                     inv.expected_minor > 0
@@ -157,41 +163,45 @@ export function BillingPage() {
                       className="border-b border-brand-rule last:border-b-0 px-4 py-3"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <div className="min-w-0">
+                        <div className="min-w-0 flex-1">
                           {inv.shipment_ref ? (
                             <Link
                               to={`/shipments/${inv.shipment_ref}`}
-                              className="font-medium text-brand-navy"
+                              className="block truncate font-medium text-brand-navy"
                             >
                               {inv.shipment_ref}
                             </Link>
                           ) : (
-                            <span className="font-medium text-brand-navy">{inv.number}</span>
+                            <span className="block truncate font-medium text-brand-navy">
+                              {inv.number}
+                            </span>
                           )}
-                          <div className="text-[11px] text-brand-navy/50">
+                          <div className="truncate text-[11px] text-brand-navy/50">
                             {inv.number} · {inv.carrier ?? '—'}
                           </div>
                         </div>
-                        <StatusPill status={inv.status} />
+                        <div className="shrink-0">
+                          <StatusPill status={inv.status} />
+                        </div>
                       </div>
-                      <dl className="mt-2 grid grid-cols-3 gap-x-2 text-[12px]">
-                        <div>
+                      <dl className="mt-3 grid grid-cols-3 gap-x-2 text-[12px]">
+                        <div className="min-w-0">
                           <dt className="ft-micro text-brand-navy/55">Expected</dt>
-                          <dd className="mt-0.5 tabular-nums text-brand-navy">
+                          <dd className="mt-0.5 truncate tabular-nums text-brand-navy">
                             {formatMoney(inv.expected_minor, inv.currency, { cents: false })}
                           </dd>
                         </div>
-                        <div>
+                        <div className="min-w-0">
                           <dt className="ft-micro text-brand-navy/55">Actual</dt>
-                          <dd className="mt-0.5 tabular-nums text-brand-navy">
+                          <dd className="mt-0.5 truncate tabular-nums text-brand-navy">
                             {formatMoney(inv.actual_minor, inv.currency, { cents: false })}
                           </dd>
                         </div>
-                        <div>
+                        <div className="min-w-0">
                           <dt className="ft-micro text-brand-navy/55">Variance</dt>
                           <dd
                             className={clsx(
-                              'mt-0.5 tabular-nums',
+                              'mt-0.5 truncate tabular-nums',
                               inv.variance_minor === 0
                                 ? 'text-brand-navy/40'
                                 : inv.variance_minor < 0
