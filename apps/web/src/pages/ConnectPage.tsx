@@ -151,6 +151,7 @@ export function ConnectPage() {
                 <a
                   className="ft-eyebrow ml-auto whitespace-nowrap text-brand-red hover:text-brand-redInk"
                   href="#"
+                  onClick={(e) => e.preventDefault()}
                 >
                   Request integration →
                 </a>
@@ -169,7 +170,7 @@ export function ConnectPage() {
                       {d.groups[tier].length} options
                     </span>
                   </header>
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
+                  <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {filtered(d.groups[tier], tab).map((i) => (
                       <IntegrationCard key={i.id} i={i} />
                     ))}
@@ -195,33 +196,29 @@ function IntegrationCard({ i }: { i: Integration }) {
   const initials = i.name.slice(0, 2).toUpperCase();
   const auth = i.setup_minutes ? (i.setup_minutes < 15 ? 'OAuth' : 'API key') : 'OAuth';
   return (
-    <div className="flex flex-col gap-3 border border-brand-rule bg-brand-bone/40 p-3 sm:flex-row sm:items-start">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-brand-rule bg-brand-paper text-[12px] font-bold text-brand-navy">
-        {initials}
-      </span>
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-[14px] font-medium text-brand-navy">{i.name}</span>
+    <div className="flex h-full flex-col gap-3 border border-brand-rule bg-brand-bone/40 p-3">
+      <div className="flex items-start gap-3">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-brand-rule bg-brand-paper text-[12px] font-bold text-brand-navy">
+          {initials}
+        </span>
+        <div className="min-w-0 flex-1">
+          <div className="ft-eyebrow truncate text-brand-navy">{i.name}</div>
           {i.plan && i.plan !== 'Standard' && i.plan !== 'Pay-as-you-go' ? (
-            <span className="ft-micro border border-brand-red/30 px-1.5 py-0.5 text-brand-red">
+            <span className="ft-micro mt-1 inline-block border border-brand-red/30 px-1.5 py-0.5 text-brand-red">
               {i.plan}
             </span>
-          ) : null}
-        </div>
-        <div className="mt-0.5 truncate text-[12px] text-brand-navy/65">
-          {i.plan ?? 'Integration'}
-        </div>
-        <div className="mt-2 flex items-center gap-2 text-[11px] text-brand-navy/55">
-          <span>{auth}</span>
-          {i.setup_minutes != null ? (
-            <>
-              <span>·</span>
-              <span>~{i.setup_minutes} min</span>
-            </>
-          ) : null}
+          ) : (
+            <div className="mt-1 truncate text-[11px] text-brand-navy/55">
+              {i.plan ?? 'Integration'}
+            </div>
+          )}
         </div>
       </div>
-      <div className="self-start sm:self-auto">
+      <div className="mt-auto flex items-center justify-between gap-2 text-[11px] text-brand-navy/55">
+        <span className="truncate">
+          {auth}
+          {i.setup_minutes != null ? ` · ~${i.setup_minutes} min` : ''}
+        </span>
         {i.status === 'connected' ? (
           <span className="ft-micro inline-flex items-center gap-1 border border-brand-navy/20 px-2 py-1 text-brand-navy">
             <Check size={12} /> Connected
@@ -231,7 +228,11 @@ function IntegrationCard({ i }: { i: Integration }) {
             ● Connecting…
           </span>
         ) : (
-          <button className="ft-pill ft-pill-primary ft-pill-sm">
+          <button
+            type="button"
+            onClick={(e) => e.preventDefault()}
+            className="inline-flex min-h-[44px] items-center gap-1 border border-brand-red bg-brand-red px-3 py-2 text-[12px] font-medium uppercase tracking-wide text-brand-paper hover:bg-brand-redInk"
+          >
             <Plus size={12} /> Connect
           </button>
         )}
