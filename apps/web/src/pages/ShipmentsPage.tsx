@@ -85,7 +85,7 @@ export function ShipmentsPage() {
   }, [state.data, search]);
 
   return (
-    <div className="mx-auto max-w-[1180px] space-y-4">
+    <div className="mx-auto w-full min-w-0 max-w-[1180px] space-y-4">
       <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1
@@ -103,17 +103,27 @@ export function ShipmentsPage() {
           <p className="ft-micro mt-2 text-brand-navy/55">{counts.all} total · all routes</p>
         </div>
         <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
-          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
+          <button
+            type="button"
+            onClick={(e) => e.preventDefault()}
+            className="ft-pill ft-pill-ghost ft-pill-sm shrink-0 min-h-[44px] sm:min-h-0"
+          >
             All Entities <ChevronDown size={12} />
           </button>
           <button
             type="button"
             onClick={openAddShipments}
-            className="ft-pill ft-pill-primary ft-pill-sm shrink-0"
+            className="ft-pill ft-pill-primary ft-pill-sm shrink-0 min-h-[44px] sm:min-h-0"
           >
             <Plus size={12} /> Add shipments
           </button>
-          <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">Public tracking</button>
+          <button
+            type="button"
+            onClick={(e) => e.preventDefault()}
+            className="ft-pill ft-pill-ghost ft-pill-sm shrink-0 min-h-[44px] sm:min-h-0"
+          >
+            Public tracking
+          </button>
         </div>
       </header>
 
@@ -142,7 +152,11 @@ export function ShipmentsPage() {
             />
           </div>
           <div className="flex items-center justify-between gap-3">
-            <button className="ft-pill ft-pill-ghost ft-pill-sm shrink-0">
+            <button
+              type="button"
+              onClick={(e) => e.preventDefault()}
+              className="ft-pill ft-pill-ghost ft-pill-sm shrink-0 min-h-[44px] sm:min-h-0"
+            >
               <SlidersHorizontal size={12} /> More filters
             </button>
             <div className="ft-micro text-brand-navy/55">
@@ -155,7 +169,7 @@ export function ShipmentsPage() {
           {() => (
             <>
               {/* Desktop table */}
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <table className="w-full text-left">
                   <thead>
                     <tr className="border-b border-brand-rule">
@@ -247,8 +261,8 @@ export function ShipmentsPage() {
                 </table>
               </div>
 
-              {/* Mobile card list */}
-              <ul className="block md:hidden">
+              {/* Mobile/tablet card list */}
+              <ul className="block lg:hidden">
                 {filtered.length === 0 ? (
                   <li className="px-4 py-8 text-center text-[13px] text-brand-navy/55">
                     No shipments match this filter.
@@ -260,26 +274,39 @@ export function ShipmentsPage() {
                         type="button"
                         onClick={() => setSelectedRef(s.ref)}
                         aria-haspopup="dialog"
-                        className="flex min-h-[72px] w-full items-start justify-between gap-3 px-4 py-3 text-left active:bg-brand-bone/60"
+                        className="flex min-h-[80px] w-full min-w-0 items-start justify-between gap-3 px-4 py-3 text-left active:bg-brand-bone/60"
                       >
                         <div className="min-w-0 flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-[14px] font-medium text-brand-navy">{s.ref}</span>
-                            <ModeChip mode={s.mode} />
-                          </div>
-                          <div className="mt-1 flex items-center gap-1.5 text-[12px] text-brand-navy/70">
+                          <div className="ft-eyebrow flex items-center gap-1.5 text-brand-navy/55">
                             <ModeIcon mode={s.mode} />
                             <span className="truncate">
                               {s.origin_city} <span className="text-brand-navy/40">→</span>{' '}
                               {s.dest_city}
                             </span>
                           </div>
-                          <div className="mt-0.5 truncate text-[11px] text-brand-navy/50">
+                          <div className="mt-1 flex flex-wrap items-center gap-2">
+                            <span
+                              className="text-brand-navy"
+                              style={{
+                                fontFamily: 'Switzer, sans-serif',
+                                fontWeight: 500,
+                                fontSize: '18px',
+                                lineHeight: 1.15,
+                                letterSpacing: '-0.01em',
+                              }}
+                            >
+                              {s.ref}
+                            </span>
+                            <ModeChip mode={s.mode} />
+                          </div>
+                          <div className="ft-eyebrow mt-1 truncate text-brand-navy/55">
                             {s.carrier ?? '—'}
                             {s.client ? ` · ${s.client}` : ''}
                           </div>
                         </div>
-                        <StatusPill status={s.status} />
+                        <div className="shrink-0">
+                          <StatusPill status={s.status} />
+                        </div>
                       </button>
                     </li>
                   ))

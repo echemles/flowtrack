@@ -68,7 +68,7 @@ export function ShipmentDetailLayout({ data }: { data: ShipmentDetail }) {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mt-4 grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 min-[480px]:gap-4 lg:grid-cols-4">
           <KeyVal label="ATD" value={formatDateLong(s.atd)} />
           <KeyVal
             label="ETA"
@@ -221,7 +221,7 @@ function DocumentsTab({ data }: { data: ShipmentDetail }) {
 function FinancialsTab({ data }: { data: ShipmentDetail }) {
   const f = data.financials;
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-4">
       <Stat label="Cargo Value" value={formatMoney(f.value_minor, f.currency, { cents: false })} />
       <Stat
         label="Committed"
@@ -262,7 +262,7 @@ function SupplyChainTab({ data }: { data: ShipmentDetail }) {
   );
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-4">
         <Stat label="Providers in chain" value={data.supplyChain.length.toString()} />
         <Stat label="Logistics cost" value="$1,500" />
         <Stat label="Chain on-time avg" value={formatPct(avg)} valueClassName="text-brand-navy" />
@@ -320,7 +320,7 @@ function PoTab({ data }: { data: ShipmentDetail }) {
   const po = data.purchaseOrder;
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-4">
         <Stat label="PO number" value={po.row.number} />
         <Stat label="Provider" value={po.row.provider ?? '—'} />
         <Stat

@@ -120,9 +120,9 @@ export function ShipmentQuickViewModal({ refId, onClose }: Props) {
         opacity: entered ? 1 : 0,
         transform: entered ? 'scale(1)' : 'scale(0.98)',
       };
-  const backdropStyle = reducedMotion
-    ? undefined
-    : { transition: 'opacity 180ms ease-out', opacity: entered ? 1 : 0 };
+  // Backdrop is always fully visible — no fade — so the dialog is unambiguously
+  // modal even before the inner card transition completes.
+  const backdropStyle = undefined;
 
   return (
     <div
@@ -258,7 +258,7 @@ function ReadyBody({
         <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
           {/* Map column */}
           <div className="border-b border-brand-rule p-4 md:border-b-0 md:border-r">
-            <div className="aspect-square w-full md:aspect-auto md:h-[320px]">
+            <div className="aspect-[16/10] w-full sm:aspect-square md:aspect-auto md:h-[320px]">
               <RouteMap
                 origin={live.route.origin}
                 dest={live.route.dest}
