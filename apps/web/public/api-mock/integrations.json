@@ -1,0 +1,268 @@
+{
+  "totals": {
+    "connected": 4,
+    "total": 28
+  },
+  "groups": {
+    "aggregators": [
+      {
+        "id": "01KR6YAAHK1THY360SHT5A87E9",
+        "tier": "aggregators",
+        "key": "17track",
+        "name": "17Track",
+        "plan": "Plus",
+        "status": "available",
+        "setup_minutes": 10
+      },
+      {
+        "id": "01KR6YAAHK821PEANWESMPYGXF",
+        "tier": "aggregators",
+        "key": "aftership",
+        "name": "AfterShip",
+        "plan": "Pro",
+        "status": "available",
+        "setup_minutes": 15
+      },
+      {
+        "id": "01KR6YAAHK9X8P6J7V5R82M6D0",
+        "tier": "aggregators",
+        "key": "easypost",
+        "name": "EasyPost",
+        "plan": "Standard",
+        "status": "available",
+        "setup_minutes": 15
+      },
+      {
+        "id": "01KR6YAAHK1N6R1G0PAZ1DQVVH",
+        "tier": "aggregators",
+        "key": "flexport",
+        "name": "Flexport API",
+        "plan": "Standard",
+        "status": "available",
+        "setup_minutes": 30
+      },
+      {
+        "id": "01KR6YAAHKJMSPW04MHR0T6TDH",
+        "tier": "aggregators",
+        "key": "fourkites",
+        "name": "FourKites",
+        "plan": "Enterprise",
+        "status": "available",
+        "setup_minutes": 30
+      },
+      {
+        "id": "01KR6YAAHKB30QKFWP6D1FQASC",
+        "tier": "aggregators",
+        "key": "project44",
+        "name": "project44",
+        "plan": "Premium",
+        "status": "connected",
+        "setup_minutes": null
+      },
+      {
+        "id": "01KR6YAAHKE6GA36TTNW8KXGWX",
+        "tier": "aggregators",
+        "key": "shipsy",
+        "name": "Shipsy",
+        "plan": "Standard",
+        "status": "available",
+        "setup_minutes": 25
+      },
+      {
+        "id": "01KR6YAAHKT272HCN4GH8Z2RGN",
+        "tier": "aggregators",
+        "key": "vizion",
+        "name": "Vizion",
+        "plan": "Standard",
+        "status": "available",
+        "setup_minutes": 20
+      }
+    ],
+    "carriers_direct": [
+      {
+        "id": "01KR6YAAHKC2TXGFVZB08FJMFC",
+        "tier": "carriers_direct",
+        "key": "cma",
+        "name": "CMA CGM",
+        "plan": "Direct API",
+        "status": "available",
+        "setup_minutes": 45
+      },
+      {
+        "id": "01KR6YAAHKWDZWAJWWAVEC7QMF",
+        "tier": "carriers_direct",
+        "key": "dhl",
+        "name": "DHL",
+        "plan": "Direct API",
+        "status": "available",
+        "setup_minutes": 30
+      },
+      {
+        "id": "01KR6YAAHKMKPHQFAGTCC9TXVN",
+        "tier": "carriers_direct",
+        "key": "fedex",
+        "name": "FedEx",
+        "plan": "Direct API",
+        "status": "available",
+        "setup_minutes": 30
+      },
+      {
+        "id": "01KR6YAAHK1THT9PRRP9M3D3M7",
+        "tier": "carriers_direct",
+        "key": "hapag",
+        "name": "Hapag-Lloyd",
+        "plan": "Direct API",
+        "status": "available",
+        "setup_minutes": 45
+      },
+      {
+        "id": "01KR6YAAHKA5JHTFFN0GZ1NE5E",
+        "tier": "carriers_direct",
+        "key": "lufthansa",
+        "name": "Lufthansa Cargo",
+        "plan": "Direct API",
+        "status": "available",
+        "setup_minutes": 30
+      },
+      {
+        "id": "01KR6YAAHK6F7A52426F14J7TG",
+        "tier": "carriers_direct",
+        "key": "maersk",
+        "name": "Maersk",
+        "plan": "Direct API",
+        "status": "connecting",
+        "setup_minutes": 45
+      },
+      {
+        "id": "01KR6YAAHKV2A9152Y55Q0G3AT",
+        "tier": "carriers_direct",
+        "key": "msc",
+        "name": "MSC",
+        "plan": "Direct API",
+        "status": "available",
+        "setup_minutes": 45
+      },
+      {
+        "id": "01KR6YAAHKW59H1T1E9H634X1F",
+        "tier": "carriers_direct",
+        "key": "ups",
+        "name": "UPS",
+        "plan": "Direct API",
+        "status": "available",
+        "setup_minutes": 30
+      }
+    ],
+    "erp": [
+      {
+        "id": "01KR6YAAHKJBDQPC0EDXCDQ33C",
+        "tier": "erp",
+        "key": "msdyn365",
+        "name": "MS Dynamics 365",
+        "plan": "Enterprise",
+        "status": "available",
+        "setup_minutes": 90
+      },
+      {
+        "id": "01KR6YAAHKDM94P1S5544J3PTX",
+        "tier": "erp",
+        "key": "netsuite",
+        "name": "NetSuite",
+        "plan": "Enterprise",
+        "status": "available",
+        "setup_minutes": 90
+      },
+      {
+        "id": "01KR6YAAHKZW7ZYJTWGQA8DFC5",
+        "tier": "erp",
+        "key": "oracle",
+        "name": "Oracle Fusion",
+        "plan": "Enterprise",
+        "status": "available",
+        "setup_minutes": 120
+      },
+      {
+        "id": "01KR6YAAHKTM5R3J06QGHRQ950",
+        "tier": "erp",
+        "key": "sapb1",
+        "name": "SAP Business One",
+        "plan": "SMB",
+        "status": "available",
+        "setup_minutes": 60
+      },
+      {
+        "id": "01KR6YAAHK8GGTS00YEVCGPWDB",
+        "tier": "erp",
+        "key": "s4hana",
+        "name": "SAP S/4HANA",
+        "plan": "Enterprise",
+        "status": "available",
+        "setup_minutes": 120
+      }
+    ],
+    "communications": [
+      {
+        "id": "01KR6YAAHK11YJQYFJAKMC659Y",
+        "tier": "communications",
+        "key": "gmail",
+        "name": "Gmail",
+        "plan": "Workspace",
+        "status": "connected",
+        "setup_minutes": null
+      },
+      {
+        "id": "01KR6YAAHKKPAXVA477VTEKNM0",
+        "tier": "communications",
+        "key": "teams",
+        "name": "Microsoft Teams",
+        "plan": "Business",
+        "status": "available",
+        "setup_minutes": 10
+      },
+      {
+        "id": "01KR6YAAHKDMT4ERE5CE329PWE",
+        "tier": "communications",
+        "key": "outlook365",
+        "name": "Outlook 365",
+        "plan": "Business",
+        "status": "available",
+        "setup_minutes": 10
+      },
+      {
+        "id": "01KR6YAAHK45R7SPXWK351SBHP",
+        "tier": "communications",
+        "key": "slack",
+        "name": "Slack",
+        "plan": "Pro",
+        "status": "connected",
+        "setup_minutes": null
+      },
+      {
+        "id": "01KR6YAAHK3SSJ4YDMDJ5SYTB8",
+        "tier": "communications",
+        "key": "twilio_sms",
+        "name": "Twilio SMS",
+        "plan": "Pay-as-you-go",
+        "status": "available",
+        "setup_minutes": 5
+      },
+      {
+        "id": "01KR6YAAHKTT629QDCZ533F2W3",
+        "tier": "communications",
+        "key": "whatsapp_biz",
+        "name": "WhatsApp Business",
+        "plan": "Cloud",
+        "status": "connected",
+        "setup_minutes": null
+      },
+      {
+        "id": "01KR6YAAHKMH3ZCEHYY03AA27R",
+        "tier": "communications",
+        "key": "zoom_phone",
+        "name": "Zoom Phone",
+        "plan": "Business",
+        "status": "available",
+        "setup_minutes": 15
+      }
+    ]
+  }
+}

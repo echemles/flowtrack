@@ -1,0 +1,35 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGZ62ZX3F116RVJFP9",
+    "ref": "FT-26-A774",
+    "mode": "air",
+    "status": "in_transit",
+    "origin_city": "Istanbul",
+    "origin_country": "TR",
+    "dest_city": "Chicago",
+    "dest_country": "US",
+    "carrier": "Turkish Cargo",
+    "client": "Meridian Pharma",
+    "atd": "2026-05-07T00:00:00.000Z",
+    "eta_carrier": "2026-05-10T00:00:00.000Z",
+    "eta_agi": "2026-05-10T00:00:00.000Z",
+    "percent_complete": 50,
+    "days_remaining": 1,
+    "value_minor": 4200000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "milestones": [],
+  "route": {
+    "origin": [
+      28.9784,
+      41.0082
+    ],
+    "dest": [
+      -87.6298,
+      41.8781
+    ]
+  },
+  "percent": 50,
+  "daysRemaining": 1
+}

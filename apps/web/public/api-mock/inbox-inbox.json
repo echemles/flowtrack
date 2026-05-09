@@ -1,0 +1,77 @@
+{
+  "threads": [
+    {
+      "id": "01KR6YAAHJ86T4M13Y5FZJ39SN",
+      "channel": "email",
+      "counterpart": "Kuehne+Nagel",
+      "subject": "Kuehne+Nagel — invoice batch ready",
+      "last_at": "2026-05-09T15:00:00.000Z",
+      "unread": true,
+      "starred": true,
+      "folder": "inbox",
+      "shipment_ref": null
+    },
+    {
+      "id": "01KR6YAAHJ86XS7P7N2XEF0JX4",
+      "channel": "teams",
+      "counterpart": "Ryder SF Bay",
+      "subject": "Ryder SF Bay — last mile capacity",
+      "last_at": "2026-05-09T14:00:00.000Z",
+      "unread": true,
+      "starred": false,
+      "folder": "inbox",
+      "shipment_ref": "FT-26-C015"
+    },
+    {
+      "id": "01KR6YAAHJ6EYN7AX0458BWMCA",
+      "channel": "sms",
+      "counterpart": "Stuart Madrid",
+      "subject": "Stuart Madrid — driver arriving 5 min",
+      "last_at": "2026-05-09T11:00:00.000Z",
+      "unread": false,
+      "starred": false,
+      "folder": "inbox",
+      "shipment_ref": "FT-26-R221"
+    },
+    {
+      "id": "01KR6YAAHJBH9FJ8EDB857HJ80",
+      "channel": "email",
+      "counterpart": "Voltrex Components VN",
+      "subject": "Voltrex Components VN — packing list",
+      "last_at": "2026-05-09T10:00:00.000Z",
+      "unread": false,
+      "starred": false,
+      "folder": "inbox",
+      "shipment_ref": "FT-26-S891"
+    },
+    {
+      "id": "01KR6YAAHJSAQX4QT53R8Y380F",
+      "channel": "email",
+      "counterpart": "Crane Worldwide",
+      "subject": "Crane Worldwide — POD ready",
+      "last_at": "2026-05-09T09:00:00.000Z",
+      "unread": true,
+      "starred": false,
+      "folder": "inbox",
+      "shipment_ref": "FT-26-S918"
+    },
+    {
+      "id": "01KR6YAAHJ6B54GAK9MV1KRZYS",
+      "channel": "whatsapp",
+      "counterpart": "Maersk",
+      "subject": "Maersk Vietnam — vessel update FT-26-S891",
+      "last_at": "2026-05-09T08:00:00.000Z",
+      "unread": true,
+      "starred": true,
+      "folder": "inbox",
+      "shipment_ref": "FT-26-S891"
+    }
+  ],
+  "counts": {
+    "inbox": 6,
+    "unread": 4,
+    "starred": 2,
+    "agi_escalations": 3,
+    "archived": 1
+  }
+}

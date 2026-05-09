@@ -1,0 +1,78 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHG0P8S3BC49CPRMM8C",
+    "ref": "FT-26-S442",
+    "mode": "sea",
+    "status": "in_transit",
+    "origin_city": "Shanghai",
+    "origin_country": "CN",
+    "dest_city": "Long Beach",
+    "dest_country": "US",
+    "carrier": "CMA CGM",
+    "client": "Direct-to-Consumer Inc.",
+    "atd": "2026-04-15T00:00:00.000Z",
+    "eta_carrier": "2026-05-22T00:00:00.000Z",
+    "eta_agi": "2026-05-21T00:00:00.000Z",
+    "percent_complete": 55,
+    "days_remaining": 13,
+    "value_minor": 14500000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "timeline": [],
+  "skus": [],
+  "documents": [],
+  "supplyChain": [],
+  "purchaseOrder": {
+    "row": {
+      "id": "01KR6YAAHH61W62YDMQCNEC5JK",
+      "number": "PO-26-S442",
+      "shipment_ref": "FT-26-S442",
+      "provider": "Kuehne+Nagel",
+      "lines_count": 4,
+      "committed_minor": 92000,
+      "billed_minor": 89000,
+      "variance_minor": -3000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    "lines": [
+      {
+        "id": "01KR6YAAHHRM1RMR6TK7G7FC26",
+        "ord": 1,
+        "description": "Line 1 for PO-26-S442",
+        "qty": 1,
+        "unit_price_minor": 23000
+      },
+      {
+        "id": "01KR6YAAHJ52D8SR55Q5BS8921",
+        "ord": 2,
+        "description": "Line 2 for PO-26-S442",
+        "qty": 1,
+        "unit_price_minor": 23000
+      },
+      {
+        "id": "01KR6YAAHJG5WW12DFFM4HWFM5",
+        "ord": 3,
+        "description": "Line 3 for PO-26-S442",
+        "qty": 1,
+        "unit_price_minor": 23000
+      },
+      {
+        "id": "01KR6YAAHJA9MFCSQD9PZYNQZB",
+        "ord": 4,
+        "description": "Line 4 for PO-26-S442",
+        "qty": 1,
+        "unit_price_minor": 23000
+      }
+    ]
+  },
+  "financials": {
+    "value_minor": 14500000,
+    "currency": "USD",
+    "committed_minor": 92000,
+    "billed_minor": 89000,
+    "variance_minor": -3000
+  },
+  "notifications": []
+}

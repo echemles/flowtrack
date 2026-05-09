@@ -1,0 +1,22 @@
+{
+  "threads": [
+    {
+      "id": "01KR6YAAHJMDV24DMS7VRTXBD1",
+      "channel": "email",
+      "counterpart": "DHL Global",
+      "subject": "DHL Global — closed PO confirmation",
+      "last_at": "2026-05-09T16:00:00.000Z",
+      "unread": false,
+      "starred": false,
+      "folder": "archived",
+      "shipment_ref": null
+    }
+  ],
+  "counts": {
+    "inbox": 6,
+    "unread": 4,
+    "starred": 2,
+    "agi_escalations": 3,
+    "archived": 1
+  }
+}

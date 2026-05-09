@@ -1,0 +1,35 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHG6S4073RQDBSD5831",
+    "ref": "FT-26-R221",
+    "mode": "road",
+    "status": "dispatched",
+    "origin_city": "Madrid",
+    "origin_country": "ES",
+    "dest_city": "Paris",
+    "dest_country": "FR",
+    "carrier": "DHL Freight",
+    "client": "Mercat Gourmet",
+    "atd": "2026-05-08T00:00:00.000Z",
+    "eta_carrier": "2026-05-10T00:00:00.000Z",
+    "eta_agi": "2026-05-10T00:00:00.000Z",
+    "percent_complete": 30,
+    "days_remaining": 1,
+    "value_minor": 1200000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "milestones": [],
+  "route": {
+    "origin": [
+      -3.7038,
+      40.4168
+    ],
+    "dest": [
+      2.3522,
+      48.8566
+    ]
+  },
+  "percent": 30,
+  "daysRemaining": 1
+}

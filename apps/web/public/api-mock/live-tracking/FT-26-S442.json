@@ -1,0 +1,35 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHG0P8S3BC49CPRMM8C",
+    "ref": "FT-26-S442",
+    "mode": "sea",
+    "status": "in_transit",
+    "origin_city": "Shanghai",
+    "origin_country": "CN",
+    "dest_city": "Long Beach",
+    "dest_country": "US",
+    "carrier": "CMA CGM",
+    "client": "Direct-to-Consumer Inc.",
+    "atd": "2026-04-15T00:00:00.000Z",
+    "eta_carrier": "2026-05-22T00:00:00.000Z",
+    "eta_agi": "2026-05-21T00:00:00.000Z",
+    "percent_complete": 55,
+    "days_remaining": 13,
+    "value_minor": 14500000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "milestones": [],
+  "route": {
+    "origin": [
+      121.4737,
+      31.2304
+    ],
+    "dest": [
+      -118.1937,
+      33.767
+    ]
+  },
+  "percent": 55,
+  "daysRemaining": 13
+}

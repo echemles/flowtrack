@@ -1,0 +1,35 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHG85J87GWKWZFRRER1",
+    "ref": "FT-26-A881",
+    "mode": "air",
+    "status": "arriving",
+    "origin_city": "Singapore",
+    "origin_country": "SG",
+    "dest_city": "Los Angeles",
+    "dest_country": "US",
+    "carrier": "FedEx",
+    "client": "Asia Commerce Hub",
+    "atd": "2026-05-08T00:00:00.000Z",
+    "eta_carrier": "2026-05-09T00:00:00.000Z",
+    "eta_agi": "2026-05-09T00:00:00.000Z",
+    "percent_complete": 90,
+    "days_remaining": 0,
+    "value_minor": 2700000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "milestones": [],
+  "route": {
+    "origin": [
+      103.8198,
+      1.3521
+    ],
+    "dest": [
+      -118.2437,
+      34.0522
+    ]
+  },
+  "percent": 90,
+  "daysRemaining": 0
+}

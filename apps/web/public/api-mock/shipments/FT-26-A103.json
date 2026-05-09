@@ -1,0 +1,85 @@
+{
+  "shipment": {
+    "id": "01KR6YAAHGP5883SNV63R7Z33P",
+    "ref": "FT-26-A103",
+    "mode": "air",
+    "status": "arriving",
+    "origin_city": "Frankfurt",
+    "origin_country": "DE",
+    "dest_city": "New York",
+    "dest_country": "US",
+    "carrier": "Lufthansa Cargo",
+    "client": "Helix Electronics",
+    "atd": "2026-05-07T00:00:00.000Z",
+    "eta_carrier": "2026-05-09T00:00:00.000Z",
+    "eta_agi": "2026-05-09T00:00:00.000Z",
+    "percent_complete": 88,
+    "days_remaining": 1,
+    "value_minor": 9200000,
+    "currency": "USD",
+    "has_incident": false
+  },
+  "timeline": [],
+  "skus": [],
+  "documents": [],
+  "supplyChain": [],
+  "purchaseOrder": {
+    "row": {
+      "id": "01KR6YAAHHD8715GFXRMNXVBW5",
+      "number": "PO-26-A103",
+      "shipment_ref": "FT-26-A103",
+      "provider": "DHL Global",
+      "lines_count": 5,
+      "committed_minor": 114000,
+      "billed_minor": 110000,
+      "variance_minor": -4000,
+      "currency": "USD",
+      "status": "in_service"
+    },
+    "lines": [
+      {
+        "id": "01KR6YAAHHZCQ6FBBP1HJRY3GN",
+        "ord": 1,
+        "description": "Line 1 for PO-26-A103",
+        "qty": 1,
+        "unit_price_minor": 22800
+      },
+      {
+        "id": "01KR6YAAHHRSBWA1ZMF7VKDVGH",
+        "ord": 2,
+        "description": "Line 2 for PO-26-A103",
+        "qty": 1,
+        "unit_price_minor": 22800
+      },
+      {
+        "id": "01KR6YAAHHP1349RATK5R5P0J8",
+        "ord": 3,
+        "description": "Line 3 for PO-26-A103",
+        "qty": 1,
+        "unit_price_minor": 22800
+      },
+      {
+        "id": "01KR6YAAHH1CV6Z7DTBA524227",
+        "ord": 4,
+        "description": "Line 4 for PO-26-A103",
+        "qty": 1,
+        "unit_price_minor": 22800
+      },
+      {
+        "id": "01KR6YAAHHEGZ03NZNSCNXK09J",
+        "ord": 5,
+        "description": "Line 5 for PO-26-A103",
+        "qty": 1,
+        "unit_price_minor": 22800
+      }
+    ]
+  },
+  "financials": {
+    "value_minor": 9200000,
+    "currency": "USD",
+    "committed_minor": 114000,
+    "billed_minor": 110000,
+    "variance_minor": -4000
+  },
+  "notifications": []
+}
