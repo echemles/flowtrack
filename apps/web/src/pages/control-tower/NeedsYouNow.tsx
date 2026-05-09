@@ -32,7 +32,7 @@ export function NeedsYouNow({ items }: { items: Alert[] }) {
   function openThread(a: Alert) {
     const params = new URLSearchParams({ folder: 'agi_escalations' });
     if (a.shipment_ref) params.set('ref', a.shipment_ref);
-    navigate(`/inbox?${params.toString()}`);
+    navigate(`/app/inbox?${params.toString()}`);
   }
 
   function askAgiToTriage(a: Alert) {

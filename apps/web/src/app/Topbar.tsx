@@ -1,4 +1,5 @@
-import { Plus, Search } from 'lucide-react';
+import { Plus, Search, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useAddShipments } from '../components/AddShipmentsContext';
 
 export function Topbar() {
@@ -6,6 +7,12 @@ export function Topbar() {
   return (
     <header className="flex h-14 shrink-0 items-center justify-between border-b border-border-subtle bg-surface-card px-6">
       <div className="flex items-center gap-3">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1 text-xs text-text-secondary hover:text-text-primary"
+        >
+          <ArrowLeft size={12} /> flowtrack.com
+        </Link>
         <span className="text-sm font-semibold">FlowTrack</span>
         <span className="rounded-full border border-border-subtle bg-surface-canvas px-2 py-0.5 text-xs text-text-secondary">
           Innovtex

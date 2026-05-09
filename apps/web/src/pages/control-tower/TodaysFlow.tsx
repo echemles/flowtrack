@@ -47,7 +47,7 @@ export function TodaysFlow({
             · 19 Apr 2026 · arrivals + dispatches in next 48h
           </span>
         </div>
-        <Link to="/shipments" className="text-xs font-medium text-blue-600 hover:underline">
+        <Link to="/app/shipments" className="text-xs font-medium text-blue-600 hover:underline">
           All shipments →
         </Link>
       </header>

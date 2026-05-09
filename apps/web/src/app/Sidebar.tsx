@@ -20,15 +20,15 @@ type NavItem = {
 };
 
 const NAV_ITEMS: readonly NavItem[] = [
-  { to: '/', label: 'Control Tower', Icon: LayoutDashboard, end: true },
-  { to: '/shipments', label: 'Shipments', Icon: Package },
-  { to: '/live', label: 'Live Tracking', Icon: MapPin },
-  { to: '/inbox', label: 'Inbox', Icon: Inbox },
-  { to: '/contacts', label: 'Contacts', Icon: Users },
-  { to: '/purchase-orders', label: 'Purchase Orders', Icon: Receipt },
-  { to: '/connect', label: 'Connect', Icon: Plug },
-  { to: '/billing', label: 'Billing Center', Icon: CreditCard },
-  { to: '/settings', label: 'Settings', Icon: Settings },
+  { to: '/app', label: 'Control Tower', Icon: LayoutDashboard, end: true },
+  { to: '/app/shipments', label: 'Shipments', Icon: Package },
+  { to: '/app/live', label: 'Live Tracking', Icon: MapPin },
+  { to: '/app/inbox', label: 'Inbox', Icon: Inbox },
+  { to: '/app/contacts', label: 'Contacts', Icon: Users },
+  { to: '/app/purchase-orders', label: 'Purchase Orders', Icon: Receipt },
+  { to: '/app/connect', label: 'Connect', Icon: Plug },
+  { to: '/app/billing', label: 'Billing Center', Icon: CreditCard },
+  { to: '/app/settings', label: 'Settings', Icon: Settings },
 ];
 
 export function Sidebar() {

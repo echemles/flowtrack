@@ -63,7 +63,7 @@ export function ShipmentDetailLayout({ data }: { data: ShipmentDetail }) {
           <div className="flex items-center gap-2">
             <ModeChip mode={s.mode} />
             <Link
-              to="/live"
+              to="/app/live"
               className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs font-medium text-text-primary hover:bg-surface-canvas"
             >
               <MapPin size={12} /> Track live

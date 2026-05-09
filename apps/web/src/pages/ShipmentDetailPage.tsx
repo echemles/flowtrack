@@ -15,7 +15,7 @@ export function ShipmentDetailPage() {
     <div className="mx-auto max-w-[1180px] space-y-4">
       <div>
         <Link
-          to="/shipments"
+          to="/app/shipments"
           className="inline-flex items-center gap-1 text-xs font-medium text-text-secondary hover:text-text-primary"
         >
           <ChevronLeft size={12} /> All shipments
