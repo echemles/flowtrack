@@ -9,6 +9,88 @@ body,
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Switzer', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'ss01', 'ss02';
+  color: #011c4d;
+  background: #f4f1eb;
+}
+
+@layer components {
+  /* Eyebrow type style — UPPER 11px 0.18em weight 700 */
+  .ft-eyebrow {
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .ft-micro {
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Brand pills — mirror landing's pill primitives */
+  .ft-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
+      transform 180ms ease;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .ft-pill:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .ft-pill-primary {
+    background: #f32735;
+    color: #ffffff;
+    border: 1px solid #f32735;
+  }
+  .ft-pill-primary:hover:not(:disabled) {
+    background: #c61f2c;
+    border-color: #c61f2c;
+  }
+  .ft-pill-ghost {
+    background: transparent;
+    color: #011c4d;
+    border: 1px solid #011c4d;
+  }
+  .ft-pill-ghost:hover:not(:disabled) {
+    background: rgba(1, 28, 77, 0.06);
+  }
+  .ft-pill-sm {
+    padding: 6px 12px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+
+  /* Card header eyebrow + trailing hairline rule */
+  .ft-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ft-card-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(1, 28, 77, 0.1);
+  }
 }

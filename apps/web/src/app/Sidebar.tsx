@@ -9,6 +9,7 @@ import {
   Plug,
   CreditCard,
   Settings,
+  ArrowUpRight,
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -33,12 +34,36 @@ const NAV_ITEMS: readonly NavItem[] = [
 
 export function Sidebar() {
   return (
-    <aside className="flex w-60 flex-col border-r border-border-subtle bg-surface-card">
-      <div className="px-5 py-5 text-lg font-semibold tracking-tight">
-        <span className="text-blue-600">Flow</span>
-        <span>Track</span>
+    <aside className="flex w-60 flex-col bg-brand-ink text-brand-paper">
+      <div className="px-5 pt-6 pb-5">
+        <div
+          className="text-brand-paper"
+          style={{
+            fontFamily: 'Switzer, sans-serif',
+            fontWeight: 200,
+            fontSize: '14px',
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            lineHeight: 1,
+          }}
+        >
+          FlowTrack
+        </div>
+        <div
+          className="mt-2 text-brand-red"
+          style={{
+            fontWeight: 700,
+            fontSize: '9px',
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            lineHeight: 1,
+          }}
+        >
+          Logistics Control Tower
+        </div>
       </div>
-      <nav className="flex-1 px-2 py-2">
+      <div className="border-b border-brand-ruleDark" />
+      <nav className="flex-1 px-2 py-3">
         {NAV_ITEMS.map(({ to, label, Icon, end }) => (
           <NavLink
             key={to}
@@ -46,20 +71,36 @@ export function Sidebar() {
             end={end}
             className={({ isActive }) =>
               clsx(
-                'mb-1 flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors',
+                'relative flex items-center gap-3 px-4 py-2 text-[13px] transition-colors',
                 isActive
-                  ? 'bg-blue-50 font-semibold text-blue-700'
-                  : 'text-text-secondary hover:bg-surface-canvas hover:text-text-primary',
+                  ? 'text-brand-paper'
+                  : 'text-brand-paper/60 hover:text-brand-paper',
               )
             }
           >
-            <Icon size={16} />
-            {label}
+            {({ isActive }) => (
+              <>
+                {isActive ? (
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-1.5 bottom-1.5 w-[2px] bg-brand-red"
+                  />
+                ) : null}
+                <Icon size={16} />
+                <span>{label}</span>
+              </>
+            )}
           </NavLink>
         ))}
       </nav>
-      <div className="border-t border-border-subtle px-4 py-3 text-xs text-text-muted">
-        Innovtex Logistics
+      <div className="border-t border-brand-ruleDark px-5 py-4">
+        <a
+          href="/"
+          className="inline-flex items-center gap-1.5 text-[10px] text-brand-muteDark hover:text-brand-paper transition-colors"
+          style={{ letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700 }}
+        >
+          flowtrack.com <ArrowUpRight size={11} />
+        </a>
       </div>
     </aside>
   );

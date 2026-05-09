@@ -3,12 +3,17 @@ import clsx from 'clsx';
 
 type Variant = 'primary' | 'secondary' | 'ghost';
 
+// Sharp-corner rectangular buttons. Eyebrow type, no border-radius.
+const BASE =
+  'inline-flex items-center justify-center gap-2 px-3 py-1.5 ft-eyebrow transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap';
+
 const VARIANT_CLASSES: Record<Variant, string> = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-300',
+  primary:
+    'bg-brand-red text-brand-paper border border-brand-red hover:bg-brand-redInk hover:border-brand-redInk',
   secondary:
-    'border border-border-subtle bg-surface-card text-text-primary hover:bg-surface-canvas focus-visible:ring-blue-200',
+    'bg-transparent text-brand-navy border border-brand-navy hover:bg-brand-navy/5',
   ghost:
-    'bg-transparent text-text-secondary hover:bg-surface-canvas hover:text-text-primary focus-visible:ring-blue-200',
+    'bg-transparent text-brand-navy border border-transparent hover:bg-brand-navy/5',
 };
 
 export function Button({
@@ -23,11 +28,7 @@ export function Button({
   return (
     <button
       {...rest}
-      className={clsx(
-        'inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-60',
-        VARIANT_CLASSES[variant],
-        className,
-      )}
+      className={clsx(BASE, VARIANT_CLASSES[variant], className)}
     >
       {children}
     </button>

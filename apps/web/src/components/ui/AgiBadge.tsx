@@ -10,10 +10,11 @@ export function AgiBadge({
   return (
     <span
       className={clsx(
-        'inline-flex items-center rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-2 py-0.5 text-xs font-medium text-white',
+        'ft-micro inline-flex items-center border border-brand-navy/20 bg-brand-paper px-2 py-1 text-brand-navy',
         className,
       )}
     >
+      <span aria-hidden className="mr-1.5 inline-block h-1.5 w-1.5 bg-brand-navy" />
       {label}
     </span>
   );

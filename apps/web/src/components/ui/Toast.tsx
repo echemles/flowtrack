@@ -39,25 +39,25 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           <div
             key={t.id}
             role="status"
-            className="pointer-events-auto flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-card p-3 shadow-lg ring-1 ring-black/5"
+            className="pointer-events-auto flex items-start gap-3 border border-brand-rule bg-brand-paper p-3"
           >
             <div className="mt-0.5 shrink-0">
               {t.kind === 'success' ? (
-                <CheckCircle2 size={16} className="text-emerald-600" />
+                <CheckCircle2 size={16} className="text-brand-navy" />
               ) : t.kind === 'agi' ? (
-                <Sparkles size={16} className="text-violet-600" />
+                <Sparkles size={16} className="text-brand-red" />
               ) : (
-                <AlertCircle size={16} className="text-red-600" />
+                <AlertCircle size={16} className="text-brand-red" />
               )}
             </div>
             <div className="min-w-0 flex-1">
-              <div className="text-sm font-semibold text-text-primary">{t.title}</div>
-              {t.body ? <div className="mt-0.5 text-xs text-text-secondary">{t.body}</div> : null}
+              <div className="ft-eyebrow text-brand-navy">{t.title}</div>
+              {t.body ? <div className="mt-1 text-[13px] text-brand-navy/70">{t.body}</div> : null}
             </div>
             <button
               type="button"
               onClick={() => dismiss(t.id)}
-              className="rounded p-0.5 text-text-muted hover:bg-surface-canvas hover:text-text-primary"
+              className="p-0.5 text-brand-navy/40 transition-colors hover:bg-brand-bone hover:text-brand-navy"
               aria-label="Dismiss"
             >
               <X size={12} />

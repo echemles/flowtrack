@@ -16,17 +16,28 @@ export function KpiTile({
   return (
     <div
       className={clsx(
-        'rounded-lg border border-border-subtle bg-surface-card p-4',
+        'border border-brand-rule bg-brand-paper p-4',
         className,
       )}
     >
-      <div className="text-xs uppercase tracking-wide text-text-muted">{label}</div>
-      <div className="mt-1 text-2xl font-semibold text-text-primary">{value}</div>
+      <div className="ft-micro text-brand-navy/55">{label}</div>
+      <div
+        className="mt-2 text-brand-navy"
+        style={{
+          fontFamily: 'Switzer, sans-serif',
+          fontWeight: 300,
+          fontSize: '40px',
+          lineHeight: 1.04,
+          letterSpacing: '-0.01em',
+        }}
+      >
+        {value}
+      </div>
       {delta ? (
-        <div className="mt-1 text-xs font-medium text-emerald-700">{delta}</div>
+        <div className="mt-1 text-[13px] text-brand-navy/70">{delta}</div>
       ) : null}
       {footnote ? (
-        <div className="mt-1 text-xs text-text-secondary">{footnote}</div>
+        <div className="mt-1 text-[12px] text-brand-navy/55">{footnote}</div>
       ) : null}
     </div>
   );

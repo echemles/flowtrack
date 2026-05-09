@@ -4,7 +4,7 @@ import { Topbar } from './Topbar';
 
 export function AppShell() {
   return (
-    <div className="flex h-screen w-screen bg-surface-canvas text-text-primary">
+    <div className="flex h-screen w-screen bg-brand-bone text-brand-navy">
       <Sidebar />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Topbar />

@@ -5,38 +5,38 @@ import { useAddShipments } from '../components/AddShipmentsContext';
 export function Topbar() {
   const { open } = useAddShipments();
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between border-b border-border-subtle bg-surface-card px-6">
-      <div className="flex items-center gap-3">
+    <header className="flex h-14 shrink-0 items-center justify-between border-b border-brand-rule bg-brand-paper px-6">
+      <div className="flex items-center gap-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-1 text-xs text-text-secondary hover:text-text-primary"
+          className="ft-eyebrow inline-flex items-center gap-1.5 border border-brand-navy px-2.5 py-1.5 text-brand-navy transition-colors hover:bg-brand-navy/5"
         >
-          <ArrowLeft size={12} /> flowtrack.com
+          <ArrowLeft size={11} /> flowtrack.com
         </Link>
-        <span className="text-sm font-semibold">FlowTrack</span>
-        <span className="rounded-full border border-border-subtle bg-surface-canvas px-2 py-0.5 text-xs text-text-secondary">
+        <span className="ft-eyebrow inline-flex items-center gap-2 text-brand-navy">
+          <span aria-hidden className="inline-block h-1.5 w-1.5 bg-brand-red" />
           Innovtex
         </span>
       </div>
-      <div className="flex flex-1 max-w-md items-center gap-2 rounded-md border border-border-subtle bg-surface-canvas px-3 py-1.5 text-sm text-text-secondary">
-        <Search size={14} />
+      <div className="flex flex-1 max-w-md items-center gap-2 border border-brand-rule bg-brand-paper px-3 py-1.5 text-[13px] text-brand-navy focus-within:border-brand-red">
+        <Search size={14} className="text-brand-navy/50" />
         <input
-          className="w-full bg-transparent outline-none"
+          className="w-full bg-transparent outline-none placeholder:text-brand-navy/35"
           placeholder="Search shipments, contacts, POs"
         />
-        <span className="hidden md:inline rounded border border-border-subtle bg-surface-card px-1.5 py-0.5 text-[10px] text-text-muted">
+        <span className="hidden md:inline border border-brand-rule px-1.5 py-0.5 text-[10px] text-brand-navy/55">
           ⌘K
         </span>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={open}
-          className="inline-flex items-center gap-1.5 rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
+          className="ft-eyebrow inline-flex items-center gap-1.5 border border-brand-red bg-brand-red px-3 py-1.5 text-brand-paper transition-colors hover:bg-brand-redInk hover:border-brand-redInk"
         >
           <Plus size={12} /> Add shipments
         </button>
-        <span className="rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-2 py-0.5 text-xs font-medium text-white">
+        <span className="ft-micro inline-flex items-center border border-brand-navy/20 px-2 py-1 text-brand-navy">
           AGI
         </span>
       </div>

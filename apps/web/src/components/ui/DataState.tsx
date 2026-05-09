@@ -9,14 +9,14 @@ type Props<T> = {
 export function DataState<T>({ state, children, empty }: Props<T>) {
   if (state.loading) {
     return (
-      <div className="rounded-lg border border-border-subtle bg-surface-card p-6 text-sm text-text-muted">
+      <div className="border border-brand-rule bg-brand-paper p-6 ft-micro text-brand-navy/55">
         Loading…
       </div>
     );
   }
   if (state.error) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 p-6 text-sm text-red-700">
+      <div className="border border-brand-red/30 bg-brand-red/5 p-6 text-[13px] text-brand-red">
         {state.error}
       </div>
     );

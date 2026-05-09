@@ -16,7 +16,7 @@ export function TabStrip({
   return (
     <div
       className={clsx(
-        'flex items-center gap-1 border-b border-border-subtle text-sm',
+        'flex items-center gap-2 border-b border-brand-rule',
         className,
       )}
     >
@@ -28,17 +28,15 @@ export function TabStrip({
             type="button"
             onClick={() => onChange(t.id)}
             className={clsx(
-              '-mb-px border-b-2 px-3 py-2 transition-colors',
+              '-mb-px border-b-2 px-3 py-2.5 ft-eyebrow transition-colors',
               active
-                ? 'border-blue-600 font-semibold text-blue-700'
-                : 'border-transparent text-text-secondary hover:text-text-primary',
+                ? 'border-brand-red text-brand-navy'
+                : 'border-transparent text-brand-navy/50 hover:text-brand-navy',
             )}
           >
             {t.label}
             {typeof t.count === 'number' ? (
-              <span className="ml-1 rounded-full bg-surface-canvas px-1.5 text-xs text-text-muted">
-                {t.count}
-              </span>
+              <span className="ml-1.5 text-brand-navy/40">{t.count}</span>
             ) : null}
           </button>
         );

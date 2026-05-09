@@ -23,17 +23,17 @@ export function DataTable<T extends Record<string, unknown>>({
   return (
     <div
       className={clsx(
-        'overflow-hidden rounded-lg border border-border-subtle bg-surface-card',
+        'overflow-hidden border border-brand-rule bg-brand-paper',
         className,
       )}
     >
-      <table className="w-full text-left text-sm">
-        <thead className="sticky top-0 bg-surface-canvas text-xs uppercase tracking-wide text-text-muted">
-          <tr>
+      <table className="w-full text-left">
+        <thead className="sticky top-0 bg-brand-paper">
+          <tr className="border-b border-brand-rule">
             {columns.map((col) => (
               <th
                 key={col.key}
-                className={clsx('px-3 py-2 font-medium', col.className)}
+                className={clsx('ft-eyebrow px-3 py-3 text-brand-navy/55', col.className)}
                 style={col.width ? { width: col.width } : undefined}
               >
                 {col.header}
@@ -46,7 +46,7 @@ export function DataTable<T extends Record<string, unknown>>({
             <tr>
               <td
                 colSpan={columns.length}
-                className="px-3 py-6 text-center text-sm text-text-muted"
+                className="px-3 py-6 text-center text-[13px] text-brand-navy/55"
               >
                 {empty ?? 'No rows.'}
               </td>
@@ -55,12 +55,12 @@ export function DataTable<T extends Record<string, unknown>>({
             rows.map((row, i) => (
               <tr
                 key={i}
-                className="border-t border-border-subtle hover:bg-surface-canvas/60"
+                className="border-t border-brand-rule transition-colors hover:bg-brand-bone/40"
               >
                 {columns.map((col) => (
                   <td
                     key={col.key}
-                    className={clsx('px-3 py-2 align-middle', col.className)}
+                    className={clsx('px-3 py-3 align-middle text-[14px] text-brand-navy', col.className)}
                   >
                     {col.render
                       ? col.render(row)

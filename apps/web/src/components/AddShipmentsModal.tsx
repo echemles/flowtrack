@@ -117,7 +117,7 @@ export function AddShipmentsModal({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/40 p-4"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-brand-ink/40 p-4"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget && phase !== 'processing') onClose();
       }}
@@ -125,17 +125,20 @@ export function AddShipmentsModal({
       aria-modal="true"
       aria-labelledby="add-shipments-title"
     >
-      <div className="flex w-full max-w-[560px] flex-col overflow-hidden rounded-xl border border-border-subtle bg-surface-card shadow-2xl">
-        <header className="flex items-start justify-between gap-3 border-b border-border-subtle px-5 py-4">
+      <div className="flex w-full max-w-[560px] flex-col overflow-hidden border border-brand-rule bg-brand-paper">
+        <header className="flex items-start justify-between gap-3 border-b border-brand-rule px-5 py-4">
           <div className="flex items-start gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-900 text-white">
+            <div className="flex h-9 w-9 items-center justify-center bg-brand-ink text-brand-paper">
               <Plus size={16} />
             </div>
             <div>
-              <h2 id="add-shipments-title" className="text-sm font-semibold text-text-primary">
+              <h2
+                id="add-shipments-title"
+                className="ft-eyebrow text-brand-navy"
+              >
                 Add shipments
               </h2>
-              <p className="text-xs text-text-secondary">
+              <p className="mt-1.5 text-[12px] text-brand-navy/65">
                 {phase === 'input'
                   ? `Enter up to ${MAX_REFS} reference numbers, one per line`
                   : phase === 'processing'
@@ -148,7 +151,7 @@ export function AddShipmentsModal({
             type="button"
             onClick={onClose}
             disabled={phase === 'processing'}
-            className="rounded-md p-1 text-text-muted hover:bg-surface-canvas hover:text-text-primary disabled:opacity-40"
+            className="p-1 text-brand-navy/45 hover:bg-brand-bone hover:text-brand-navy disabled:opacity-40"
             aria-label="Close"
           >
             <X size={16} />
@@ -157,27 +160,27 @@ export function AddShipmentsModal({
 
         {phase === 'input' && (
           <div className="flex flex-col gap-4 px-5 py-5">
-            <div className="relative rounded-lg border border-border-subtle bg-surface-canvas">
+            <div className="relative border border-brand-rule bg-brand-bone focus-within:border-brand-red">
               <textarea
                 ref={textareaRef}
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder={'FT-26-S891\nFT-26-A103\nMAEU8472913\n…'}
                 rows={9}
-                className="block w-full resize-none rounded-lg bg-transparent px-3 py-2.5 font-mono text-xs leading-relaxed text-text-primary outline-none placeholder:text-text-muted"
+                className="block w-full resize-none bg-transparent px-3 py-2.5 font-mono text-xs leading-relaxed text-brand-navy outline-none placeholder:text-brand-navy/35"
                 spellCheck={false}
               />
             </div>
-            <div className="flex items-center justify-between text-[11px] text-text-secondary">
+            <div className="flex items-center justify-between text-[11px] text-brand-navy/65">
               <span>
                 {refCount} / {MAX_REFS}
               </span>
-              <span className="text-text-muted">
+              <span className="text-brand-navy/50">
                 Accepts FlowTrack refs (FT-26-…), tracking numbers, or container IDs
               </span>
             </div>
-            <div className="flex items-start gap-2 rounded-md border border-violet-200 bg-violet-50 px-3 py-2 text-xs text-violet-900">
-              <Sparkles size={14} className="mt-0.5 shrink-0 text-violet-600" />
+            <div className="flex items-start gap-2 border border-brand-navy/20 bg-brand-bone px-3 py-2 text-xs text-brand-navy">
+              <Sparkles size={14} className="mt-0.5 shrink-0 text-brand-red" />
               <p>
                 <span className="font-semibold">On confirm, FlowTrack will</span> match each number
                 to a shipment profile, check required documents, and surface anything that needs
@@ -185,7 +188,7 @@ export function AddShipmentsModal({
               </p>
             </div>
             {error ? (
-              <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
+              <div className="border border-brand-red/30 bg-brand-red/5 px-3 py-2 text-xs text-brand-red">
                 {error}
               </div>
             ) : null}
@@ -194,17 +197,17 @@ export function AddShipmentsModal({
 
         {phase === 'processing' && (
           <div className="flex flex-col items-center justify-center gap-3 px-5 py-10">
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-violet-100">
-              <Sparkles size={26} className="text-violet-600" />
+            <div className="flex h-14 w-14 items-center justify-center border border-brand-rule bg-brand-bone">
+              <Sparkles size={26} className="text-brand-red" />
             </div>
-            <div className="text-base font-semibold text-text-primary">Checking documents…</div>
-            <div className="text-xs text-text-secondary">
+            <div className="ft-eyebrow text-brand-navy">Checking documents…</div>
+            <div className="text-xs text-brand-navy/65">
               Matching {refCount} references · verifying doc completeness · preparing notifications
             </div>
             <div className="mt-1 flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-violet-500 [animation-delay:-0.2s]" />
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-violet-500 [animation-delay:-0.1s]" />
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-violet-500" />
+              <span className="h-1.5 w-1.5 animate-bounce bg-brand-red [animation-delay:-0.2s]" />
+              <span className="h-1.5 w-1.5 animate-bounce bg-brand-red [animation-delay:-0.1s]" />
+              <span className="h-1.5 w-1.5 animate-bounce bg-brand-red" />
             </div>
           </div>
         )}
@@ -213,20 +216,20 @@ export function AddShipmentsModal({
           <div className="flex flex-col gap-3 px-5 py-5">
             <div className="grid grid-cols-3 gap-2 text-xs">
               <ResultStat
-                icon={<CheckCircle2 size={14} className="text-emerald-600" />}
+                icon={<CheckCircle2 size={14} className="text-brand-navy" />}
                 label={`${matched.length} matched`}
               />
               <ResultStat
-                icon={<FileWarning size={14} className="text-amber-600" />}
+                icon={<FileWarning size={14} className="text-brand-red" />}
                 label={`${missingDocs.length} missing docs`}
               />
               <ResultStat
-                icon={<AlertCircle size={14} className="text-red-600" />}
+                icon={<AlertCircle size={14} className="text-brand-red" />}
                 label={`${notFound.length} not found`}
               />
             </div>
 
-            <div className="max-h-[260px] overflow-y-auto rounded-md border border-border-subtle">
+            <div className="max-h-[260px] overflow-y-auto border border-brand-rule">
               <ResultGroup
                 title="Matched"
                 kind="matched"
@@ -256,13 +259,13 @@ export function AddShipmentsModal({
           </div>
         )}
 
-        <footer className="flex items-center justify-end gap-2 border-t border-border-subtle bg-surface-canvas px-5 py-3">
+        <footer className="flex items-center justify-end gap-2 border-t border-brand-rule bg-brand-bone px-5 py-3">
           {phase === 'input' && (
             <>
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs font-medium text-text-primary hover:bg-surface-canvas"
+                className="ft-eyebrow border border-brand-navy bg-transparent px-3 py-1.5 text-brand-navy transition-colors hover:bg-brand-navy/5"
               >
                 Cancel
               </button>
@@ -271,7 +274,7 @@ export function AddShipmentsModal({
                 onClick={submit}
                 disabled={!canSubmit}
                 data-action="check-shipments"
-                className="inline-flex items-center gap-1.5 rounded-md bg-slate-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-slate-800 disabled:opacity-40"
+                className="ft-eyebrow inline-flex items-center gap-1.5 border border-brand-red bg-brand-red px-3 py-1.5 text-brand-paper transition-colors hover:bg-brand-redInk hover:border-brand-redInk disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <CheckCircle2 size={12} /> Check shipments
               </button>
@@ -281,7 +284,7 @@ export function AddShipmentsModal({
             <button
               type="button"
               disabled
-              className="inline-flex items-center gap-1.5 rounded-md bg-slate-900 px-3 py-1.5 text-xs font-medium text-white opacity-60"
+              className="ft-eyebrow inline-flex items-center gap-1.5 border border-brand-red bg-brand-red px-3 py-1.5 text-brand-paper opacity-60"
             >
               <Loader2 size={12} className="animate-spin" /> Processing…
             </button>
@@ -294,14 +297,14 @@ export function AddShipmentsModal({
                   setPhase('input');
                   setResults(null);
                 }}
-                className="inline-flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-card px-3 py-1.5 text-xs font-medium text-text-primary hover:bg-surface-canvas"
+                className="ft-eyebrow inline-flex items-center gap-1.5 border border-brand-navy bg-transparent px-3 py-1.5 text-brand-navy transition-colors hover:bg-brand-navy/5"
               >
                 <Plus size={12} /> Add more
               </button>
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-md bg-slate-900 px-4 py-1.5 text-xs font-medium text-white hover:bg-slate-800"
+                className="ft-eyebrow border border-brand-red bg-brand-red px-4 py-1.5 text-brand-paper transition-colors hover:bg-brand-redInk hover:border-brand-redInk"
               >
                 Done
               </button>
@@ -315,9 +318,9 @@ export function AddShipmentsModal({
 
 function ResultStat({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <div className="flex items-center gap-1.5 rounded-md border border-border-subtle bg-surface-canvas px-2.5 py-1.5">
+    <div className="flex items-center gap-1.5 border border-brand-rule bg-brand-bone px-2.5 py-1.5">
       {icon}
-      <span className="text-xs font-medium text-text-primary">{label}</span>
+      <span className="text-xs font-medium text-brand-navy">{label}</span>
     </div>
   );
 }
@@ -335,42 +338,38 @@ function ResultGroup({
   emptyHint: string;
   onCreate?: (ref: string) => void;
 }) {
+  const dotClass =
+    kind === 'matched'
+      ? 'h-1.5 w-1.5 bg-brand-navy'
+      : kind === 'missingDocs'
+        ? 'h-1.5 w-1.5 bg-brand-red'
+        : 'h-1.5 w-1.5 bg-brand-red';
+
+  const tagClass =
+    kind === 'matched'
+      ? 'ft-micro border border-brand-navy/25 bg-brand-paper px-1.5 py-0.5 text-brand-navy'
+      : 'ft-micro border border-brand-red/35 bg-brand-paper px-1.5 py-0.5 text-brand-red';
+
   if (refs.length === 0) {
     return (
-      <div className="border-b border-border-subtle px-3 py-2.5 text-[11px] text-text-muted last:border-b-0">
-        <span className="font-semibold uppercase tracking-wider">{title}</span>{' '}
+      <div className="border-b border-brand-rule px-3 py-2.5 text-[11px] text-brand-navy/55 last:border-b-0">
+        <span className="ft-micro text-brand-navy/65">{title}</span>{' '}
         <span>· {emptyHint}</span>
       </div>
     );
   }
   return (
-    <div className="border-b border-border-subtle last:border-b-0">
-      <div className="bg-surface-canvas px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-text-secondary">
+    <div className="border-b border-brand-rule last:border-b-0">
+      <div className="ft-micro bg-brand-bone px-3 py-1.5 text-brand-navy/65">
         {title} · {refs.length}
       </div>
-      <ul className="divide-y divide-border-subtle">
+      <ul className="divide-y divide-brand-rule">
         {refs.map((ref) => (
           <li key={ref} className="flex items-center justify-between gap-2 px-3 py-2">
             <div className="flex items-center gap-2">
-              <span
-                className={
-                  kind === 'matched'
-                    ? 'h-1.5 w-1.5 rounded-full bg-emerald-500'
-                    : kind === 'missingDocs'
-                      ? 'h-1.5 w-1.5 rounded-full bg-amber-500'
-                      : 'h-1.5 w-1.5 rounded-full bg-red-500'
-                }
-              />
-              <span className="font-mono text-xs text-text-primary">{ref}</span>
-              <span
-                className={
-                  kind === 'matched'
-                    ? 'rounded-full bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700'
-                    : kind === 'missingDocs'
-                      ? 'rounded-full bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold text-amber-700'
-                      : 'rounded-full bg-red-50 px-1.5 py-0.5 text-[10px] font-semibold text-red-700'
-                }
-              >
+              <span className={dotClass} />
+              <span className="font-mono text-xs text-brand-navy">{ref}</span>
+              <span className={tagClass}>
                 {kind === 'matched'
                   ? 'MATCHED'
                   : kind === 'missingDocs'
@@ -382,9 +381,9 @@ function ResultGroup({
               <button
                 type="button"
                 onClick={() => onCreate(ref)}
-                className="inline-flex items-center gap-1 rounded-md border border-border-subtle bg-surface-card px-2 py-0.5 text-[11px] text-text-primary hover:bg-surface-canvas"
+                className="ft-micro inline-flex items-center gap-1 border border-brand-navy/25 bg-brand-paper px-2 py-1 text-brand-navy transition-colors hover:bg-brand-navy/5"
               >
-                <Plus size={10} /> Create a new shipment
+                <Plus size={10} /> New shipment
               </button>
             ) : null}
           </li>
